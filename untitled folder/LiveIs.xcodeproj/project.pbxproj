@@ -1,0 +1,735 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4905BB5226ECD007008617E5 /* CalendarPickerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905BB4E26ECD007008617E5 /* CalendarPickerHeaderView.swift */; };
+		4905BB5326ECD007008617E5 /* CalendarPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905BB4F26ECD007008617E5 /* CalendarPickerViewController.swift */; };
+		4905BB5426ECD007008617E5 /* CalendarPickerFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905BB5026ECD007008617E5 /* CalendarPickerFooterView.swift */; };
+		4905BB5526ECD007008617E5 /* CalendarDateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905BB5126ECD007008617E5 /* CalendarDateCollectionViewCell.swift */; };
+		4905BB5926ECD013008617E5 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905BB5626ECD013008617E5 /* Day.swift */; };
+		4905BB5A26ECD013008617E5 /* MonthMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905BB5726ECD013008617E5 /* MonthMetadata.swift */; };
+		4905BB5B26ECD013008617E5 /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905BB5826ECD013008617E5 /* ChecklistItem.swift */; };
+		49280D7D26F10BE1009589E7 /* SetMapLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49280D7C26F10BE1009589E7 /* SetMapLocationViewController.swift */; };
+		49280D7F26F10BF7009589E7 /* DetailsFilledViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49280D7E26F10BF7009589E7 /* DetailsFilledViewController.swift */; };
+		49280D8126F10C16009589E7 /* SuccessConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49280D8026F10C16009589E7 /* SuccessConfirmationViewController.swift */; };
+		494545CD26D6C43B0049CC82 /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 494545C926D6C43B0049CC82 /* Rubik-Medium.ttf */; };
+		494545CE26D6C43B0049CC82 /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 494545CA26D6C43B0049CC82 /* Rubik-Bold.ttf */; };
+		494545CF26D6C43B0049CC82 /* Rubik-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 494545CB26D6C43B0049CC82 /* Rubik-Light.ttf */; };
+		494545D026D6C43B0049CC82 /* Rubik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 494545CC26D6C43B0049CC82 /* Rubik-Regular.ttf */; };
+		4947F14625B89CC20055ADAE /* style.json in Resources */ = {isa = PBXBuildFile; fileRef = 4947F14525B89CC20055ADAE /* style.json */; };
+		49619E0525F2E31A0044EBF1 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49619E0425F2E31A0044EBF1 /* PopUpView.swift */; };
+		49650F3026DC077300BD0113 /* MarekerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49650F2F26DC077300BD0113 /* MarekerModel.swift */; };
+		49650F3226DC081E00BD0113 /* IMarkerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49650F3126DC081E00BD0113 /* IMarkerService.swift */; };
+		49650F3426DC08C200BD0113 /* MarkerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49650F3326DC08C200BD0113 /* MarkerService.swift */; };
+		497C2FF226E3EBA3006B9EC8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 497C2FF126E3EBA3006B9EC8 /* GoogleService-Info.plist */; };
+		49800580249A65DC00CD8000 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4980057F249A65DC00CD8000 /* MainViewModel.swift */; };
+		499C64AB26ECA05400E68B47 /* MTSlideToOpenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499C64AA26ECA05400E68B47 /* MTSlideToOpenView.swift */; };
+		49A1548024983871009F5F87 /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49A1547F24983871009F5F87 /* Raleway-Bold.ttf */; };
+		49C1519826E28EE10056CB12 /* ButtonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C1519726E28EE10056CB12 /* ButtonFactory.swift */; };
+		49D9FF0925AE5CE100C35BB9 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D9FF0825AE5CE100C35BB9 /* AuthorizationViewController.swift */; };
+		49DF8C2A25CD5CCF00F29578 /* Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DF8C2925CD5CCF00F29578 /* Extenstions.swift */; };
+		49EA6BD025B0A62A00E2E9AA /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EA6BCF25B0A62A00E2E9AA /* UserModel.swift */; };
+		7EAEF86F5208FE0BA4A3E506 /* Pods_LiveIs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89436FD7E8494C7A44F90D59 /* Pods_LiveIs.framework */; };
+		AA56ADDE26EB160900C7CC05 /* FakeMarkerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA56ADDD26EB160900C7CC05 /* FakeMarkerService.swift */; };
+		AA5B960D25920D67005965E1 /* IUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5B960C25920D67005965E1 /* IUserService.swift */; };
+		AA5B960F25920DF3005965E1 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5B960E25920DF3005965E1 /* UserService.swift */; };
+		AA6275E426E78E0E00E34943 /* DetailsDefaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6275E326E78E0E00E34943 /* DetailsDefaultViewController.swift */; };
+		AAAFBFD526E895BD00AB4534 /* ViewControllerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAFBFD426E895BD00AB4534 /* ViewControllerService.swift */; };
+		D9C6282A1FE6378E00D50657 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C628291FE6378D00D50657 /* AppDelegate.swift */; };
+		D9C6282C1FE6378E00D50657 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6282B1FE6378E00D50657 /* MapViewController.swift */; };
+		D9C628311FE6378E00D50657 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C628301FE6378E00D50657 /* Assets.xcassets */; };
+		D9C628341FE6378E00D50657 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C628321FE6378E00D50657 /* LaunchScreen.storyboard */; };
+		D9C6283C1FE639AC00D50657 /* CustomMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6283B1FE639AC00D50657 /* CustomMarkerView.swift */; };
+		D9C6283E1FE63A5600D50657 /* EventPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6283D1FE63A5600D50657 /* EventPreviewView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3219DA83076CE93E859C770D /* Pods-LiveIs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveIs.release.xcconfig"; path = "Pods/Target Support Files/Pods-LiveIs/Pods-LiveIs.release.xcconfig"; sourceTree = "<group>"; };
+		4905BB4E26ECD007008617E5 /* CalendarPickerHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarPickerHeaderView.swift; sourceTree = "<group>"; };
+		4905BB4F26ECD007008617E5 /* CalendarPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarPickerViewController.swift; sourceTree = "<group>"; };
+		4905BB5026ECD007008617E5 /* CalendarPickerFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarPickerFooterView.swift; sourceTree = "<group>"; };
+		4905BB5126ECD007008617E5 /* CalendarDateCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDateCollectionViewCell.swift; sourceTree = "<group>"; };
+		4905BB5626ECD013008617E5 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		4905BB5726ECD013008617E5 /* MonthMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthMetadata.swift; sourceTree = "<group>"; };
+		4905BB5826ECD013008617E5 /* ChecklistItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
+		49280D7C26F10BE1009589E7 /* SetMapLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMapLocationViewController.swift; sourceTree = "<group>"; };
+		49280D7E26F10BF7009589E7 /* DetailsFilledViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsFilledViewController.swift; sourceTree = "<group>"; };
+		49280D8026F10C16009589E7 /* SuccessConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessConfirmationViewController.swift; sourceTree = "<group>"; };
+		494545C926D6C43B0049CC82 /* Rubik-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Medium.ttf"; sourceTree = "<group>"; };
+		494545CA26D6C43B0049CC82 /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
+		494545CB26D6C43B0049CC82 /* Rubik-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Light.ttf"; sourceTree = "<group>"; };
+		494545CC26D6C43B0049CC82 /* Rubik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Regular.ttf"; sourceTree = "<group>"; };
+		4947F14525B89CC20055ADAE /* style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = style.json; sourceTree = "<group>"; };
+		49619E0425F2E31A0044EBF1 /* PopUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
+		49650F2F26DC077300BD0113 /* MarekerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarekerModel.swift; sourceTree = "<group>"; };
+		49650F3126DC081E00BD0113 /* IMarkerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMarkerService.swift; sourceTree = "<group>"; };
+		49650F3326DC08C200BD0113 /* MarkerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerService.swift; sourceTree = "<group>"; };
+		497C2FF126E3EBA3006B9EC8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4980057F249A65DC00CD8000 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		499C64AA26ECA05400E68B47 /* MTSlideToOpenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTSlideToOpenView.swift; sourceTree = "<group>"; };
+		49A1547F24983871009F5F87 /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.ttf"; sourceTree = "<group>"; };
+		49C1519726E28EE10056CB12 /* ButtonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFactory.swift; sourceTree = "<group>"; };
+		49D9FF0825AE5CE100C35BB9 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
+		49DF8C2925CD5CCF00F29578 /* Extenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extenstions.swift; sourceTree = "<group>"; };
+		49EA6BCF25B0A62A00E2E9AA /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		7D205731E626B02F0C999F7E /* Pods-LiveIs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveIs.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiveIs/Pods-LiveIs.debug.xcconfig"; sourceTree = "<group>"; };
+		89436FD7E8494C7A44F90D59 /* Pods_LiveIs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiveIs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A2BFCD50675CCD7D0CEB2C9 /* Pods-googlMapTutuorial2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-googlMapTutuorial2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-googlMapTutuorial2/Pods-googlMapTutuorial2.debug.xcconfig"; sourceTree = "<group>"; };
+		AA56ADDD26EB160900C7CC05 /* FakeMarkerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeMarkerService.swift; sourceTree = "<group>"; };
+		AA5B960C25920D67005965E1 /* IUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IUserService.swift; sourceTree = "<group>"; };
+		AA5B960E25920DF3005965E1 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		AA6275E326E78E0E00E34943 /* DetailsDefaultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsDefaultViewController.swift; sourceTree = "<group>"; };
+		AAAFBFD426E895BD00AB4534 /* ViewControllerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerService.swift; sourceTree = "<group>"; };
+		D9C628261FE6378D00D50657 /* LiveIs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveIs.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9C628291FE6378D00D50657 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D9C6282B1FE6378E00D50657 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		D9C628301FE6378E00D50657 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D9C628331FE6378E00D50657 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D9C628351FE6378E00D50657 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9C6283B1FE639AC00D50657 /* CustomMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarkerView.swift; sourceTree = "<group>"; };
+		D9C6283D1FE63A5600D50657 /* EventPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPreviewView.swift; sourceTree = "<group>"; };
+		F4DF71D9AE5B91229FA20E0C /* Pods-googlMapTutuorial2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-googlMapTutuorial2.release.xcconfig"; path = "Pods/Target Support Files/Pods-googlMapTutuorial2/Pods-googlMapTutuorial2.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D9C628231FE6378D00D50657 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7EAEF86F5208FE0BA4A3E506 /* Pods_LiveIs.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4905BB4526ECCBFE008617E5 /* CalendarRayW */ = {
+			isa = PBXGroup;
+			children = (
+				4905BB4D26ECCFDF008617E5 /* CalendarPicker */,
+				4905BB4C26ECCFCD008617E5 /* Models */,
+			);
+			path = CalendarRayW;
+			sourceTree = "<group>";
+		};
+		4905BB4C26ECCFCD008617E5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4905BB5826ECD013008617E5 /* ChecklistItem.swift */,
+				4905BB5626ECD013008617E5 /* Day.swift */,
+				4905BB5726ECD013008617E5 /* MonthMetadata.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4905BB4D26ECCFDF008617E5 /* CalendarPicker */ = {
+			isa = PBXGroup;
+			children = (
+				4905BB5126ECD007008617E5 /* CalendarDateCollectionViewCell.swift */,
+				4905BB5026ECD007008617E5 /* CalendarPickerFooterView.swift */,
+				4905BB4E26ECD007008617E5 /* CalendarPickerHeaderView.swift */,
+				4905BB4F26ECD007008617E5 /* CalendarPickerViewController.swift */,
+			);
+			path = CalendarPicker;
+			sourceTree = "<group>";
+		};
+		494545C726D6C3A90049CC82 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				494545C826D6C3CD0049CC82 /* Fonts */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		494545C826D6C3CD0049CC82 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				49A1547F24983871009F5F87 /* Raleway-Bold.ttf */,
+				494545CA26D6C43B0049CC82 /* Rubik-Bold.ttf */,
+				494545CB26D6C43B0049CC82 /* Rubik-Light.ttf */,
+				494545C926D6C43B0049CC82 /* Rubik-Medium.ttf */,
+				494545CC26D6C43B0049CC82 /* Rubik-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		499C64A926ECA01300E68B47 /* Adds */ = {
+			isa = PBXGroup;
+			children = (
+				499C64AA26ECA05400E68B47 /* MTSlideToOpenView.swift */,
+				4905BB4526ECCBFE008617E5 /* CalendarRayW */,
+			);
+			path = Adds;
+			sourceTree = "<group>";
+		};
+		49C1519626E28EB50056CB12 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				49C1519726E28EE10056CB12 /* ButtonFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		49C24B462622D81800009EAC /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				AA60128F26E9FA330032705F /* CreateEvent */,
+				49CD5F5226D9850800372220 /* PopupView */,
+				49D9FF0625AE5C4B00C35BB9 /* AuthorizationViewController */,
+				49C24B482622D82A00009EAC /* MainViewController */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		49C24B482622D82A00009EAC /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4980057F249A65DC00CD8000 /* MainViewModel.swift */,
+				D9C6282B1FE6378E00D50657 /* MapViewController.swift */,
+			);
+			path = MainViewController;
+			sourceTree = "<group>";
+		};
+		49C24B492622D86600009EAC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D9C6283B1FE639AC00D50657 /* CustomMarkerView.swift */,
+				D9C6283D1FE63A5600D50657 /* EventPreviewView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		49CD5F5226D9850800372220 /* PopupView */ = {
+			isa = PBXGroup;
+			children = (
+				49619E0425F2E31A0044EBF1 /* PopUpView.swift */,
+			);
+			path = PopupView;
+			sourceTree = "<group>";
+		};
+		49D9FF0625AE5C4B00C35BB9 /* AuthorizationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				49D9FF0825AE5CE100C35BB9 /* AuthorizationViewController.swift */,
+			);
+			path = AuthorizationViewController;
+			sourceTree = "<group>";
+		};
+		49EA6BC625B0A4F400E2E9AA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				AA5904D526EB3CB50043ED79 /* ViewControllerService */,
+				AA5904D426EB3C9B0043ED79 /* UserService */,
+				AA5904D326EB3C830043ED79 /* MarkerService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		49EA6BCE25B0A61200E2E9AA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				49EA6BCF25B0A62A00E2E9AA /* UserModel.swift */,
+				49650F2F26DC077300BD0113 /* MarekerModel.swift */,
+				49DF8C2925CD5CCF00F29578 /* Extenstions.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4E933E20999D76B2142F2CB2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				89436FD7E8494C7A44F90D59 /* Pods_LiveIs.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6ABFBF4FF1BC6CED60E6899D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8A2BFCD50675CCD7D0CEB2C9 /* Pods-googlMapTutuorial2.debug.xcconfig */,
+				F4DF71D9AE5B91229FA20E0C /* Pods-googlMapTutuorial2.release.xcconfig */,
+				7D205731E626B02F0C999F7E /* Pods-LiveIs.debug.xcconfig */,
+				3219DA83076CE93E859C770D /* Pods-LiveIs.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AA5904D326EB3C830043ED79 /* MarkerService */ = {
+			isa = PBXGroup;
+			children = (
+				49650F3126DC081E00BD0113 /* IMarkerService.swift */,
+				49650F3326DC08C200BD0113 /* MarkerService.swift */,
+				AA56ADDD26EB160900C7CC05 /* FakeMarkerService.swift */,
+			);
+			path = MarkerService;
+			sourceTree = "<group>";
+		};
+		AA5904D426EB3C9B0043ED79 /* UserService */ = {
+			isa = PBXGroup;
+			children = (
+				AA5B960E25920DF3005965E1 /* UserService.swift */,
+				AA5B960C25920D67005965E1 /* IUserService.swift */,
+			);
+			path = UserService;
+			sourceTree = "<group>";
+		};
+		AA5904D526EB3CB50043ED79 /* ViewControllerService */ = {
+			isa = PBXGroup;
+			children = (
+				AAAFBFD426E895BD00AB4534 /* ViewControllerService.swift */,
+			);
+			path = ViewControllerService;
+			sourceTree = "<group>";
+		};
+		AA60128F26E9FA330032705F /* CreateEvent */ = {
+			isa = PBXGroup;
+			children = (
+				AA6275E326E78E0E00E34943 /* DetailsDefaultViewController.swift */,
+				49280D7C26F10BE1009589E7 /* SetMapLocationViewController.swift */,
+				49280D7E26F10BF7009589E7 /* DetailsFilledViewController.swift */,
+				49280D8026F10C16009589E7 /* SuccessConfirmationViewController.swift */,
+			);
+			path = CreateEvent;
+			sourceTree = "<group>";
+		};
+		D9C6281D1FE6378D00D50657 = {
+			isa = PBXGroup;
+			children = (
+				499C64A926ECA01300E68B47 /* Adds */,
+				49C1519626E28EB50056CB12 /* Factory */,
+				494545C726D6C3A90049CC82 /* Assets */,
+				4947F14525B89CC20055ADAE /* style.json */,
+				49C24B492622D86600009EAC /* Views */,
+				49C24B462622D81800009EAC /* Modules */,
+				49EA6BCE25B0A61200E2E9AA /* Models */,
+				49EA6BC625B0A4F400E2E9AA /* Services */,
+				D9C628281FE6378D00D50657 /* LiveIs */,
+				D9C628271FE6378D00D50657 /* Products */,
+				6ABFBF4FF1BC6CED60E6899D /* Pods */,
+				4E933E20999D76B2142F2CB2 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D9C628271FE6378D00D50657 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D9C628261FE6378D00D50657 /* LiveIs.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D9C628281FE6378D00D50657 /* LiveIs */ = {
+			isa = PBXGroup;
+			children = (
+				D9C628291FE6378D00D50657 /* AppDelegate.swift */,
+				D9C628301FE6378E00D50657 /* Assets.xcassets */,
+				D9C628321FE6378E00D50657 /* LaunchScreen.storyboard */,
+				497C2FF126E3EBA3006B9EC8 /* GoogleService-Info.plist */,
+				D9C628351FE6378E00D50657 /* Info.plist */,
+			);
+			path = LiveIs;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D9C628251FE6378D00D50657 /* LiveIs */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9C628381FE6378E00D50657 /* Build configuration list for PBXNativeTarget "LiveIs" */;
+			buildPhases = (
+				CB57CCC6E7A9DEF01F478702 /* [CP] Check Pods Manifest.lock */,
+				D9C628221FE6378D00D50657 /* Sources */,
+				D9C628231FE6378D00D50657 /* Frameworks */,
+				D9C628241FE6378D00D50657 /* Resources */,
+				F52A3A55983F0E1E04A56E36 /* [CP] Copy Pods Resources */,
+				E4B0CEC4D194FF448E0260E1 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LiveIs;
+			productName = googlMapTutuorial2;
+			productReference = D9C628261FE6378D00D50657 /* LiveIs.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D9C6281E1FE6378D00D50657 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 1220;
+				ORGANIZATIONNAME = untramp;
+				TargetAttributes = {
+					D9C628251FE6378D00D50657 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = D9C628211FE6378D00D50657 /* Build configuration list for PBXProject "LiveIs" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D9C6281D1FE6378D00D50657;
+			productRefGroup = D9C628271FE6378D00D50657 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D9C628251FE6378D00D50657 /* LiveIs */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D9C628241FE6378D00D50657 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9C628341FE6378E00D50657 /* LaunchScreen.storyboard in Resources */,
+				49A1548024983871009F5F87 /* Raleway-Bold.ttf in Resources */,
+				494545CD26D6C43B0049CC82 /* Rubik-Medium.ttf in Resources */,
+				494545D026D6C43B0049CC82 /* Rubik-Regular.ttf in Resources */,
+				494545CE26D6C43B0049CC82 /* Rubik-Bold.ttf in Resources */,
+				494545CF26D6C43B0049CC82 /* Rubik-Light.ttf in Resources */,
+				497C2FF226E3EBA3006B9EC8 /* GoogleService-Info.plist in Resources */,
+				4947F14625B89CC20055ADAE /* style.json in Resources */,
+				D9C628311FE6378E00D50657 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CB57CCC6E7A9DEF01F478702 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LiveIs-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4B0CEC4D194FF448E0260E1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LiveIs/Pods-LiveIs-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseAuth/FirebaseAuth.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseDatabase/FirebaseDatabase.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseFirestore/FirebaseFirestore.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseStorage/FirebaseStorage.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/abseil/absl.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseAuth.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreDiagnostics.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseDatabase.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseFirestore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseStorage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleDataTransport.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/absl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LiveIs/Pods-LiveIs-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F52A3A55983F0E1E04A56E36 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LiveIs/Pods-LiveIs-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlacePicker.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LiveIs/Pods-LiveIs-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D9C628221FE6378D00D50657 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49800580249A65DC00CD8000 /* MainViewModel.swift in Sources */,
+				AAAFBFD526E895BD00AB4534 /* ViewControllerService.swift in Sources */,
+				4905BB5926ECD013008617E5 /* Day.swift in Sources */,
+				49619E0525F2E31A0044EBF1 /* PopUpView.swift in Sources */,
+				49DF8C2A25CD5CCF00F29578 /* Extenstions.swift in Sources */,
+				AA56ADDE26EB160900C7CC05 /* FakeMarkerService.swift in Sources */,
+				4905BB5426ECD007008617E5 /* CalendarPickerFooterView.swift in Sources */,
+				499C64AB26ECA05400E68B47 /* MTSlideToOpenView.swift in Sources */,
+				49C1519826E28EE10056CB12 /* ButtonFactory.swift in Sources */,
+				49650F3226DC081E00BD0113 /* IMarkerService.swift in Sources */,
+				AA5B960D25920D67005965E1 /* IUserService.swift in Sources */,
+				49280D7D26F10BE1009589E7 /* SetMapLocationViewController.swift in Sources */,
+				4905BB5A26ECD013008617E5 /* MonthMetadata.swift in Sources */,
+				4905BB5526ECD007008617E5 /* CalendarDateCollectionViewCell.swift in Sources */,
+				D9C6283E1FE63A5600D50657 /* EventPreviewView.swift in Sources */,
+				49280D7F26F10BF7009589E7 /* DetailsFilledViewController.swift in Sources */,
+				49650F3026DC077300BD0113 /* MarekerModel.swift in Sources */,
+				49650F3426DC08C200BD0113 /* MarkerService.swift in Sources */,
+				49EA6BD025B0A62A00E2E9AA /* UserModel.swift in Sources */,
+				4905BB5226ECD007008617E5 /* CalendarPickerHeaderView.swift in Sources */,
+				49280D8126F10C16009589E7 /* SuccessConfirmationViewController.swift in Sources */,
+				D9C6282C1FE6378E00D50657 /* MapViewController.swift in Sources */,
+				4905BB5B26ECD013008617E5 /* ChecklistItem.swift in Sources */,
+				D9C6282A1FE6378E00D50657 /* AppDelegate.swift in Sources */,
+				4905BB5326ECD007008617E5 /* CalendarPickerViewController.swift in Sources */,
+				AA5B960F25920DF3005965E1 /* UserService.swift in Sources */,
+				49D9FF0925AE5CE100C35BB9 /* AuthorizationViewController.swift in Sources */,
+				D9C6283C1FE639AC00D50657 /* CustomMarkerView.swift in Sources */,
+				AA6275E426E78E0E00E34943 /* DetailsDefaultViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D9C628321FE6378E00D50657 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D9C628331FE6378E00D50657 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D9C628361FE6378E00D50657 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D9C628371FE6378E00D50657 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D9C628391FE6378E00D50657 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D205731E626B02F0C999F7E /* Pods-LiveIs.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B599Q8KG5V;
+				INFOPLIST_FILE = "$(SRCROOT)/LiveIs/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.untramp.liveis;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D9C6283A1FE6378E00D50657 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3219DA83076CE93E859C770D /* Pods-LiveIs.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B599Q8KG5V;
+				INFOPLIST_FILE = "$(SRCROOT)/LiveIs/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.untramp.liveis;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D9C628211FE6378D00D50657 /* Build configuration list for PBXProject "LiveIs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9C628361FE6378E00D50657 /* Debug */,
+				D9C628371FE6378E00D50657 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9C628381FE6378E00D50657 /* Build configuration list for PBXNativeTarget "LiveIs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9C628391FE6378E00D50657 /* Debug */,
+				D9C6283A1FE6378E00D50657 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D9C6281E1FE6378D00D50657 /* Project object */;
+}

@@ -1,0 +1,48 @@
+// MARK: Create marker
+                let rndLat = Int(arc4random_uniform(99))
+                let rndLong = Int(arc4random_uniform(99))
+
+                strongSelf.fb.collection("markers").document(result.user.uid).setData([
+                    "latitude": "55.67\(rndLat)09",
+                    "longitude": "37.62\(rndLong)00",
+                    "id": result.user.uid,
+                ]){ (error) in
+                    if error != nil {
+                        print(error!.localizedDescription)
+                    }
+                }
+                
+ //MARK: Create link and upload audio
+                if let inputUrl = self.audioUrlTextField.text {
+                    if let url = URL(string: inputUrl) {
+                        guard let data = try? Data(contentsOf: url) else {
+                            print("There was an error!")
+                            return
+                        }
+                        uploadAudios(data: data) { (result) in
+                            print(result)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    // sample mp3 file: https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3
+    
+    private func uploadAudios(data : Data, completion :  @escaping (_ succus : String )->Void) {
+        let storage = Storage.storage()
+        let metadata = StorageMetadata()
+        metadata.contentType = "audio/mpeg"
+        let uploadRef = storage.reference().child("audio/\(String(describing: Auth.auth().currentUser!.uid))/\(String(describing: metadata.name)).mp3")
+        uploadRef.putData(data, metadata: nil) { metadata, error in
+            if error == nil {
+                print("successfully uploaded Audio")
+                completion("YEP!")
+            }
+            else {
+                print("UploadError \(String(describing: error))")
+            }
+        }
+    }
+    

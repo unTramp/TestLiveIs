@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>955078856763-2q5oa5g4qj1adtp146deu49chrb1j1ka.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.955078856763-2q5oa5g4qj1adtp146deu49chrb1j1ka</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCjZjiZAuXUEnBSlfZdp-Hai1iuHaN9pEs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>955078856763</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.untramp.liveis</string>
+	<key>PROJECT_ID</key>
+	<string>googlmaptutuorial2-cb8b7</string>
+	<key>STORAGE_BUCKET</key>
+	<string>googlmaptutuorial2-cb8b7.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:955078856763:ios:3d856b7c7a44aa7359cc1e</string>
+	<key>DATABASE_URL</key>
+	<string>https://googlmaptutuorial2-cb8b7-default-rtdb.europe-west1.firebasedatabase.app</string>
+</dict>
+</plist>
