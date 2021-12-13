@@ -13,6 +13,7 @@ import GoogleMaps
 
 
 extension Date {
+    
    func getFormattedDate(format: String) -> String {
         let dateformat = DateFormatter()
         dateformat.dateFormat = format
@@ -20,7 +21,9 @@ extension Date {
     }
 }
 
+
 class TextFieldWithPadding: UITextField {
+    
     let padding = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
     
     override func textRect(forBounds bounds: CGRect) -> CGRect {
@@ -34,7 +37,39 @@ class TextFieldWithPadding: UITextField {
     }
 }
 
+
+extension UIFont {
+    
+    open class func fontRubikSize(_ size: CGFloat) -> UIFont {
+        guard let rubik = UIFont(name: "Rubik-Regular", size: size) else { return UIFont() }
+        return rubik
+    }
+}
+
+
 extension UIColor {
+    
+    open class var customBlue: UIColor {
+        guard let color = UIColor(named: "customBlue") else { return .orange }
+        return color
+    }
+    open class var customDarkBlue: UIColor {
+        guard let color = UIColor(named: "customDarkBlue") else { return .orange }
+        return color
+    }
+    open class var customBlack: UIColor {
+        guard let color = UIColor(named: "customBlack") else { return .orange }
+        return color
+    }
+    open class var customWhite: UIColor {
+        guard let color = UIColor(named: "customWhite") else { return .orange }
+        return color
+    }
+    open class var customLightGray: UIColor {
+        guard let color = UIColor(named: "customLightGray") else { return .orange }
+        return color
+    }
+    
    convenience init(red: Int, green: Int, blue: Int) {
        assert(red >= 0 && red <= 255, "Invalid red component")
        assert(green >= 0 && green <= 255, "Invalid green component")
@@ -71,7 +106,9 @@ extension UIColor {
         }
 }
 
+
 extension GMSMapView {
+    
     enum mapType {
         case blackwhite
         case def
@@ -100,7 +137,9 @@ extension GMSMapView {
     
 }
 
+
 extension UIButton {
+    
     func setBackgroundColor(color: UIColor, forState: UIControl.State) {
         UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
         UIGraphicsGetCurrentContext()!.setFillColor(color.cgColor)

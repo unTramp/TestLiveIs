@@ -37,7 +37,7 @@ class CalendarPickerHeaderView: UIView {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
     label.font = UIFont(name:"Rubik-Medium", size: 17.0)
-    label.textColor = .black//UIColor(hexString: "42556B")
+    label.textColor = .black
     label.text = "Month"
     label.accessibilityTraits = .header
     label.isAccessibilityElement = true
@@ -114,14 +114,9 @@ class CalendarPickerHeaderView: UIView {
     for dayNumber in 1...7 {
       let dayLabel = UILabel()
       dayLabel.font = UIFont(name:"Rubik-Bold", size: 12.0)
-      dayLabel.textColor = UIColor(hexString: "42556B")//.secondaryLabel
+      dayLabel.textColor = .secondaryLabel
       dayLabel.textAlignment = .center
       dayLabel.text = dayOfWeekLetter(for: dayNumber)
-
-      // VoiceOver users don't need to hear these days of the week read to them, nor do SwitchControl or Voice Control users need to select them
-      // If fact, they get in the way!
-      // When a VoiceOver user highlights a day of the month, the day of the week is read to them.
-      // That method provides the same amount of context as this stack view does to visual users
       dayLabel.isAccessibilityElement = false
       dayOfWeekStackView.addArrangedSubview(dayLabel)
     }
@@ -140,21 +135,21 @@ class CalendarPickerHeaderView: UIView {
   private func dayOfWeekLetter(for dayNumber: Int) -> String {
     switch dayNumber {
     case 1:
-      return "Вс" //"S"
+      return "S"
     case 2:
-      return "Пн"//"M"
+      return "M"
     case 3:
-      return "Вт" //"T"
+      return "T"
     case 4:
-      return "Ср" //"W"
+      return "W"
     case 5:
-      return "Чт" //"T"
+      return "T"
     case 6:
-      return "Пт" //"F"
+      return "F"
     case 7:
-      return "Сб" //"S"
+      return "S"
     default:
-      return "Вс" //"S"
+      return " "
     }
   }
 

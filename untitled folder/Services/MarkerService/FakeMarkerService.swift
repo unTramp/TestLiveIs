@@ -30,6 +30,4 @@ class FakeMarkerService: IMarkerService {
         self.markers.append(marker)
         completion(self.markers)
     }
-    
-    
 }

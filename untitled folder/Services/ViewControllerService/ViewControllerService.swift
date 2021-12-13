@@ -16,13 +16,14 @@ enum ViewControllerName {
 
 class ViewControllerService {
     static var shared = ViewControllerService()
+    private var viewControllers = [AuthViewController(), CreateEventViewController()]
     
     func getViwController(_ name: ViewControllerName) -> UIViewController {
         switch name {
         case .auth:
-            return AuthorizationViewController()
+            return viewControllers[0]
         case .create:
-            return DetailsDefaultViewController()
+            return viewControllers[1]
         }
     }
 }

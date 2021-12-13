@@ -10,40 +10,33 @@
 import UIKit
 import Foundation
 
-class DetailsDefaultViewController: UIViewController, MTSlideToOpenDelegate {
+class CreateEventViewController: UIViewController, MTSlideToOpenDelegate {
     
-    var dateFormatter: DateFormatter = {
-      let dateFormatter = DateFormatter()
-      dateFormatter.dateStyle = .long
-      return dateFormatter
+    private lazy var dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        return dateFormatter
     }()
     
-    func mtSlideToOpenDelegateDidFinish(_ sender: MTSlideToOpenView) {
+    @objc private func showCalendar() {
         guard let dateString = self.dateLabel.text else { return }
         guard let date = dateFormatter.date(from: dateString) else { return }
-        let calendar = CalendarPickerViewController(baseDate: date, selectedDateChanged: { date in
+        let calendar = CalendarPickerViewController(baseDate: date,
+                                                    selectedDateChanged: { date in
             let formatedData = self.dateFormatter.string(from: date)
             self.dateLabel.text = formatedData
         })
         
-        //self.present(calendar, animated: true)
-        
-        sender.resetStateWithAnimation(true)
-        let setMapLocationViewController = SetMapLocationViewController()
-        setMapLocationViewController.registerListener { marker in
-            print(marker)
-        }
-        
-        self.navigationController?.pushViewController(setMapLocationViewController, animated: true)
+        self.present(calendar, animated: true)
     }
     
-    var topView: UIView = {
+    private lazy var topView: UIView = {
         let v = UIView()
         v.backgroundColor = .systemGray3
         return v
     }()
     
-    var createEventLabel: UILabel = {
+    private lazy var createEventLabel: UILabel = {
         let v = UILabel()
         v.textColor = .white
         v.text = "Create event"
@@ -51,136 +44,169 @@ class DetailsDefaultViewController: UIViewController, MTSlideToOpenDelegate {
         return v
     }()
     
-    var performanceMessageLabel: UILabel = {
+    private lazy var performanceMessageLabel: UILabel = {
         let v = UILabel()
         v.textColor = .white
         v.text = "Let everyone know your best musical performance"
-        v.font = UIFont(name:"Rubik-Regular", size: 14.0)
+        v.font = .fontRubikSize(14)
         return v
     }()
     
-    var contentView: UIView = {
+    private lazy var contentView: UIView = {
         let v = UIView()
         v.backgroundColor = .white
         return v
     }()
-
-    var whenMessageLabel: UILabel = {
+    
+    private lazy var whenMessageLabel: UILabel = {
         let v = UILabel()
-        v.textColor = UIColor(hexString: "42556B")
+        v.textColor = .customDarkBlue
         v.text = "When will the event be held?"
-        v.font = UIFont(name:"Rubik-Regular", size: 14.0)
-        return v
-    }()
-
-    var dateLabel: UILabel = {
-        var dateFormatter: DateFormatter = {
-          let dateFormatter = DateFormatter()
-          dateFormatter.dateStyle = .long
-          return dateFormatter
-        }()
-        
-        let v = UILabel()
-        v.text = dateFormatter.string(from: Date())
-        v.textColor = UIColor(hexString: "080A0D")
-        v.font = UIFont(name:"Rubik-Regular", size: 24.0)
+        v.font = .fontRubikSize(14)
         return v
     }()
     
-    var timeLabel: UILabel = {
+    private lazy var dateLabel: UILabel = {
+        let dateformatter = DateFormatter()
+        dateformatter.dateStyle = .long
+        let v = UILabel()
+        v.text = dateformatter.string(from: Date())
+        v.textColor = .customBlack
+        v.font = .fontRubikSize(24)
+        return v
+    }()
+    
+    private lazy var calendarButton: UIButton = {
+        let v = UIButton()
+        v.setBackgroundImage(UIImage(named: "play_circle"), for: .normal)
+        v.addTarget(self, action: #selector(showCalendar), for: .touchUpInside)
+        return v
+    }()
+    
+    private lazy var timeLabel: UILabel = {
         let v = UILabel()
         v.text = "09:00"
-        v.textColor = UIColor(hexString: "080A0D")
-        v.font = UIFont(name:"Rubik-Regular", size: 24.0)
+        v.textColor = .customBlack
+        v.font = .fontRubikSize(24)
         return v
     }()
     
-    var amLabel: UILabel = {
+    private lazy var amLabel: UILabel = {
         let v = UILabel()
         v.text = "AM"
-        v.textColor = UIColor(hexString: "25A0F2")
-        v.font = UIFont(name:"Rubik-Regular", size: 14.0)
+        v.textColor = .customBlue
+        v.font = .fontRubikSize(14)
         return v
     }()
     
-    var pmLabel: UILabel = {
+    private lazy var pmLabel: UILabel = {
         let v = UILabel()
         v.text = "PM"
-        v.textColor = UIColor(hexString: "ADBCCC")
-        v.font = UIFont(name:"Rubik-Regular", size: 14.0)
+        v.textColor = .customLightGray
+        v.font = .fontRubikSize(14)
         return v
     }()
     
-    let lineBreakView: UIView = {
+    private lazy var lineBreakView: UIView = {
         let v = UIView()
-        v.backgroundColor = UIColor(hexString: "F1F2F5")
+        v.backgroundColor = .customWhite
         return v
     }()
     
-    var whereMessageLabel: UILabel = {
+    private lazy var whereMessageLabel: UILabel = {
         let v = UILabel()
-        v.textColor = UIColor(hexString: "42556B")
         v.text = "Where the events held?"
-        v.font = UIFont(name:"Rubik-Regular", size: 14.0)
+        v.textColor = .customDarkBlue
+        v.font = .fontRubikSize(14)
         return v
     }()
     
-    var tapMapView: UIView = {
+    private lazy var tapMapView: UIView = {
         let v = UIView()
         v.layer.cornerRadius = 8
         v.backgroundColor = .systemGray5
         return v
     }()
     
-    let lineBottomBreakView: UIView = {
+    private lazy var lineBottomBreakView: UIView = {
         let v = UIView()
-        v.backgroundColor = UIColor(hexString: "F1F2F5")
+        v.backgroundColor = .customWhite
         return v
     }()
     
-    let priceMessageLabel: UILabel = {
+    private lazy var priceMessageLabel: UILabel = {
         let v = UILabel()
-        v.textColor = UIColor(hexString: "42556B")
         v.text = "Entrance price"
-        v.font = UIFont(name:"Rubik-Regular", size: 14.0)
+        v.textColor = .customDarkBlue
+        v.font = .fontRubikSize(14)
         return v
     }()
     
-    var priceLabel: UILabel = {
+    private lazy var priceLabel: UILabel = {
         let v = UILabel()
         v.text = "$0"
-        v.textColor = UIColor(hexString: "080A0D")
-        v.font = UIFont(name:"Rubik-Regular", size: 24.0)
+        v.textColor = .customBlack
+        v.font = .fontRubikSize(24)
         return v
     }()
     
-    var plusPriceButton: UIButton = {
+    private lazy var plusPriceButton: UIButton = {
         let v = UIButton()
         v.setImage(UIImage(named: "btn-plus"), for: .normal)
         return v
     } ()
     
-    var minusPriceButton: UIButton = {
+    private lazy var minusPriceButton: UIButton = {
         let v = UIButton()
         v.setImage(UIImage(named: "btn-minus"), for: .normal)
         return v
     }()
     
-    lazy var sliderButtonView: MTSlideToOpenView = {
-        let slide = MTSlideToOpenView(frame: CGRect(x: 26, y: 200, width: 317, height: 48))
-        slide.sliderViewTopDistance = 0
-        slide.sliderCornerRadius = 24
-        slide.thumnailImageView.backgroundColor  = UIColor(red: 0.678, green: 0.735, blue: 0.802, alpha: 1)
-        slide.draggedView.backgroundColor = UIColor(red: 0.678, green: 0.735, blue: 0.802, alpha: 1)
+    private lazy var sliderButtonView: MTSlideToOpenView = {
+        let slide = MTSlideToOpenView(frame: CGRect(x: 26,
+                                                    y: 200,
+                                                    width: 317,
+                                                    height: 48))
+        
+        slide.draggedView.backgroundColor = UIColor(red: 0.678,
+                                                    green: 0.735,
+                                                    blue: 0.802,
+                                                    alpha: 1)
+        
+        slide.sliderHolderView.backgroundColor = UIColor(red: 0.678,
+                                                         green: 0.735,
+                                                         blue: 0.802,
+                                                         alpha: 1)
+        
+        slide.thumnailImageView.backgroundColor  = UIColor(red: 0.678,
+                                                           green: 0.735,
+                                                           blue: 0.802,
+                                                           alpha: 1)
+        
         slide.delegate = self
-        slide.thumbnailViewStartingDistance = 17
-        slide.textLabel.textAlignment = .right
         slide.textColor = .white
+        slide.sliderCornerRadius = 24
+        slide.sliderViewTopDistance = 0
         slide.labelText = "Complete the forms"
-        slide.thumnailImageView.image = UIImage(named: "btn-primary")?.imageFlippedForRightToLeftLayoutDirection()
-        slide.sliderHolderView.backgroundColor = UIColor(red: 0.678, green: 0.735, blue: 0.802, alpha: 1)
+        slide.textLabel.textAlignment = .right
+        slide.thumbnailViewStartingDistance = 17
+        slide.thumnailImageView.image = UIImage(named: "btn-primary")
+
         return slide
     }()
+    
+    func mtSlideToOpenDelegateDidFinish(_ sender: MTSlideToOpenView) {
+        sender.resetStateWithAnimation(true)
+        let successViewController = SuccessConfirmationViewController()
+        
+        successViewController.setCloseButtonTappedCompletionHandler {
+            successViewController.dismiss(animated: true) {
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+        }
+        
+        self.present(successViewController, animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -193,91 +219,25 @@ class DetailsDefaultViewController: UIViewController, MTSlideToOpenDelegate {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
     private func setupViews() {
         self.view.addSubview(self.topView)
-        self.setupCreateEventLabel()
-        self.setupPerformanceMessageLabel()
-        self.view.addSubview(self.contentView)
-        self.setupWhenMessageLabel()
-        self.setupDateLabel()
-        self.setupTimeLabel()
-        self.setupPmLabel()
-        self.setupAmLabel()
-        self.setuplineBreakView()
-        self.setupWhereMessageLabel()
-        self.setupTapMapView()
-        self.setupLineBottomBreakView()
-        self.setupPriceMessageLabel()
-        self.setupPriceLabel()
-        self.setupPlusPriceButton()
-        self.setupMinusPriceButton()
-        self.setupsliderButtonContainerView()
-    }
-    
-    private func setupCreateEventLabel() {
         self.topView.addSubview(self.createEventLabel)
-    }
-        
-    private func setupPerformanceMessageLabel() {
         self.topView.addSubview(self.performanceMessageLabel)
-    }
-
-    private func setupWhenMessageLabel() {
+        self.view.addSubview(self.contentView)
         self.contentView.addSubview(self.whenMessageLabel)
-    }
-    
-    private func setupDateLabel() {
         self.contentView.addSubview(self.dateLabel)
-    }
-    
-    private func setupTimeLabel() {
+        self.contentView.addSubview(self.calendarButton)
         self.contentView.addSubview(self.timeLabel)
-    }
-    
-    private func setupPmLabel() {
         self.contentView.addSubview(self.pmLabel)
-    }
-    private func setupAmLabel() {
         self.contentView.addSubview(self.amLabel)
-    }
-    
-    private func setuplineBreakView() {
         self.contentView.addSubview(lineBreakView)
-    }
-    
-    private func setupWhereMessageLabel() {
         self.contentView.addSubview(self.whereMessageLabel)
-    }
-    
-    private func setupTapMapView() {
         self.contentView.addSubview(self.tapMapView)
-    }
-    
-    private func setupLineBottomBreakView() {
         self.contentView.addSubview(self.lineBottomBreakView)
-    }
-    
-    private func setupPriceMessageLabel() {
         self.contentView.addSubview(self.priceMessageLabel)
-    }
-    
-    private func setupPriceLabel() {
         self.contentView.addSubview(self.priceLabel)
-    }
-    
-    private func setupPlusPriceButton() {
         self.contentView.addSubview(self.plusPriceButton)
-    }
-    
-    private func setupMinusPriceButton() {
         self.contentView.addSubview(self.minusPriceButton)
-    }
-        
-    private func setupsliderButtonContainerView() {
         self.contentView.addSubview(self.sliderButtonView)
     }
     
@@ -289,6 +249,7 @@ class DetailsDefaultViewController: UIViewController, MTSlideToOpenDelegate {
         self.contentViewConstraints()
         self.whenMessageLabelConstraints()
         self.dateLabelConstraints()
+        self.calendarButtonConstraints()
         self.timeLabelConstraints()
         self.pmLabelConstraints()
         self.amLabelConstraints()
@@ -302,7 +263,7 @@ class DetailsDefaultViewController: UIViewController, MTSlideToOpenDelegate {
         self.minusPriceButtonConstraints()
         self.sliderButtonContainterConstraints()
     }
-    
+        
     private func topViewConstraints() {
         self.topView.snp.makeConstraints { make in
             make.top.equalToSuperview()
@@ -352,8 +313,17 @@ class DetailsDefaultViewController: UIViewController, MTSlideToOpenDelegate {
         self.dateLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(24)
             make.height.equalTo(28)
-            make.trailing.equalToSuperview()
+            make.trailing.equalTo(self.calendarButton.snp.leading)
             make.top.equalTo(self.whenMessageLabel.snp.bottom).offset(12)
+        }
+    }
+    
+    private func calendarButtonConstraints() {
+        self.calendarButton.snp.makeConstraints { make in
+            make.height.equalTo(self.dateLabel.snp.height)
+            make.trailing.equalTo(self.amLabel.snp.trailing)
+            make.centerY.equalTo(self.dateLabel.snp.centerY)
+            make.width.equalTo(self.dateLabel.snp.height)
         }
     }
     
@@ -459,8 +429,8 @@ class DetailsDefaultViewController: UIViewController, MTSlideToOpenDelegate {
     private func sliderButtonContainterConstraints() {
         self.sliderButtonView.snp.makeConstraints { make in
             make.height.equalTo(48)
-            make.leading.equalToSuperview().inset(24)
-            make.trailing.equalToSuperview().inset(24)
+            make.leading.equalToSuperview().inset(36)
+            make.trailing.equalToSuperview().inset(36)
             make.top.equalTo(priceLabel.snp.bottom).offset(76)
         }
     }

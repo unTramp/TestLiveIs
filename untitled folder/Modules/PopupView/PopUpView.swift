@@ -23,7 +23,7 @@ class PopUpView: UIView {
     
     let popUpMenuPicker: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(hexString: "F1F2F5")
+        view.backgroundColor = .customWhite
         view.layer.cornerRadius = 2
         return view
     }()
@@ -55,14 +55,14 @@ class PopUpView: UIView {
     let timeLabel: UILabel = {
         let v = UILabel()
         v.text = "AUG 27 / 7 PM"
-        v.font = UIFont(name: "Rubik-Regular", size: 14)
+        v.font = .fontRubikSize(14)
         v.textColor = UIColor(hexString: "9CA9B8")
         return v
     }()
     
     let priceView: UIView = {
         let v = UIView()
-        v.backgroundColor = UIColor(hexString: "25A0F2").withAlphaComponent(0.2)
+        v.backgroundColor = UIColor.customBlue.withAlphaComponent(0.2)
         v.layer.cornerRadius = 4
         return v
     }()
@@ -70,8 +70,8 @@ class PopUpView: UIView {
     let priceLabel: UILabel = {
         let v = UILabel()
         v.text = "$ 250"
-        v.font = UIFont(name: "Rubik-Regular", size: 14)
-        v.textColor = UIColor(hexString: "25A0F2")
+        v.font = .fontRubikSize(14)
+        v.textColor = .customBlue
         v.textAlignment = .center
         return v
     }()
@@ -79,21 +79,21 @@ class PopUpView: UIView {
     let adressRectView: UIView = {
         let v = UIView()
         v.layer.borderWidth = 1
-        v.layer.borderColor = UIColor(hexString: "F1F2F5").cgColor
+        v.layer.borderColor = UIColor.customWhite.cgColor
         v.layer.cornerRadius = 16
         return v
     }()
     
     let adressRectLineView: UIView = {
         let v = UIView()
-        v.backgroundColor = UIColor(hexString: "F1F2F5")
+        v.backgroundColor = .customWhite
         return v
     }()
     
     let placeNameLabel: UILabel = {
         let v = UILabel()
         v.text = "Arc de Triomphe"
-        v.textColor = UIColor(hexString: "42556B")
+        v.textColor = .customDarkBlue
         v.font = UIFont(name: "Rubik-Medium", size: 14)
         return v
     }()
@@ -102,14 +102,14 @@ class PopUpView: UIView {
         let v = UILabel()
         v.text = "Pl. Charles de Gaulle, 75008 Paris, France"
         v.textColor = UIColor(hexString: "9CA9B8")
-        v.font = UIFont(name: "Rubik-Regular", size: 12)
+        v.font = .fontRubikSize(10)
         return v
     }()
     
     let bookTicketLabel: UILabel = {
         let v = UILabel()
         v.text = "Book your ticket now"
-        v.textColor = UIColor(hexString: "42556B")
+        v.textColor = .customDarkBlue
         v.font = UIFont(name: "Rubik-Medium", size: 14)
         return v
     }()
@@ -117,8 +117,8 @@ class PopUpView: UIView {
     let phoneNumberLabel: UILabel = {
         let v = UILabel()
         v.text = "Call to +33 155 377 377"
-        v.textColor = UIColor(hexString: "25A0F2")
-        v.font = UIFont(name: "Rubik-Regular", size: 12)
+        v.textColor = .customBlue
+        v.font = .fontRubikSize(12)
         return v
     }()
     
@@ -129,14 +129,14 @@ class PopUpView: UIView {
     
     let phoneBigCircleView: UIView = {
         let v = UIView()
-        v.backgroundColor = UIColor(hexString: "25A0F2").withAlphaComponent(0.3)
+        v.backgroundColor = UIColor.customBlue.withAlphaComponent(0.3)
         v.layer.cornerRadius = 20
         return v
     }()
     
     let phoneSmallCircleView: UIView = {
         let v = UIView()
-        v.backgroundColor = UIColor(hexString: "25A0F2")
+        v.backgroundColor = .customBlue
         v.layer.cornerRadius = 18
         return v
     }()
@@ -146,18 +146,17 @@ class PopUpView: UIView {
         return v
     }()
     
-    var addEventButtonBackgroundview: UIView = {
+    private lazy var addEventButtonBackgroundview: UIView = {
         let v = UIView()
-        v.backgroundColor = UIColor(hexString: "25A0F2").withAlphaComponent(0.2)
+        v.backgroundColor = UIColor.customBlue.withAlphaComponent(0.2)
         v.layer.cornerRadius = 26
         return v
     }()
     
-    var addEventButton: UIButton = {
-        let v = ButtonFactory.shared.getButton(.addevent)
+    lazy var addEventButton: UIButton = {
+        let v = ButtonFactory.addEvent
         return v
     }()
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)

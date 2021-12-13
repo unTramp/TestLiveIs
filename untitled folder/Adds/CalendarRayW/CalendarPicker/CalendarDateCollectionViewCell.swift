@@ -37,7 +37,7 @@ class CalendarDateCollectionViewCell: UICollectionViewCell {
     let view = UIView()
     view.translatesAutoresizingMaskIntoConstraints = false
     view.clipsToBounds = true
-    view.backgroundColor = UIColor(hexString: "25A0F2")
+    view.backgroundColor = .customBlue
     return view
   }()
 
@@ -86,17 +86,8 @@ class CalendarDateCollectionViewCell: UICollectionViewCell {
   override func layoutSubviews() {
     super.layoutSubviews()
 
-    // This allows for rotations and trait collection
-    // changes (e.g. entering split view on iPad) to update constraints correctly.
-    // Removing old constraints allows for new ones to be created
-    // regardless of the values of the old ones
-    NSLayoutConstraint.deactivate(selectionBackgroundView.constraints)
+    let size = min(min(frame.width, frame.height) - 5, 60)
 
-    // 1
-    let size = traitCollection.horizontalSizeClass == .compact ?
-      min(min(frame.width, frame.height) - 10, 60) : 45
-
-    // 2
     NSLayoutConstraint.activate([
       numberLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
       numberLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -119,7 +110,7 @@ class CalendarDateCollectionViewCell: UICollectionViewCell {
 
 // MARK: - Appearance
 private extension CalendarDateCollectionViewCell {
-  // 1
+
   func updateSelectionStatus() {
     guard let day = day else { return }
 
@@ -130,25 +121,15 @@ private extension CalendarDateCollectionViewCell {
     }
   }
 
-  // 2
-  var isSmallScreenSize: Bool {
-    let isCompact = traitCollection.horizontalSizeClass == .compact
-    let smallWidth = UIScreen.main.bounds.width <= 350
-    let widthGreaterThanHeight = UIScreen.main.bounds.width > UIScreen.main.bounds.height
-
-    return isCompact && (smallWidth || widthGreaterThanHeight)
-  }
-
-  // 3
+    
   func applySelectedStyle() {
     accessibilityTraits.insert(.selected)
     accessibilityHint = nil
-
-    numberLabel.textColor = isSmallScreenSize ? .systemRed : .white
-    selectionBackgroundView.isHidden = isSmallScreenSize
+    
+    numberLabel.textColor = .white
   }
 
-  // 4
+
   func applyDefaultStyle(isWithinDisplayedMonth: Bool) {
     accessibilityTraits.remove(.selected)
     accessibilityHint = "Tap to select"

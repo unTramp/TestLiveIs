@@ -16,7 +16,7 @@ class UserService: IUserService {
     private var users = [UserModel]()
     
     func loadFBUsers(completion: @escaping ([UserModel]) -> Void) {
-        DispatchQueue.main.async {
+        DispatchQueue.global().async {
             let db = Firestore.firestore()
             db.collection("users").getDocuments() { [weak self](querySnapshot, err) in
                 guard let strongSelf = self else { return }

@@ -15,8 +15,6 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var navigationController: UINavigationController!
-    var main: MapViewController!
    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -28,9 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         if let window = self.window {
             window.backgroundColor = UIColor.white
-            self.main = MapViewController()
-            self.navigationController = UINavigationController(rootViewController: self.main)
-            window.rootViewController = self.navigationController
+            let main = MapViewController()
+            let navigationController = UINavigationController(rootViewController: main)
+            window.rootViewController = navigationController
             window.makeKeyAndVisible()
         }
         

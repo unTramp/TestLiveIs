@@ -1,5 +1,5 @@
 //
-//  AuthorizationViewController.swift
+//  AuthViewController.swift
 //  googlMapTutuorial2
 //
 //  Created by Andrey Dorofeev on 13.01.2021.
@@ -13,15 +13,18 @@ import Firebase
 import FirebaseAuth
 
 
-class AuthorizationViewController: UIViewController, UITextFieldDelegate {
+class AuthViewController: UIViewController, UITextFieldDelegate, AuthViewModelDelegate {
     
     let date = Date()
-    lazy var formate = self.date.getFormattedDate(format: "yyyy-MM-dd HH:mm:ss")
+    private lazy var formate = self.date.getFormattedDate(format: "yyyy-MM-dd HH:mm:ss")
     
     let fb = Firestore.firestore()
     let storage = Storage.storage()
     
-    var signInLabel :  UILabel = {
+    private var authService: AuthService = FirebaseAuthService()
+    private var viewModel: AuthViewModel?
+    
+    private lazy var signInLabel :  UILabel = {
         let v = UILabel()
         v.textColor = .black
         v.text = "Sign In"
@@ -29,140 +32,171 @@ class AuthorizationViewController: UIViewController, UITextFieldDelegate {
         return v
     }()
     
-    var bgImageView: UIImageView! = {
+    private lazy var bgImageView: UIImageView = {
         let v = UIImageView()
         v.image = UIImage(named: "sax2")
         v.contentMode = .scaleAspectFit
         return v
     }()
     
-    var loginTextField: TextFieldWithPadding! = {
+    private lazy var loginTextField: TextFieldWithPadding = {
         let v = TextFieldWithPadding()
+        v.delegate = self
         v.attributedPlaceholder = NSAttributedString(string: "Enter e-mail",
-                                                                          attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+                                                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         v.layer.cornerRadius = 8
         v.font = UIFont(name:"Rubik", size: 14.0)
-        v.layer.borderColor = UIColor(hexString: "F1F2F5").cgColor
+        v.layer.borderColor = UIColor.customWhite.cgColor
         v.layer.borderWidth = 1
         v.placeholder = "Enter your e-mail"
         return v
     }()
     
-    var passwordTextField: TextFieldWithPadding! = {
+    private lazy var passwordTextField: TextFieldWithPadding = {
         let v = TextFieldWithPadding()
         v.attributedPlaceholder = NSAttributedString(string: "Enter password",
-                                                                          attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+                                                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         v.layer.cornerRadius = 8
         v.font = UIFont(name:"Rubik", size: 14.0)
-        v.textColor = .black//UIColor(hexString: "ABBBCE")
-        v.layer.borderColor = UIColor(hexString: "F1F2F5").cgColor
+        v.textColor = .black
+        v.layer.borderColor = UIColor.customWhite.cgColor
         v.layer.borderWidth = 1
         v.placeholder = "Enter your password"
         v.isSecureTextEntry = true
         return v
     }()
     
-    var authorizationButton: UIButton! = {
+    private lazy var authorizationButton: UIButton = {
         let v = UIButton()
-        v.backgroundColor = UIColor.init(hexString: "25A0F2")
+        v.backgroundColor = .customBlue
         v.layer.cornerRadius = 8
         v.titleLabel?.font =  UIFont(name: "Rubik-Medium", size: 14)
         v.setTitle("Sign in", for: .normal)
-        v.addTarget(self, action: #selector(authorizationButtonTapped), for: .touchUpInside)
+        v.addTarget(self, action: #selector(authorizationButtonTapped),
+                    for: .touchUpInside)
         return v
     }()
     
-    var registrationButton: UIButton! = {
+    private lazy var registrationButton: UIButton = {
         let v = UIButton()
         v.backgroundColor = .clear
         v.layer.cornerRadius = 30
         v.titleLabel?.font = UIFont(name:"Rubik-Light", size: 17.0)
         v.setTitleColor(UIColor.white, for: .normal)
         v.setTitle("Registration", for: .normal)
-        v.addTarget(self, action: #selector(registrationButtonTapped), for: .touchUpInside)
+        v.addTarget(self, action: #selector(registrationButtonTapped),
+                    for: .touchUpInside)
         return v
     }()
     
-    var continueWithLabel :  UILabel = {
+    private lazy var continueWithLabel :  UILabel = {
         let v = UILabel()
         v.translatesAutoresizingMaskIntoConstraints = false
-        v.textColor = UIColor(hexString: "ABBBCE")
+        v.textColor = .customLightGray
         v.text = "or continue with"
         v.textAlignment = .center
         v.font = UIFont(name:"Rubik-Regular", size: 12.0)
         return v
     }()
     
-    let leftLineContinueWith: UIView = {
+    private lazy var leftLineContinueWith: UIView = {
         let v = UIView()
-        v.backgroundColor = UIColor(hexString: "F1F2F5")
+        v.backgroundColor = .customWhite
         return v
     }()
     
-    let rightLineContinueWith: UIView = {
+    private lazy var rightLineContinueWith: UIView = {
         let v = UIView()
-        v.backgroundColor = UIColor(hexString: "F1F2F5")
+        v.backgroundColor = .customWhite
         return v
     }()
     
-    let signWithGoogleLogoView: UIView = {
+    private lazy var signWithGoogleLogoView: UIView = {
         let v = UIView()
         v.layer.cornerRadius = 8
-        v.layer.borderColor = UIColor(hexString: "F1F2F5").cgColor
+        v.layer.borderColor = UIColor.customWhite.cgColor
         v.layer.borderWidth = 1
         return v
     }()
     
-    let signWithAppleLogoView: UIView = {
+    private lazy var signWithAppleLogoView: UIView = {
         let v = UIView()
         v.layer.cornerRadius = 8
-        v.layer.borderColor = UIColor(hexString: "F1F2F5").cgColor
+        v.layer.borderColor = UIColor.customWhite.cgColor
         v.layer.borderWidth = 1
         return v
     }()
     
-    let signWithFacebookLogoView: UIView = {
+    private lazy var signWithFacebookLogoView: UIView = {
         let v = UIView()
         v.layer.cornerRadius = 8
-        v.layer.borderColor = UIColor(hexString: "F1F2F5").cgColor
+        v.layer.borderColor = UIColor.customWhite.cgColor
         v.layer.borderWidth = 1
         return v
     }()
     
-    var google_logo:  UIImageView = {
+    private lazy var google_logo:  UIImageView = {
         let v = UIImageView()
         v.image = UIImage(named: "google_logo")
         return v
     }()
     
-    var apple_logo:  UIImageView = {
+    private lazy var apple_logo:  UIImageView = {
         let v = UIImageView()
         v.image = UIImage(named: "apple_logo")
         return v
     }()
     
-    var facebook_logo:  UIImageView = {
+    private lazy var facebook_logo:  UIImageView = {
         let v = UIImageView()
         v.image = UIImage(named: "facebook_logo")
         return v
     }()
     
-    var dontHaveAccountLabel :  UILabel = {
+    private lazy var dontHaveAccountLabel :  UILabel = {
         let v = UILabel()
-        v.textColor = UIColor(hexString: "25A0F2")
+        v.textColor = .customBlue
         v.text = "Don’t have an account, create one"
         v.font = UIFont(name:"Rubik-Regular", size: 14.00)
         v.textAlignment = .center
         return v
     }()
     
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let v = UIActivityIndicatorView ()
+        
+        return v
+    }()
+    
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == self.loginTextField {
+            
+            if let text = textField.text, let textRange = Range(range, in: text) {
+                let updatedText = text.replacingCharacters(in: textRange, with: string)
+                return self.viewModel?.didUpdateLogin(updatedText) ?? true
+            }
+        }
+        
+        return true
+    }
+    
     @objc private func registrationButtonTapped() {
+        self.viewModel?.didTapRegistrationButton()
+        
+        return
+        
+        
         guard let login = self.loginTextField.text else { return }
         guard let password = self.passwordTextField.text else { return }
         
-        Auth.auth().createUser(withEmail: login.lowercased(), password: password) { [weak self] (loginResult, error) in
+        Auth.auth().createUser(withEmail: login.lowercased(),
+                               password: password) { [weak self] (loginResult, error) in
+            
             guard let strongSelf = self else { return }
+            
             if error != nil {
+                //alert
                 print("\(error!.localizedDescription)")
             } else {
                 guard let result = loginResult else { return }
@@ -179,7 +213,7 @@ class AuthorizationViewController: UIViewController, UITextFieldDelegate {
                 }
                 
 // MARK: Create marker
-                
+                // dry
                 let rndLat = Int(arc4random_uniform(99))
                 let rndLong = Int(arc4random_uniform(99))
                 
@@ -197,29 +231,13 @@ class AuthorizationViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc private func authorizationButtonTapped() {
-        self.navigationController?.popToRootViewController(animated: true)
+        self.viewModel?.didTapAuthButton()
+    }
+    
+    @objc private func signInButtonTapped() {
+//        self.navigationController?.popToRootViewController(animated: true)
         
-//        guard let login = self.loginTextField.text else { return }
-//        guard let password = self.passwordTextField.text else { return }
-//
-//        Auth.auth().signIn(withEmail: login.lowercased(), password: password) { [weak self] authResult, error in
-//          guard let strongSelf = self else { return }
-//            if error != nil {
-//                print("\(error!.localizedDescription)")
-//            } else {
-//                guard let result = authResult else { return }
-//                let userID = result.user.uid
-//                strongSelf.fb.collection("users").document(userID).updateData(
-//                    ["date" : strongSelf.formate]
-//                ) { (error) in
-//                    if error != nil {
-//                        print("\(error!.localizedDescription)")
-//                    } else {
-//                        strongSelf.navigationController?.popToRootViewController(animated: true)
-//                    }
-//                }
-//            }
-//        }
+       
     }
 
     
@@ -239,23 +257,63 @@ class AuthorizationViewController: UIViewController, UITextFieldDelegate {
     
 // MARK: Cheat
     @objc func trippleTap() {
-        self.loginTextField.text = "A@gmail.com"
         self.passwordTextField.text = "Qwerty"
     }
 //
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.selfCorrection()
+        self.setupBasics()
         self.setupViews()
         self.setupConstraints()
         
         self.trippleTap()
         //self.logInButtonTapped()
+        
+        self.viewModel = AuthViewModel(delegate: self, authService: FirebaseAuthService(), credentialValidationService: OnlyLowercaseCredentialValidationService())
+        if let viewModel = self.viewModel {
+            self.loginTextField.text = viewModel.login
+            self.updateState(viewModel)
+        }
+    }
+    
+    func didUpdateState() {
+        if let viewModel = self.viewModel {
+            self.updateState(viewModel)
+        }
+    }
+    
+    func didShowAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func updateState(_ viewModel: AuthViewModel) {
+        
+        switch viewModel.state {
+        case .ready:
+            self.navigationController?.popViewController(animated: true)
+            break;
+            
+        case .error:
+
+            break;
+            
+        default:
+            break;
+        }
+        
+        if viewModel.state == .loading {
+            self.authorizationButton.isHidden = true
+            self.activityIndicator.startAnimating()
+        } else {
+            self.authorizationButton.isHidden = false
+            self.activityIndicator.stopAnimating()
+        }
     }
     
     
-    private func selfCorrection() {
+    private func setupBasics() {
         self.view.backgroundColor = .white
         self.loginTextField.delegate = self
         self.passwordTextField.delegate = self
@@ -267,8 +325,9 @@ class AuthorizationViewController: UIViewController, UITextFieldDelegate {
         self.view.addSubview(self.bgImageView)
         self.view.addSubview(self.loginTextField)
         self.view.addSubview(self.passwordTextField)
-        self.view.addSubview(registrationButton)
-        self.view.addSubview(authorizationButton)
+        self.view.addSubview(self.registrationButton)
+        self.view.addSubview(self.authorizationButton)
+        self.view.addSubview(self.activityIndicator)
         self.view.addSubview(self.continueWithLabel)
         self.view.addSubview(self.leftLineContinueWith)
         self.view.addSubview(self.rightLineContinueWith)
@@ -288,6 +347,9 @@ class AuthorizationViewController: UIViewController, UITextFieldDelegate {
         self.loginTextFieldConstraints()
         self.passwordTextFieldConstraints()
         self.authorizationButtonConstraints()
+        self.activityIndicator.snp.makeConstraints { make in
+            make.center.equalTo(self.authorizationButton)
+        }
         self.registrationButtonConstraints()
         self.continueWithLabelConstraints()
         self.leftLineContinueWithConstraints()

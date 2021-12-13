@@ -18,34 +18,51 @@ class MarkerService: IMarkerService {
     
     private var markers = [GMSMarker]()
     
+    
+    func test() {
+        self.loadFBMarkers { _ in
+            
+        }
+        
+        print("gotovo")
+    }
+    
+    func test2() {
+        let markers = self.loadSyncFBMarkers()
+        
+        print("gotovo")
+    }
+    
+    func loadSyncFBMarkers() -> [GMSMarker] {
+        return []
+    }
+    
     func loadFBMarkers(completion: @escaping ([GMSMarker]) -> Void) {
-        DispatchQueue.main.async {
+        DispatchQueue.global().async {
             let db = Firestore.firestore()
             db.collection("users").getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
-                    if self.markers.count == 0 {
-                        for document in querySnapshot!.documents {
-                            let docRef = db.collection("markers").document("\(document.documentID)")
-                            docRef.getDocument { (document, error) in
-                                if let document = document, document.exists {
-                                    let marker = GMSMarker()
-                                    marker.iconView = self.customMarkerView
-                                    let latitude = document.get("latitude")
-                                    let longitude = document.get("longitude")
-                                    let id = document.get("id")
-                                    let lat = Double(latitude as! Substring) ?? 0.0
-                                    let long = Double(longitude as! Substring) ?? 0.0
-                                    marker.position.latitude = CLLocationDegrees(lat)
-                                    marker.position.longitude = CLLocationDegrees(long)
-                                    marker.userData = id
-                                    self.markers.append(marker)
-                                    print("Loaded, \(String(describing: id))")
-                                    completion(self.markers)
-                                } else {
-                                    print("Document does not exist")
-                                }
+                    for document in querySnapshot!.documents {
+                        let docRef = db.collection("markers").document("\(document.documentID)")
+                        docRef.getDocument { (document, error) in
+                            if let document = document, document.exists {
+                                let marker = GMSMarker()
+                                marker.iconView = self.customMarkerView
+                                let latitude = document.get("latitude")
+                                let longitude = document.get("longitude")
+                                let id = document.get("id")
+                                let lat = Double(latitude as! Substring) ?? 0.0
+                                let long = Double(longitude as! Substring) ?? 0.0
+                                marker.position.latitude = CLLocationDegrees(lat)
+                                marker.position.longitude = CLLocationDegrees(long)
+                                marker.userData = id
+                                self.markers.append(marker)
+                                print("Loaded, \(String(describing: id))")
+                                completion(self.markers)
+                            } else {
+                                print("Document does not exist")
                             }
                         }
                     }

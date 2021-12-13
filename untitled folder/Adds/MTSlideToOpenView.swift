@@ -15,7 +15,7 @@ import UIKit
 @objcMembers public class MTSlideToOpenView: UIView {
     // MARK: All Views
     public let textLabel: UILabel = {
-        let label = UILabel.init()
+        let label = UILabel()
         return label
     }()
     public let sliderTextLabel: UILabel = {
@@ -116,7 +116,7 @@ import UIKit
             sliderTextLabel.text = labelText
         }
     }
-    public var textFont: UIFont = UIFont(name:"Rubik-Regular", size: 14.0) ?? UIFont.systemFont(ofSize: 14.0) {
+    public var textFont: UIFont = .fontRubikSize(14) {
         didSet {
             textLabel.font = textFont
             sliderTextLabel.font = textFont

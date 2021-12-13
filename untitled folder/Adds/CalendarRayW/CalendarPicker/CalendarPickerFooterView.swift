@@ -44,7 +44,7 @@ class CalendarPickerFooterView: UIView {
     let button = UIButton()
     button.translatesAutoresizingMaskIntoConstraints = false
     button.titleLabel?.font = UIFont(name:"Rubik-Medium", size: 17.0)
-    button.titleLabel?.textColor = UIColor(hexString: "42556B")
+    button.titleLabel?.textColor = .customDarkBlue
     button.titleLabel?.textAlignment = .left
 
     if let chevronImage = UIImage(systemName: "chevron.left") {
@@ -74,7 +74,7 @@ class CalendarPickerFooterView: UIView {
     let button = UIButton()
     button.translatesAutoresizingMaskIntoConstraints = false
     button.titleLabel?.font = UIFont(name:"Rubik-Medium", size: 17.0)
-    button.titleLabel?.textColor = UIColor(hexString: "42556B")
+    button.titleLabel?.textColor = .customDarkBlue
     button.titleLabel?.textAlignment = .right
 
     if let chevronImage = UIImage(systemName: "chevron.right") {

@@ -16,19 +16,25 @@ import Firebase
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
     
-    var mainViewModel: MainViewModel?
-    var markerService: IMarkerService!
-    let fb = Firestore.firestore()
-    var currentLocationMarker = GMSMarker()
-    var locationManager = CLLocationManager()
-    var customInfoWindow = EventPreviewView()
-    var isBottomMenuPresented = false
-    var pulsatingLayer: CAShapeLayer!
-    var isShown = false
-    var isStatic = false
-    lazy var bottomMenuBasicPosition: CGFloat = self.view.bounds.height
-
-    var liveMusicLabel :  UILabel = {
+    private var mainViewModel: IMainViewModel?
+    private var markerService: IMarkerService?
+    private lazy var fb = Firestore.firestore()
+    private lazy var currentLocationMarker = GMSMarker()
+    private lazy var locationManager = CLLocationManager()
+    private lazy var isBottomMenuPresented = false
+    private lazy var isShown = false
+    private lazy var isStatic = false
+    private lazy var bottomMenuBasicPosition: CGFloat = self.view.bounds.height
+    
+    private lazy var customInfoWindow: EventPreviewView = {
+        let v = EventPreviewView()
+        v.playButtonTappedCompletion = {
+            self.eventTapped()
+        }
+        return v
+    }()
+    
+    private lazy var liveMusicLabel :  UILabel = {
         let v = UILabel()
         v.textColor = .black
         v.text = "Nearest Live Music"
@@ -36,26 +42,26 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         return v
     }()
     
-    var myFavoriteButton :  UIButton = {
-        let v = ButtonFactory.shared.getButton(.favorite)
+    private lazy var myFavoriteButton :  UIButton = {
+        let v = ButtonFactory.favorite
         v.addTarget(self, action: #selector(favoriteButtonTap), for: .touchUpInside)
         return v
     }()
     
-    var joinArtistButton : UIButton = {
-        let v = ButtonFactory.shared.getButton(.artist)
+    private lazy var joinArtistButton : UIButton = {
+        let v = ButtonFactory.artist
         v.addTarget(self, action: #selector(joinArtistButtonTap), for: .touchUpInside)
         return v
     }()
     
-    var myEventsButton : UIButton = {
-        let v = ButtonFactory.shared.getButton(.event)
+    private lazy var myEventsButton : UIButton = {
+        let v = ButtonFactory.event
         v.addTarget(self, action: #selector(myEventsButtonTap), for: .touchUpInside)
         v.isHidden = true
         return v
     }()
     
-    lazy var bottomMenu: PopUpView = {
+    private lazy var bottomMenu: PopUpView = {
         let v = PopUpView()
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes))
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes))
@@ -63,7 +69,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         swipeDown.direction = .down
         v.addGestureRecognizer(swipeUp)
         v.addGestureRecognizer(swipeDown)
-        print(v.isUserInteractionEnabled)
         v.addEventButton.addTarget(self, action: #selector(addEventButtonTap), for: .touchUpInside)
        return v
     }()
@@ -72,12 +77,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         self.bottomMenuShowButtonTapped()
     }
     
-    let myMapView: GMSMapView = {
+    private lazy var myMapView: GMSMapView = {
         let v = GMSMapView(.blackwhite)
         return v
     }()
     
-    let btnMyLocation: UIButton = {
+    private lazy var btnMyLocation: UIButton = {
         let v = UIButton()
         v.setImage(UIImage(named: "my_location"), for: .normal)
         v.layer.cornerRadius = 22
@@ -95,15 +100,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.locationManager.delegate = nil
         self.locationManager.stopUpdatingLocation()
-        guard let location = locations.last else { return }
-        let lat = location.coordinate.latitude
-        let long = location.coordinate.longitude
-        let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 15.0)
+        let location = locations.last
+        let lat = (location?.coordinate.latitude)!
+        let long = (location?.coordinate.longitude)!
+        let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: 17.0)
         self.myMapView.animate(to: camera)
     }
     
     // MARK: GOOGLE MAP DELEGATE
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        guard let viewModel = self.mainViewModel else { return false }
+        viewModel.didTapMarker()
+        
         let position = marker.position
         self.myMapView.animate(toLocation: position)
         let point = self.myMapView.projection.point(for: position)
@@ -116,7 +124,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             isShown = true
         }
         
-        self.customInfoWindow.playButton.addTarget(self, action: #selector(eventTapped), for: .touchUpInside)
         self.currentLocationMarker = marker
         return false
     }
@@ -176,26 +183,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
         return isUp ? self.bottomMenuBasicPosition - 200 : self.bottomMenuBasicPosition - 360
     }
     
-    func showPartyMarkers() {
-        self.markerService.loadFBMarkers(completion: { [weak self] markers in
-            guard let strongSelf = self else { return }
-            strongSelf.myMapView.clear()
-            
-            DispatchQueue.main.async {
-                for marker in markers {
-                    marker.appearAnimation = .pop
-                    marker.groundAnchor = CGPoint(x: 0.5, y: 0.5)
-                    marker.map = strongSelf.myMapView
-                }
+    func showMarkers() {
+        guard let viewModel = self.mainViewModel else { return }
+        let markers = viewModel.getMarkers()
+        
+        self.myMapView.clear()
+        
+        DispatchQueue.main.async {
+            for marker in markers {
+                marker.appearAnimation = .pop
+                marker.groundAnchor = CGPoint(x: 0.5, y: 0.5)
+                marker.map = self.myMapView
             }
-            if let viewModel = strongSelf.mainViewModel {
-                viewModel.addMarkers(markers)
-            } else {
-                strongSelf.mainViewModel = MainViewModel()
-                strongSelf.mainViewModel!.addMarkers(markers)
-            }
-            strongSelf.mainViewModel?.addMarkers(markers)
-        })
+        }
     }
     
     @objc func btnMyLocationAction() {
@@ -211,11 +211,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     }
     
     @objc func favoriteButtonTap() {
-        print("favorite button")
     }
     
     @objc func joinArtistButtonTap() {
-        print("artist button")
         self.joinArtistButton.isHidden = true
         self.myEventsButton.isHidden = false
         let toVC = ViewControllerService.shared.getViwController(.auth)
@@ -223,39 +221,45 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     }
     
     @objc func myEventsButtonTap () {
-        print("event button")
         self.myEventsButton.isHidden = true
         self.joinArtistButton.isHidden = false
     }
     
     @objc func addEventButtonTap() {
-        print("addEvent button")
-        let toVC = ViewControllerService.shared.getViwController(.create)
+        let toVC = ViewControllerService.shared.getViwController(.create) as! CreateEventViewController
         self.navigationController?.pushViewController(toVC, animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.selfCorrection()
+        self.markerService = MarkerService.shared
+        guard let markerService = self.markerService else {  return  }
+        self.mainViewModel = MainViewModel(with: markerService, router: self)
+        
+        self.initGoogleMaps()
+        self.setupBasics()
         self.setupViews()
         self.setupConstraints()
-        self.initGoogleMaps()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    private func initGoogleMaps() {
+        let camera = GMSCameraPosition.camera(withLatitude: 55.674389, longitude: 37.628440, zoom: 15.0)
+        self.myMapView.camera = camera
+        self.myMapView.delegate = self
+        self.myMapView.isMyLocationEnabled = true
+        self.showMarkers()
     }
     
-    private func selfCorrection() {
-        self.mainViewModel = MainViewModel()
-        self.markerService = MarkerService.shared
+    private func setupBasics() {
         self.view.backgroundColor = UIColor.white
-        self.myMapView.delegate=self
+        self.myMapView.delegate = self
         self.locationManager.delegate = self
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
         self.locationManager.startMonitoringSignificantLocationChanges()
+        
+        guard let naviController = self.navigationController else { return }
+        naviController.setNavigationBarHidden(true, animated: false)
     }
     
     private func setupViews() {
@@ -315,32 +319,4 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
             make.top.equalTo(self.view.snp.bottom).inset(200)
         }
     }
-    
-    private func initGoogleMaps() {
-        let camera = GMSCameraPosition.camera(withLatitude: 55.674389, longitude: 37.628440, zoom: 15.0)
-        self.myMapView.camera = camera
-        self.myMapView.delegate = self
-        self.myMapView.isMyLocationEnabled = true
-        self.showPartyMarkers()
-    }
-    
-//    private func configurePulsatingLayer() {
-//        let circularPath = UIBezierPath(arcCenter: .zero, radius: 80, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
-//        self.pulsatingLayer = CAShapeLayer()
-//        self.pulsatingLayer.path = circularPath.cgPath
-//        self.pulsatingLayer.fillColor = UIColor.systemBlue.withAlphaComponent(0.30).cgColor
-//        self.pulsatingLayer.lineCap = kCALineCapRound
-//        self.pulsatingLayer.position = self.myMapView.projection.point(for: myMapView.myLocation!.coordinate)
-//        self.myMapView.layer.addSublayer(self.pulsatingLayer)
-//    }
-//
-//    private func animatePulsatingLayer() {
-//        let animation = CABasicAnimation(keyPath: "transform.scale")
-//        animation.toValue = 2.4
-//        animation.duration = 1.5
-//        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
-//        animation.autoreverses = true
-//        animation.repeatCount = Float.infinity
-//        self.pulsatingLayer.add(animation, forKey: "pulsing")
-//    }
 }

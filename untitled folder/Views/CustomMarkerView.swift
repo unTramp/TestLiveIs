@@ -11,14 +11,14 @@ import UIKit
 
 class CustomMarkerView: UIView {
     
-    let bigCircle: UIView = {
+    private lazy var bigCircle: UIView = {
         let v = UIView()
         v.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.3)
         v.layer.cornerRadius = 35
         return v
     }()
     
-    let middleCircle: UIView = {
+    private lazy var middleCircle: UIView = {
         let v = UIView()
         v.backgroundColor = .white
         v.layer.cornerRadius = 16
@@ -26,24 +26,27 @@ class CustomMarkerView: UIView {
     }()
     
     
-    let smallCircle: UIView = {
+    private lazy var smallCircle: UIView = {
         let v = UIView()
-        v.backgroundColor = UIColor(hexString: "25A0F2")
+        v.backgroundColor = .customBlue
         v.layer.cornerRadius = 8
         return v
     }()
     
+   
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
         setupConstraints()
     }
     
+    
     private func setupViews() {
         self.addSubview(bigCircle)
         self.bigCircle.addSubview(self.middleCircle)
         self.middleCircle.addSubview(self.smallCircle)
     }
+    
     
     private func setupConstraints() {
         self.bigCircleConstraints()

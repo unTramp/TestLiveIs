@@ -9,27 +9,49 @@
 import Foundation
 import GoogleMaps
 
-class MainViewModel {
-    private var markers = [GMSMarker]()
+class MainViewModel: IMainViewModel {
+    
+    private var router: MapViewController?
+    private var markerService: IMarkerService?
+    private lazy var markers = [GMSMarker]()
+    
+    init(with markerService: IMarkerService, router: MapViewController) {
+        self.markerService = markerService
+        self.router = router
+        self.loadFBMarkers()
+    }
+    
+    private func loadFBMarkers() {
+        guard let markerService = self.markerService else { return }
+        markerService.loadFBMarkers(completion: { [weak self] markers in
+            guard let strongSelf = self else { return }
+            strongSelf.markers = markers
+            strongSelf.showMarkers()
+        })
+    }
+    
+    func showMarkers() {
+        guard let router = self.router else { return }
+        router.showMarkers()
+    }
     
     func getMarkers() -> [GMSMarker] {
         return self.markers
     }
     
-    func addMarkers(_ markers: [GMSMarker]) {
-        self.markers = markers
-    }
-    
-    func getMarkerById(_ uiid: String, completion: @escaping (String) -> Void) {
-        var uid = ""
+    func getMarkerById(_ uiid: String, completion: @escaping (GMSMarker) -> Void) {
+        let id = uiid
+        var m: GMSMarker?
         markers.forEach { marker in
-            if marker.userData as! String == uiid {
-                uid = uiid
-                print(marker.position)
+            if marker.userData as! String == id {
+                m = marker
             }
         }
-        completion(uid)
+        guard let marker = m else { return }
+        completion(marker)
     }
     
-    
+    func didTapMarker() {
+        print("marker did tap")
+    }
 }

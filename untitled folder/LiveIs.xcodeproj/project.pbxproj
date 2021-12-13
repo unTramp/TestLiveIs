@@ -13,10 +13,6 @@
 		4905BB5526ECD007008617E5 /* CalendarDateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905BB5126ECD007008617E5 /* CalendarDateCollectionViewCell.swift */; };
 		4905BB5926ECD013008617E5 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905BB5626ECD013008617E5 /* Day.swift */; };
 		4905BB5A26ECD013008617E5 /* MonthMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905BB5726ECD013008617E5 /* MonthMetadata.swift */; };
-		4905BB5B26ECD013008617E5 /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905BB5826ECD013008617E5 /* ChecklistItem.swift */; };
-		49280D7D26F10BE1009589E7 /* SetMapLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49280D7C26F10BE1009589E7 /* SetMapLocationViewController.swift */; };
-		49280D7F26F10BF7009589E7 /* DetailsFilledViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49280D7E26F10BF7009589E7 /* DetailsFilledViewController.swift */; };
-		49280D8126F10C16009589E7 /* SuccessConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49280D8026F10C16009589E7 /* SuccessConfirmationViewController.swift */; };
 		494545CD26D6C43B0049CC82 /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 494545C926D6C43B0049CC82 /* Rubik-Medium.ttf */; };
 		494545CE26D6C43B0049CC82 /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 494545CA26D6C43B0049CC82 /* Rubik-Bold.ttf */; };
 		494545CF26D6C43B0049CC82 /* Rubik-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 494545CB26D6C43B0049CC82 /* Rubik-Light.ttf */; };
@@ -28,17 +24,26 @@
 		49650F3426DC08C200BD0113 /* MarkerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49650F3326DC08C200BD0113 /* MarkerService.swift */; };
 		497C2FF226E3EBA3006B9EC8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 497C2FF126E3EBA3006B9EC8 /* GoogleService-Info.plist */; };
 		49800580249A65DC00CD8000 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4980057F249A65DC00CD8000 /* MainViewModel.swift */; };
+		4987295127665D3C00050C65 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987295027665D3C00050C65 /* AuthService.swift */; };
+		4987295327665E5800050C65 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987295227665E5800050C65 /* User.swift */; };
+		49872955276661AD00050C65 /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49872954276661AD00050C65 /* FirebaseAuthService.swift */; };
+		4987295727666AF100050C65 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987295627666AF100050C65 /* AuthViewModel.swift */; };
+		4987295927667B4700050C65 /* CredentialValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987295827667B4700050C65 /* CredentialValidationService.swift */; };
+		4987295B27667B6C00050C65 /* CredentialValidationServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987295A27667B6C00050C65 /* CredentialValidationServiceImpl.swift */; };
+		4987295D27667C5900050C65 /* OnlyLowercaseCredentialValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987295C27667C5900050C65 /* OnlyLowercaseCredentialValidationService.swift */; };
 		499C64AB26ECA05400E68B47 /* MTSlideToOpenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499C64AA26ECA05400E68B47 /* MTSlideToOpenView.swift */; };
 		49A1548024983871009F5F87 /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49A1547F24983871009F5F87 /* Raleway-Bold.ttf */; };
 		49C1519826E28EE10056CB12 /* ButtonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C1519726E28EE10056CB12 /* ButtonFactory.swift */; };
-		49D9FF0925AE5CE100C35BB9 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D9FF0825AE5CE100C35BB9 /* AuthorizationViewController.swift */; };
+		49D9FF0925AE5CE100C35BB9 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D9FF0825AE5CE100C35BB9 /* AuthViewController.swift */; };
 		49DF8C2A25CD5CCF00F29578 /* Extenstions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DF8C2925CD5CCF00F29578 /* Extenstions.swift */; };
 		49EA6BD025B0A62A00E2E9AA /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EA6BCF25B0A62A00E2E9AA /* UserModel.swift */; };
 		7EAEF86F5208FE0BA4A3E506 /* Pods_LiveIs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89436FD7E8494C7A44F90D59 /* Pods_LiveIs.framework */; };
+		AA5652902701968C00959D4E /* SuccessConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA56528F2701968C00959D4E /* SuccessConfirmationViewController.swift */; };
 		AA56ADDE26EB160900C7CC05 /* FakeMarkerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA56ADDD26EB160900C7CC05 /* FakeMarkerService.swift */; };
 		AA5B960D25920D67005965E1 /* IUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5B960C25920D67005965E1 /* IUserService.swift */; };
 		AA5B960F25920DF3005965E1 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5B960E25920DF3005965E1 /* UserService.swift */; };
-		AA6275E426E78E0E00E34943 /* DetailsDefaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6275E326E78E0E00E34943 /* DetailsDefaultViewController.swift */; };
+		AA5CE41C2761CB8400CBAFB4 /* IMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5CE41B2761CB8400CBAFB4 /* IMainViewModel.swift */; };
+		AA6275E426E78E0E00E34943 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6275E326E78E0E00E34943 /* CreateEventViewController.swift */; };
 		AAAFBFD526E895BD00AB4534 /* ViewControllerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAFBFD426E895BD00AB4534 /* ViewControllerService.swift */; };
 		D9C6282A1FE6378E00D50657 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C628291FE6378D00D50657 /* AppDelegate.swift */; };
 		D9C6282C1FE6378E00D50657 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6282B1FE6378E00D50657 /* MapViewController.swift */; };
@@ -56,10 +61,6 @@
 		4905BB5126ECD007008617E5 /* CalendarDateCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDateCollectionViewCell.swift; sourceTree = "<group>"; };
 		4905BB5626ECD013008617E5 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		4905BB5726ECD013008617E5 /* MonthMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthMetadata.swift; sourceTree = "<group>"; };
-		4905BB5826ECD013008617E5 /* ChecklistItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
-		49280D7C26F10BE1009589E7 /* SetMapLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMapLocationViewController.swift; sourceTree = "<group>"; };
-		49280D7E26F10BF7009589E7 /* DetailsFilledViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsFilledViewController.swift; sourceTree = "<group>"; };
-		49280D8026F10C16009589E7 /* SuccessConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessConfirmationViewController.swift; sourceTree = "<group>"; };
 		494545C926D6C43B0049CC82 /* Rubik-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Medium.ttf"; sourceTree = "<group>"; };
 		494545CA26D6C43B0049CC82 /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
 		494545CB26D6C43B0049CC82 /* Rubik-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Light.ttf"; sourceTree = "<group>"; };
@@ -71,19 +72,28 @@
 		49650F3326DC08C200BD0113 /* MarkerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerService.swift; sourceTree = "<group>"; };
 		497C2FF126E3EBA3006B9EC8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4980057F249A65DC00CD8000 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		4987295027665D3C00050C65 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		4987295227665E5800050C65 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		49872954276661AD00050C65 /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
+		4987295627666AF100050C65 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		4987295827667B4700050C65 /* CredentialValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialValidationService.swift; sourceTree = "<group>"; };
+		4987295A27667B6C00050C65 /* CredentialValidationServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialValidationServiceImpl.swift; sourceTree = "<group>"; };
+		4987295C27667C5900050C65 /* OnlyLowercaseCredentialValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyLowercaseCredentialValidationService.swift; sourceTree = "<group>"; };
 		499C64AA26ECA05400E68B47 /* MTSlideToOpenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTSlideToOpenView.swift; sourceTree = "<group>"; };
 		49A1547F24983871009F5F87 /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.ttf"; sourceTree = "<group>"; };
 		49C1519726E28EE10056CB12 /* ButtonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFactory.swift; sourceTree = "<group>"; };
-		49D9FF0825AE5CE100C35BB9 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
+		49D9FF0825AE5CE100C35BB9 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		49DF8C2925CD5CCF00F29578 /* Extenstions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extenstions.swift; sourceTree = "<group>"; };
 		49EA6BCF25B0A62A00E2E9AA /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		7D205731E626B02F0C999F7E /* Pods-LiveIs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveIs.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiveIs/Pods-LiveIs.debug.xcconfig"; sourceTree = "<group>"; };
 		89436FD7E8494C7A44F90D59 /* Pods_LiveIs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiveIs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A2BFCD50675CCD7D0CEB2C9 /* Pods-googlMapTutuorial2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-googlMapTutuorial2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-googlMapTutuorial2/Pods-googlMapTutuorial2.debug.xcconfig"; sourceTree = "<group>"; };
+		AA56528F2701968C00959D4E /* SuccessConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessConfirmationViewController.swift; sourceTree = "<group>"; };
 		AA56ADDD26EB160900C7CC05 /* FakeMarkerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeMarkerService.swift; sourceTree = "<group>"; };
 		AA5B960C25920D67005965E1 /* IUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IUserService.swift; sourceTree = "<group>"; };
 		AA5B960E25920DF3005965E1 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
-		AA6275E326E78E0E00E34943 /* DetailsDefaultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsDefaultViewController.swift; sourceTree = "<group>"; };
+		AA5CE41B2761CB8400CBAFB4 /* IMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMainViewModel.swift; sourceTree = "<group>"; };
+		AA6275E326E78E0E00E34943 /* CreateEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		AAAFBFD426E895BD00AB4534 /* ViewControllerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerService.swift; sourceTree = "<group>"; };
 		D9C628261FE6378D00D50657 /* LiveIs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveIs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9C628291FE6378D00D50657 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -120,7 +130,6 @@
 		4905BB4C26ECCFCD008617E5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4905BB5826ECD013008617E5 /* ChecklistItem.swift */,
 				4905BB5626ECD013008617E5 /* Day.swift */,
 				4905BB5726ECD013008617E5 /* MonthMetadata.swift */,
 			);
@@ -161,6 +170,7 @@
 		499C64A926ECA01300E68B47 /* Adds */ = {
 			isa = PBXGroup;
 			children = (
+				49DF8C2925CD5CCF00F29578 /* Extenstions.swift */,
 				499C64AA26ECA05400E68B47 /* MTSlideToOpenView.swift */,
 				4905BB4526ECCBFE008617E5 /* CalendarRayW */,
 			);
@@ -178,9 +188,9 @@
 		49C24B462622D81800009EAC /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				AA60128F26E9FA330032705F /* CreateEvent */,
+				AA60128F26E9FA330032705F /* CreateEventViewController */,
 				49CD5F5226D9850800372220 /* PopupView */,
-				49D9FF0625AE5C4B00C35BB9 /* AuthorizationViewController */,
+				49D9FF0625AE5C4B00C35BB9 /* Authorization */,
 				49C24B482622D82A00009EAC /* MainViewController */,
 			);
 			path = Modules;
@@ -191,6 +201,7 @@
 			children = (
 				4980057F249A65DC00CD8000 /* MainViewModel.swift */,
 				D9C6282B1FE6378E00D50657 /* MapViewController.swift */,
+				AA5CE41B2761CB8400CBAFB4 /* IMainViewModel.swift */,
 			);
 			path = MainViewController;
 			sourceTree = "<group>";
@@ -212,12 +223,19 @@
 			path = PopupView;
 			sourceTree = "<group>";
 		};
-		49D9FF0625AE5C4B00C35BB9 /* AuthorizationViewController */ = {
+		49D9FF0625AE5C4B00C35BB9 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
-				49D9FF0825AE5CE100C35BB9 /* AuthorizationViewController.swift */,
+				49D9FF0825AE5CE100C35BB9 /* AuthViewController.swift */,
+				4987295227665E5800050C65 /* User.swift */,
+				4987295027665D3C00050C65 /* AuthService.swift */,
+				49872954276661AD00050C65 /* FirebaseAuthService.swift */,
+				4987295627666AF100050C65 /* AuthViewModel.swift */,
+				4987295827667B4700050C65 /* CredentialValidationService.swift */,
+				4987295A27667B6C00050C65 /* CredentialValidationServiceImpl.swift */,
+				4987295C27667C5900050C65 /* OnlyLowercaseCredentialValidationService.swift */,
 			);
-			path = AuthorizationViewController;
+			path = Authorization;
 			sourceTree = "<group>";
 		};
 		49EA6BC625B0A4F400E2E9AA /* Services */ = {
@@ -235,7 +253,6 @@
 			children = (
 				49EA6BCF25B0A62A00E2E9AA /* UserModel.swift */,
 				49650F2F26DC077300BD0113 /* MarekerModel.swift */,
-				49DF8C2925CD5CCF00F29578 /* Extenstions.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -286,15 +303,13 @@
 			path = ViewControllerService;
 			sourceTree = "<group>";
 		};
-		AA60128F26E9FA330032705F /* CreateEvent */ = {
+		AA60128F26E9FA330032705F /* CreateEventViewController */ = {
 			isa = PBXGroup;
 			children = (
-				AA6275E326E78E0E00E34943 /* DetailsDefaultViewController.swift */,
-				49280D7C26F10BE1009589E7 /* SetMapLocationViewController.swift */,
-				49280D7E26F10BF7009589E7 /* DetailsFilledViewController.swift */,
-				49280D8026F10C16009589E7 /* SuccessConfirmationViewController.swift */,
+				AA6275E326E78E0E00E34943 /* CreateEventViewController.swift */,
+				AA56528F2701968C00959D4E /* SuccessConfirmationViewController.swift */,
 			);
-			path = CreateEvent;
+			path = CreateEventViewController;
 			sourceTree = "<group>";
 		};
 		D9C6281D1FE6378D00D50657 = {
@@ -519,27 +534,32 @@
 				AA56ADDE26EB160900C7CC05 /* FakeMarkerService.swift in Sources */,
 				4905BB5426ECD007008617E5 /* CalendarPickerFooterView.swift in Sources */,
 				499C64AB26ECA05400E68B47 /* MTSlideToOpenView.swift in Sources */,
+				4987295327665E5800050C65 /* User.swift in Sources */,
 				49C1519826E28EE10056CB12 /* ButtonFactory.swift in Sources */,
+				49872955276661AD00050C65 /* FirebaseAuthService.swift in Sources */,
+				4987295D27667C5900050C65 /* OnlyLowercaseCredentialValidationService.swift in Sources */,
 				49650F3226DC081E00BD0113 /* IMarkerService.swift in Sources */,
 				AA5B960D25920D67005965E1 /* IUserService.swift in Sources */,
-				49280D7D26F10BE1009589E7 /* SetMapLocationViewController.swift in Sources */,
 				4905BB5A26ECD013008617E5 /* MonthMetadata.swift in Sources */,
 				4905BB5526ECD007008617E5 /* CalendarDateCollectionViewCell.swift in Sources */,
+				4987295B27667B6C00050C65 /* CredentialValidationServiceImpl.swift in Sources */,
 				D9C6283E1FE63A5600D50657 /* EventPreviewView.swift in Sources */,
-				49280D7F26F10BF7009589E7 /* DetailsFilledViewController.swift in Sources */,
 				49650F3026DC077300BD0113 /* MarekerModel.swift in Sources */,
 				49650F3426DC08C200BD0113 /* MarkerService.swift in Sources */,
 				49EA6BD025B0A62A00E2E9AA /* UserModel.swift in Sources */,
 				4905BB5226ECD007008617E5 /* CalendarPickerHeaderView.swift in Sources */,
-				49280D8126F10C16009589E7 /* SuccessConfirmationViewController.swift in Sources */,
 				D9C6282C1FE6378E00D50657 /* MapViewController.swift in Sources */,
-				4905BB5B26ECD013008617E5 /* ChecklistItem.swift in Sources */,
+				AA5652902701968C00959D4E /* SuccessConfirmationViewController.swift in Sources */,
+				AA5CE41C2761CB8400CBAFB4 /* IMainViewModel.swift in Sources */,
 				D9C6282A1FE6378E00D50657 /* AppDelegate.swift in Sources */,
 				4905BB5326ECD007008617E5 /* CalendarPickerViewController.swift in Sources */,
+				4987295927667B4700050C65 /* CredentialValidationService.swift in Sources */,
 				AA5B960F25920DF3005965E1 /* UserService.swift in Sources */,
-				49D9FF0925AE5CE100C35BB9 /* AuthorizationViewController.swift in Sources */,
+				4987295727666AF100050C65 /* AuthViewModel.swift in Sources */,
+				49D9FF0925AE5CE100C35BB9 /* AuthViewController.swift in Sources */,
 				D9C6283C1FE639AC00D50657 /* CustomMarkerView.swift in Sources */,
-				AA6275E426E78E0E00E34943 /* DetailsDefaultViewController.swift in Sources */,
+				AA6275E426E78E0E00E34943 /* CreateEventViewController.swift in Sources */,
+				4987295127665D3C00050C65 /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -679,7 +699,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B599Q8KG5V;
 				INFOPLIST_FILE = "$(SRCROOT)/LiveIs/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.untramp.liveis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -698,7 +718,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B599Q8KG5V;
 				INFOPLIST_FILE = "$(SRCROOT)/LiveIs/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.untramp.liveis;
 				PRODUCT_NAME = "$(TARGET_NAME)";

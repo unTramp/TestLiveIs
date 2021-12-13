@@ -13,21 +13,24 @@ import MarqueeLabel
 
 class EventPreviewView: UIView {
     
-    let contentView: UIView = {
+    var playButtonTappedCompletion: (() -> Void)?
+    
+    private lazy var contentView: UIView = {
         let v=UIView()
         v.backgroundColor = .black
         v.layer.cornerRadius = 12
         return v
     }()
     
-    let playButton: UIButton = {
+    private lazy var playButton: UIButton = {
         let v=UIButton()
         v.clipsToBounds = true
         v.setImage(UIImage(named: "play_circle"), for: .normal)
+        v.addTarget(self, action: #selector(playButtonTapped), for: .touchUpInside)
         return v
     }()
     
-    let smallPlayImageView: UIImageView = {
+    private lazy var smallPlayImageView: UIImageView = {
         let v = UIImageView()
         v.clipsToBounds = true
         v.image = UIImage(named: "playButtonSmall")
@@ -35,7 +38,7 @@ class EventPreviewView: UIView {
         return v
     } ()
     
-    let songNameLabel: MarqueeLabel = {
+    lazy var songNameLabel: MarqueeLabel = {
         let v = MarqueeLabel()
         v.type = .continuous
         v.fadeLength = 10
@@ -45,26 +48,32 @@ class EventPreviewView: UIView {
         return v
     }()
     
-    let bandNameLabel: UILabel = {
+    private lazy var bandNameLabel: UILabel = {
         let v = UILabel()
-        v.font = UIFont(name: "Rubik-Regular", size: 10)
+        v.font = .fontRubikSize(10)
         v.text = "Some band name"
         v.textColor = UIColor(hexString: "9CA9B8")
         return v
     }()
     
-    let progressView: UIProgressView = {
+    private lazy var progressView: UIProgressView = {
         let v = UIProgressView(progressViewStyle: .bar)
         v.translatesAutoresizingMaskIntoConstraints=false
-        v.trackTintColor = UIColor(red: 0.945, green: 0.949, blue: 0.961, alpha: 1)
+        v.trackTintColor = UIColor(red: 0.945,
+                                   green: 0.949,
+                                   blue: 0.961,
+                                   alpha: 1)
         v.layer.masksToBounds = true
         v.layer.cornerRadius = 2
-        v.progressTintColor = UIColor(red: 0.145, green: 0.627, blue: 0.949, alpha: 1)
+        v.progressTintColor = UIColor(red: 0.145,
+                                      green: 0.627,
+                                      blue: 0.949,
+                                      alpha: 1)
         v.progress = 0
         return v
     }()
     
-    let triangleLable: UILabel = {
+    private lazy var triangleLable: UILabel = {
         let v = UILabel()
         v.textColor = .black
         v.font = UIFont(name: "Rubik-Medium", size: 14)
@@ -72,20 +81,26 @@ class EventPreviewView: UIView {
         return v
     }()
     
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.selfCorrection()
+        self.setupBasics()
         self.setupViews()
         self.setupConstraints()
     }
     
-    private func selfCorrection() {
+    
+    private func setupBasics() {
         self.backgroundColor = UIColor.clear
         self.layer.shadowOffset = CGSize(width: 0, height: 4)
         self.layer.shadowRadius = 16
-        self.layer.shadowColor = UIColor(red: 0.08, green: 0.139, blue: 0.254, alpha: 0.25).cgColor
+        self.layer.shadowColor = UIColor(red: 0.08,
+                                         green: 0.139,
+                                         blue: 0.254,
+                                         alpha: 0.25).cgColor
         self.layer.shadowOpacity = 1
     }
+    
     
     private func setupViews() {
         self.addSubview(self.contentView)
@@ -96,6 +111,7 @@ class EventPreviewView: UIView {
         self.addSubview(self.triangleLable)
     }
 
+    
     private func setupConstraints() {
         self.contentViewConstraints()
         self.playButtonConstraints()
@@ -155,6 +171,12 @@ class EventPreviewView: UIView {
             make.centerX.equalToSuperview()
             make.height.equalTo(14)
         }
+    }
+    
+    @objc private func playButtonTapped() {
+        print("playButtonTappedMethod")
+        guard let playButtonCompletion = self.playButtonTappedCompletion else { return }
+        playButtonCompletion()
     }
     
     
