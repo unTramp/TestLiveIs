@@ -65,9 +65,7 @@ class AuthView: View {
     private var didTapAuthButtonHandler: (() -> Void)?
     
     @objc private func authorizationButtonTapped() {
-        if let didTapAuthButtonHandler = self.didTapAuthButtonHandler {
-            didTapAuthButtonHandler()
-        }
+        self.didTapAuthButtonHandler?()
     }
     
     lazy var registrationButton: UIButton = {
@@ -84,9 +82,7 @@ class AuthView: View {
     private var didTapRegisterButtonHandler: (() -> Void)?
     
     @objc private func registrationButtonTapped() {
-        if let didTapRegisterButtonHandler = self.didTapRegisterButtonHandler {
-            didTapRegisterButtonHandler()
-        }
+        self.didTapRegisterButtonHandler?()
     }
     
     private lazy var continueWithLabel :  UILabel = {

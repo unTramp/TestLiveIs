@@ -24,11 +24,8 @@ class AuthViewController: UIViewController, UITextFieldDelegate, AuthViewModelDe
     private var authService: AuthService = FirebaseAuthService()
     private var viewModel: AuthViewModel?
     
-    var viewContainer: AuthView!
-    
-
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == self.viewContainer.loginTextField {
+        if textField == self.contentView.loginTextField {
             
             if let text = textField.text, let textRange = Range(range, in: text) {
                 let updatedText = text.replacingCharacters(in: textRange, with: string)
@@ -45,8 +42,8 @@ class AuthViewController: UIViewController, UITextFieldDelegate, AuthViewModelDe
         return
         
         
-        guard let login = self.viewContainer.loginTextField.text else { return }
-        guard let password = self.viewContainer.passwordTextField.text else { return }
+        guard let login = self.contentView.loginTextField.text else { return }
+        guard let password = self.contentView.passwordTextField.text else { return }
         
         Auth.auth().createUser(withEmail: login.lowercased(),
                                password: password) { [weak self] (loginResult, error) in
@@ -60,7 +57,7 @@ class AuthViewController: UIViewController, UITextFieldDelegate, AuthViewModelDe
                 guard let result = loginResult else { return }
                 let userID = result.user.uid
                 strongSelf.fb.collection("users").document(userID).setData(
-                    ["email": strongSelf.viewContainer.loginTextField.text!.lowercased(),
+                    ["email": strongSelf.contentView.loginTextField.text!.lowercased(),
                     "id": result.user.uid,
                     "date": strongSelf.formate]
                 ) { (error) in
@@ -91,33 +88,38 @@ class AuthViewController: UIViewController, UITextFieldDelegate, AuthViewModelDe
     @objc private func authorizationButtonTapped() {
         self.viewModel?.didTapAuthButton()
     }
-    
-    @objc private func signInButtonTapped() {
-//        self.navigationController?.popToRootViewController(animated: true)
-    }
 
-    
-// MARK: Cheat
     @objc func trippleTap() {
-        self.viewContainer.passwordTextField.text = "Qwerty"
+        self.contentView.passwordTextField.text = "Qwerty"
     }
-//
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        self.setupViews()
-        self.setupConstraints()
-        self.setupViewContainer()
         
         self.trippleTap()
-        //self.logInButtonTapped()
         
         self.viewModel = AuthViewModel(delegate: self, authService: FirebaseAuthService(), credentialValidationService: OnlyLowercaseCredentialValidationService())
         if let viewModel = self.viewModel {
-            self.viewContainer.loginTextField.text = viewModel.login
+            self.contentView.loginTextField.text = viewModel.login
+            self.contentView.loginTextField.delegate = self
+            self.contentView.passwordTextField.delegate = self
             self.updateState(viewModel)
         }
+    }
+    
+    override func loadView() {
+        let view = AuthView(didTapAuthButtonHandler: {
+            self.authorizationButtonTapped()
+        }, didTapRegisterButtonHandler: {
+            self.registrationButtonTapped()
+        })
+        view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        self.view = view
+    }
+    
+        var contentView: AuthView {
+        return view as! AuthView
     }
     
     func didUpdateState() {
@@ -147,40 +149,11 @@ class AuthViewController: UIViewController, UITextFieldDelegate, AuthViewModelDe
         }
         
         if viewModel.state == .loading {
-            self.viewContainer.authorizationButton.isHidden = true
-            self.viewContainer.activityIndicator.startAnimating()
+            self.contentView.authorizationButton.isHidden = true
+            self.contentView.activityIndicator.startAnimating()
         } else {
-            self.viewContainer.authorizationButton.isHidden = false
-            self.viewContainer.activityIndicator.stopAnimating()
+            self.contentView.authorizationButton.isHidden = false
+            self.contentView.activityIndicator.stopAnimating()
         }
     }
-    
-    
-    private func setupViewContainer() {
-        if let viewContainer = self.viewContainer {
-            viewContainer.loginTextField.delegate = self
-            viewContainer.passwordTextField.delegate = self
-        } else {
-            print("there's no viewContainer")
-        }
-        
-    }
-    
-    
-    private func setupViews() {
-        self.viewContainer = AuthView(didTapAuthButtonHandler: {
-            self.authorizationButtonTapped()
-        }, didTapRegisterButtonHandler: {
-            self.registrationButtonTapped()
-        })
-        self.view.addSubview(self.viewContainer)
-    }
-    
-    private func setupConstraints() {
-        self.viewContainer.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-    }
-    
-
 }
