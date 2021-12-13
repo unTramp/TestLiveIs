@@ -94,23 +94,7 @@ class AuthViewController: UIViewController, UITextFieldDelegate, AuthViewModelDe
     
     @objc private func signInButtonTapped() {
 //        self.navigationController?.popToRootViewController(animated: true)
-        
-       
     }
-
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return false
-    }
-    
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if textField .isEqual(self.viewContainer.loginTextField){
-            textField.text = textField.text?.lowercased()
-        }
-        return true
-    }
-
 
     
 // MARK: Cheat
@@ -184,10 +168,13 @@ class AuthViewController: UIViewController, UITextFieldDelegate, AuthViewModelDe
     
     
     private func setupViews() {
-        self.viewContainer = AuthView()
+        self.viewContainer = AuthView(didTapAuthButtonHandler: {
+            self.authorizationButtonTapped()
+        }, didTapRegisterButtonHandler: {
+            self.registrationButtonTapped()
+        })
         self.view.addSubview(self.viewContainer)
     }
-    
     
     private func setupConstraints() {
         self.viewContainer.snp.makeConstraints { make in
