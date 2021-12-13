@@ -32,6 +32,8 @@
 		4987295B27667B6C00050C65 /* CredentialValidationServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987295A27667B6C00050C65 /* CredentialValidationServiceImpl.swift */; };
 		4987295D27667C5900050C65 /* OnlyLowercaseCredentialValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987295C27667C5900050C65 /* OnlyLowercaseCredentialValidationService.swift */; };
 		499C64AB26ECA05400E68B47 /* MTSlideToOpenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499C64AA26ECA05400E68B47 /* MTSlideToOpenView.swift */; };
+		49A028AE2767AA1E006B2BEE /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A028AD2767AA1E006B2BEE /* View.swift */; };
+		49A028B02767AA4F006B2BEE /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A028AF2767AA4F006B2BEE /* AuthView.swift */; };
 		49A1548024983871009F5F87 /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49A1547F24983871009F5F87 /* Raleway-Bold.ttf */; };
 		49C1519826E28EE10056CB12 /* ButtonFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C1519726E28EE10056CB12 /* ButtonFactory.swift */; };
 		49D9FF0925AE5CE100C35BB9 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D9FF0825AE5CE100C35BB9 /* AuthViewController.swift */; };
@@ -80,6 +82,8 @@
 		4987295A27667B6C00050C65 /* CredentialValidationServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialValidationServiceImpl.swift; sourceTree = "<group>"; };
 		4987295C27667C5900050C65 /* OnlyLowercaseCredentialValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlyLowercaseCredentialValidationService.swift; sourceTree = "<group>"; };
 		499C64AA26ECA05400E68B47 /* MTSlideToOpenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTSlideToOpenView.swift; sourceTree = "<group>"; };
+		49A028AD2767AA1E006B2BEE /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		49A028AF2767AA4F006B2BEE /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		49A1547F24983871009F5F87 /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.ttf"; sourceTree = "<group>"; };
 		49C1519726E28EE10056CB12 /* ButtonFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonFactory.swift; sourceTree = "<group>"; };
 		49D9FF0825AE5CE100C35BB9 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
@@ -209,6 +213,7 @@
 		49C24B492622D86600009EAC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				49A028AD2767AA1E006B2BEE /* View.swift */,
 				D9C6283B1FE639AC00D50657 /* CustomMarkerView.swift */,
 				D9C6283D1FE63A5600D50657 /* EventPreviewView.swift */,
 			);
@@ -234,6 +239,7 @@
 				4987295827667B4700050C65 /* CredentialValidationService.swift */,
 				4987295A27667B6C00050C65 /* CredentialValidationServiceImpl.swift */,
 				4987295C27667C5900050C65 /* OnlyLowercaseCredentialValidationService.swift */,
+				49A028AF2767AA4F006B2BEE /* AuthView.swift */,
 			);
 			path = Authorization;
 			sourceTree = "<group>";
@@ -538,6 +544,7 @@
 				49C1519826E28EE10056CB12 /* ButtonFactory.swift in Sources */,
 				49872955276661AD00050C65 /* FirebaseAuthService.swift in Sources */,
 				4987295D27667C5900050C65 /* OnlyLowercaseCredentialValidationService.swift in Sources */,
+				49A028AE2767AA1E006B2BEE /* View.swift in Sources */,
 				49650F3226DC081E00BD0113 /* IMarkerService.swift in Sources */,
 				AA5B960D25920D67005965E1 /* IUserService.swift in Sources */,
 				4905BB5A26ECD013008617E5 /* MonthMetadata.swift in Sources */,
@@ -551,6 +558,7 @@
 				D9C6282C1FE6378E00D50657 /* MapViewController.swift in Sources */,
 				AA5652902701968C00959D4E /* SuccessConfirmationViewController.swift in Sources */,
 				AA5CE41C2761CB8400CBAFB4 /* IMainViewModel.swift in Sources */,
+				49A028B02767AA4F006B2BEE /* AuthView.swift in Sources */,
 				D9C6282A1FE6378E00D50657 /* AppDelegate.swift in Sources */,
 				4905BB5326ECD007008617E5 /* CalendarPickerViewController.swift in Sources */,
 				4987295927667B4700050C65 /* CredentialValidationService.swift in Sources */,
