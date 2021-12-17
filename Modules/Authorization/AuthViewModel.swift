@@ -36,6 +36,7 @@ class AuthViewModel {
     private weak var delegate: AuthViewModelDelegate?
     
     private(set) var login: String? = "A@gmail.com"
+    private(set) var password: String? = "Qwerty"
     
     init(delegate: AuthViewModelDelegate, authService: AuthService, credentialValidationService: CredentialValidationService) {
         self.delegate = delegate
@@ -46,12 +47,10 @@ class AuthViewModel {
     func didTapAuthButton() {
         print("authButtonTapped")
         
-        if let login = self.login {
+        if let login = self.login, let password = self.password {
             
             self.state = .loading
             
-            let password = "Qwerty"
-
             self.authService.signIn(login: login, password: password) { [weak self] user, hasError in
                 guard let strongSelf = self else { return }
                 if let user = user {
@@ -67,7 +66,19 @@ class AuthViewModel {
     }
     
     func didTapRegistrationButton() {
-        self.delegate?.didShowAlert(title: "Error", message: "Not available in your country")
+        if let login = self.login, let password = self.password {
+            self.authService.signUp(login: login, password: password) { [weak self] user, hasError in
+                guard let strongSelf = self else { return }
+                if let user = user {
+                    print(user.id)
+                    strongSelf.state = .ready
+                } else {
+                    print("show alert")
+                    strongSelf.state = .error
+                    strongSelf.delegate?.didShowAlert(title: "Error", message: "Not available in your country")
+                }
+            }
+        }
     }
     
     func didUpdateLogin(_ login: String) -> Bool {
@@ -80,6 +91,14 @@ class AuthViewModel {
         }
         
         return isValid
+    }
+    
+    func didUpdatePassword(_ password: String) -> Bool {
+        print(password)
+        
+        self.password = password
+        
+        return true
     }
     
 }
