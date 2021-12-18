@@ -12,8 +12,19 @@ import SnapKit
 import Firebase
 import FirebaseAuth
 
+enum MoveToViewController {
+    case root
+    case register
+}
 
 class AuthViewController: UIViewController, UITextFieldDelegate, AuthViewModelDelegate {
+    func moveTo(_ vc: MoveToViewController) {
+        self.moveToVc = vc
+    }
+    
+    
+    var moveToVc: MoveToViewController?
+    
     let storage = Storage.storage()
     
     private var authService: AuthService = FirebaseAuthService()
@@ -48,6 +59,11 @@ class AuthViewController: UIViewController, UITextFieldDelegate, AuthViewModelDe
     
     @objc private func registrationButtonTapped() {
         self.viewModel?.didTapRegistrationButton()
+    }
+    
+    private func showRegisterViewController() {
+        let vc = RegisterViewController()
+        self.navigationController?.present(vc, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -101,7 +117,17 @@ class AuthViewController: UIViewController, UITextFieldDelegate, AuthViewModelDe
         
         switch viewModel.state {
         case .ready:
-            self.navigationController?.popViewController(animated: true)
+            if let moveTo = self.moveToVc {
+                switch moveTo {
+                case .root:
+                    self.navigationController?.popViewController(animated: true)
+                    break;
+                case .register:
+                    self.showRegisterViewController()
+                    break;
+                }
+            }
+            
             break;
             
         case .error:

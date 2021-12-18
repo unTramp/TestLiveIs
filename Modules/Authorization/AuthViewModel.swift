@@ -19,6 +19,7 @@ protocol AuthViewModelDelegate: AnyObject {
     
     func didUpdateState()
     func didShowAlert(title: String, message: String)
+    func moveTo(_ vc:MoveToViewController)
     
 }
 
@@ -55,7 +56,9 @@ class AuthViewModel {
                 guard let strongSelf = self else { return }
                 if let user = user {
                     print("popViewController")
+                    strongSelf.delegate?.moveTo(.root)
                     strongSelf.state = .ready
+
                 } else {
                     print("show alert")
                     strongSelf.state = .error
@@ -71,6 +74,7 @@ class AuthViewModel {
                 guard let strongSelf = self else { return }
                 if let user = user {
                     print(user.id)
+                    strongSelf.delegate?.moveTo(.register)
                     strongSelf.state = .ready
                 } else {
                     print("show alert")
