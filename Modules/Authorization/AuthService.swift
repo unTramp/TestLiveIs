@@ -10,6 +10,6 @@ import Foundation
 
 protocol AuthService {
     
-    func signIn(login: String, password: String, completion: @escaping (User?, Bool) -> Void)
-    func signUp(login: String, password: String, completion: @escaping (User?, Bool) -> Void)
+    func signIn(login: String, password: String, completion: @escaping (User?, Error?) -> Void)
+    func signUp(login: String, password: String, completion: @escaping (User?, Error?) -> Void)
 }

@@ -12,18 +12,18 @@ import SnapKit
 import Firebase
 import FirebaseAuth
 
-enum MoveToViewController {
-    case root
-    case register
-}
-
 class AuthViewController: UIViewController, UITextFieldDelegate, AuthViewModelDelegate {
-    func moveTo(_ vc: MoveToViewController) {
-        self.moveToVc = vc
+    
+    func moveTo(_ route: AuthViewModelRoute) {
+        switch route {
+        case .close:
+            self.navigationController?.popViewController(animated: true)
+            break;
+        case .showRegister:
+            self.showRegisterViewController()
+            break;
+        }
     }
-    
-    
-    var moveToVc: MoveToViewController?
     
     let storage = Storage.storage()
     
@@ -53,14 +53,6 @@ class AuthViewController: UIViewController, UITextFieldDelegate, AuthViewModelDe
         return true
     }
     
-    @objc private func authorizationButtonTapped() {
-        self.viewModel?.didTapAuthButton()
-    }
-    
-    @objc private func registrationButtonTapped() {
-        self.viewModel?.didTapRegistrationButton()
-    }
-    
     private func showRegisterViewController() {
         let vc = RegisterViewController()
         self.navigationController?.present(vc, animated: true, completion: nil)
@@ -80,11 +72,16 @@ class AuthViewController: UIViewController, UITextFieldDelegate, AuthViewModelDe
     }
     
     override func loadView() {
-        let view = AuthView(didTapAuthButtonHandler: {
-            self.authorizationButtonTapped()
-        }, didTapRegisterButtonHandler: {
-            self.registrationButtonTapped()
+        let view = AuthView(didTapAuthButtonHandler: { [weak self] in
+            
+            guard let strongSelf = self else { return }
+            strongSelf.viewModel?.didTapAuthButton()
+        }, didTapRegisterButtonHandler: { [weak self] in
+            
+            guard let strongSelf = self else { return }
+            strongSelf.viewModel?.didTapRegistrationButton()
         })
+        
         view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         self.view = view
     }
@@ -117,19 +114,8 @@ class AuthViewController: UIViewController, UITextFieldDelegate, AuthViewModelDe
         
         switch viewModel.state {
         case .ready:
-            if let moveTo = self.moveToVc {
-                switch moveTo {
-                case .root:
-                    self.navigationController?.popViewController(animated: true)
-                    break;
-                case .register:
-                    self.showRegisterViewController()
-                    break;
-                }
-            }
             
             break;
-            
         case .error:
 
             break;

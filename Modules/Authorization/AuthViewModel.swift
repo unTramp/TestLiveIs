@@ -15,11 +15,16 @@ enum AuthState {
     case error
 }
 
+enum AuthViewModelRoute {
+    case close
+    case showRegister
+}
+
 protocol AuthViewModelDelegate: AnyObject {
     
     func didUpdateState()
     func didShowAlert(title: String, message: String)
-    func moveTo(_ vc:MoveToViewController)
+    func moveTo(_ route: AuthViewModelRoute)
     
 }
 
@@ -54,15 +59,12 @@ class AuthViewModel {
             
             self.authService.signIn(login: login, password: password) { [weak self] user, hasError in
                 guard let strongSelf = self else { return }
-                if let user = user {
-                    print("popViewController")
-                    strongSelf.delegate?.moveTo(.root)
+                if user != nil {
                     strongSelf.state = .ready
-
+                    strongSelf.delegate?.moveTo(.close)
                 } else {
-                    print("show alert")
                     strongSelf.state = .error
-                    strongSelf.delegate?.didShowAlert(title: "Error", message: "Please try again later.")
+                    strongSelf.delegate?.didShowAlert(title: "Error", message: hasError.debugDescription)
                 }
             }
         }
@@ -72,18 +74,17 @@ class AuthViewModel {
         if let login = self.login, let password = self.password {
             self.authService.signUp(login: login, password: password) { [weak self] user, hasError in
                 guard let strongSelf = self else { return }
-                if let user = user {
-                    print(user.id)
-                    strongSelf.delegate?.moveTo(.register)
+                if user != nil {
                     strongSelf.state = .ready
+                    strongSelf.delegate?.moveTo(.showRegister)
                 } else {
-                    print("show alert")
                     strongSelf.state = .error
-                    strongSelf.delegate?.didShowAlert(title: "Error", message: "Not available in your country")
+                    strongSelf.delegate?.didShowAlert(title: "Error", message: hasError.debugDescription)
                 }
             }
         }
     }
+    
     
     func didUpdateLogin(_ login: String) -> Bool {
         print(login)
