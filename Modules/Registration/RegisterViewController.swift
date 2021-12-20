@@ -12,7 +12,16 @@ class RegisterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .orange
+        self.view.backgroundColor = .white
     }
-
+    
+    override func loadView() {
+        let view = RegisterView()
+        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.view = view
+    }
+    
+    var contentView: RegisterView {
+        return view as! RegisterView
+    }
 }
