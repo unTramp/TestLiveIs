@@ -17,7 +17,7 @@ enum RegisterState {
 
 enum RegisterViewModelRoute {
     case close
-    case showAuth
+    case showRoot
 }
 
 protocol RegisterViewModelDelegate: AnyObject {
@@ -46,4 +46,9 @@ class RegisterViewModel {
         self.authService = authService
         self.credentialValidationService = credentialValidationService
     }
+    
+    func didTapSignUpButton() {
+        print("Sign Up")
+    }
+    
 }

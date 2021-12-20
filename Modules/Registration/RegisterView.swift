@@ -84,7 +84,7 @@ class RegisterView: View {
         return v
     }()
     
-    private var didTapRegisterButtonHandler: (() -> Void)?
+    var didTapRegisterButtonHandler: (() -> Void)?
     
     @objc private func registrationButtonTapped() {
         self.didTapRegisterButtonHandler?()
