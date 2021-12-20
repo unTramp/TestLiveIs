@@ -33,7 +33,7 @@ class RegisterViewModel {
     private var authService: AuthService
     private let credentialValidationService: CredentialValidationService
     
-    var state: AuthState = .idle {
+    var state: RegisterState = .idle {
         didSet {
             self.delegate?.didUpdateState()
         }
