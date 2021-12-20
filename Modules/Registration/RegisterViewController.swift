@@ -8,7 +8,19 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, RegisterViewModelDelegate {
+    func didUpdateState() {
+        
+    }
+    
+    func didShowAlert(title: String, message: String) {
+        
+    }
+    
+    func moveTo(_ route: RegisterViewModelRoute) {
+        
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
