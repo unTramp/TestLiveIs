@@ -48,7 +48,11 @@ class RegisterViewModel {
     }
     
     func didTapSignUpButton() {
-        print("Sign Up")
+        self.delegate?.moveTo(.showRoot)
+    }
+    
+    func didTapLoginButton() {
+        self.delegate?.moveTo(.close)
     }
     
 }
