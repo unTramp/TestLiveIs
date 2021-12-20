@@ -23,6 +23,7 @@
 		49650F3226DC081E00BD0113 /* IMarkerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49650F3126DC081E00BD0113 /* IMarkerService.swift */; };
 		49650F3426DC08C200BD0113 /* MarkerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49650F3326DC08C200BD0113 /* MarkerService.swift */; };
 		497160022770EA7700960D48 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497160012770EA7700960D48 /* RegisterView.swift */; };
+		497160042770F0A700960D48 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497160032770F0A700960D48 /* RegisterViewModel.swift */; };
 		497C2FF226E3EBA3006B9EC8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 497C2FF126E3EBA3006B9EC8 /* GoogleService-Info.plist */; };
 		49800580249A65DC00CD8000 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4980057F249A65DC00CD8000 /* MainViewModel.swift */; };
 		4987295127665D3C00050C65 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987295027665D3C00050C65 /* AuthService.swift */; };
@@ -77,6 +78,7 @@
 		49650F3126DC081E00BD0113 /* IMarkerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMarkerService.swift; sourceTree = "<group>"; };
 		49650F3326DC08C200BD0113 /* MarkerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerService.swift; sourceTree = "<group>"; };
 		497160012770EA7700960D48 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		497160032770F0A700960D48 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		497C2FF126E3EBA3006B9EC8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4980057F249A65DC00CD8000 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		4987295027665D3C00050C65 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				49A028B1276E5130006B2BEE /* RegisterViewController.swift */,
+				497160032770F0A700960D48 /* RegisterViewModel.swift */,
 				497160012770EA7700960D48 /* RegisterView.swift */,
 			);
 			path = Registration;
@@ -568,6 +571,7 @@
 				49650F3226DC081E00BD0113 /* IMarkerService.swift in Sources */,
 				AA5B960D25920D67005965E1 /* IUserService.swift in Sources */,
 				4905BB5A26ECD013008617E5 /* MonthMetadata.swift in Sources */,
+				497160042770F0A700960D48 /* RegisterViewModel.swift in Sources */,
 				49A028B2276E5130006B2BEE /* RegisterViewController.swift in Sources */,
 				4905BB5526ECD007008617E5 /* CalendarDateCollectionViewCell.swift in Sources */,
 				4987295B27667B6C00050C65 /* CredentialValidationServiceImpl.swift in Sources */,

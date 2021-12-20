@@ -164,7 +164,7 @@ class RegisterView: View {
     }()
     
     override func setupViews() {
-        self.addSubview(self.signInLabel)
+        self.addSubview(self.signUpLabel)
         self.addSubview(self.followUpEmailLabel)
         self.addSubview(self.userNameTextField)
         self.addSubview(self.emailTextField)
@@ -204,7 +204,7 @@ class RegisterView: View {
     }
     
     private func signInLabelConstraints() {
-        self.signInLabel.snp.makeConstraints { make in
+        self.signUpLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(78)
             make.leading.equalToSuperview().inset(32)
             make.height.equalTo(38)
