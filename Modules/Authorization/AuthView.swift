@@ -71,17 +71,13 @@ class AuthView: View {
     lazy var createAccountButton: UIButton = {
         let v = UIButton()
         v.backgroundColor = .clear
-        v.layer.cornerRadius = 30
-        v.titleLabel?.font = UIFont(name:"Rubik-Light", size: 17.0)
-        v.setTitleColor(UIColor.white, for: .normal)
-        v.setTitle("Registration", for: .normal)
-        v.addTarget(self, action: #selector(registrationButtonTapped), for: .touchUpInside)
+        v.addTarget(self, action: #selector(createAccountButtonTapped), for: .touchUpInside)
         return v
     }()
     
     private var didTapCreateAccountButtonHandler: (() -> Void)?
     
-    @objc private func registrationButtonTapped() {
+    @objc private func createAccountButtonTapped() {
         self.didTapCreateAccountButtonHandler?()
     }
     
@@ -199,7 +195,7 @@ class AuthView: View {
         self.activityIndicator.snp.makeConstraints { make in
             make.center.equalTo(self.authorizationButton)
         }
-        self.registrationButtonConstraints()
+        self.createAccountButtonConstraints()
         self.continueWithLabelConstraints()
         self.leftLineContinueWithConstraints()
         self.rightLineContinueWithConstraints()
@@ -256,7 +252,7 @@ class AuthView: View {
         }
     }
     
-    private func registrationButtonConstraints() {
+    private func createAccountButtonConstraints() {
         self.createAccountButton.snp.makeConstraints { make in
             make.bottom.equalToSuperview().inset(40)
             make.width.equalTo(120)

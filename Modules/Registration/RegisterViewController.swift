@@ -33,7 +33,7 @@ class RegisterViewController: UIViewController, RegisterViewModelDelegate {
             self.dismiss(animated: true, completion: nil)
             break;
         case .showRoot:
-            self.navigationController?.popViewController(animated: true)
+            self.navigationController?.popToRootViewController(animated: true)
             break;
         }
     }
@@ -62,6 +62,7 @@ class RegisterViewController: UIViewController, RegisterViewModelDelegate {
             guard let strongSelf = self else { return }
             strongSelf.viewModel?.didTapSignUpButton()
         }
+        
     }
     
     override func loadView() {
