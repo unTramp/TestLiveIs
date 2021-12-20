@@ -71,20 +71,18 @@ class AuthViewModel {
     }
     
     func didTapRegistrationButton() {
-        self.delegate?.moveTo(.showRegister)
-        
-//        if let login = self.login, let password = self.password {
-//            self.authService.signUp(login: login, password: password) { [weak self] user, hasError in
-//                guard let strongSelf = self else { return }
-//                if user != nil {
-//                    strongSelf.state = .ready
-//                    strongSelf.delegate?.moveTo(.showRegister)
-//                } else {
-//                    strongSelf.state = .error
-//                    strongSelf.delegate?.didShowAlert(title: "Error", message: hasError.debugDescription)
-//                }
-//            }
-//        }
+        if let login = self.login, let password = self.password {
+            self.authService.signUp(login: login, password: password) { [weak self] user, hasError in
+                guard let strongSelf = self else { return }
+                if user != nil {
+                    strongSelf.state = .ready
+                    strongSelf.delegate?.moveTo(.showRegister)
+                } else {
+                    strongSelf.state = .error
+                    strongSelf.delegate?.didShowAlert(title: "Error", message: hasError.debugDescription)
+                }
+            }
+        }
     }
     
     

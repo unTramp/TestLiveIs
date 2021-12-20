@@ -55,7 +55,6 @@ class AuthViewController: UIViewController, UITextFieldDelegate, AuthViewModelDe
     
     private func showRegisterViewController() {
         let vc = RegisterViewController()
-        vc.modalPresentationStyle = .fullScreen
         self.navigationController?.present(vc, animated: true, completion: nil)
     }
     

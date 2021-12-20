@@ -22,7 +22,6 @@
 		49650F3026DC077300BD0113 /* MarekerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49650F2F26DC077300BD0113 /* MarekerModel.swift */; };
 		49650F3226DC081E00BD0113 /* IMarkerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49650F3126DC081E00BD0113 /* IMarkerService.swift */; };
 		49650F3426DC08C200BD0113 /* MarkerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49650F3326DC08C200BD0113 /* MarkerService.swift */; };
-		49715FFF2770DE6800960D48 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49715FFE2770DE6800960D48 /* RegisterView.swift */; };
 		497C2FF226E3EBA3006B9EC8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 497C2FF126E3EBA3006B9EC8 /* GoogleService-Info.plist */; };
 		49800580249A65DC00CD8000 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4980057F249A65DC00CD8000 /* MainViewModel.swift */; };
 		4987295127665D3C00050C65 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987295027665D3C00050C65 /* AuthService.swift */; };
@@ -76,7 +75,6 @@
 		49650F2F26DC077300BD0113 /* MarekerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarekerModel.swift; sourceTree = "<group>"; };
 		49650F3126DC081E00BD0113 /* IMarkerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMarkerService.swift; sourceTree = "<group>"; };
 		49650F3326DC08C200BD0113 /* MarkerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerService.swift; sourceTree = "<group>"; };
-		49715FFE2770DE6800960D48 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		497C2FF126E3EBA3006B9EC8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4980057F249A65DC00CD8000 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		4987295027665D3C00050C65 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -179,15 +177,6 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		49715FFD2770DE1700960D48 /* Registration */ = {
-			isa = PBXGroup;
-			children = (
-				49A028B1276E5130006B2BEE /* RegisterViewController.swift */,
-				49715FFE2770DE6800960D48 /* RegisterView.swift */,
-			);
-			path = Registration;
-			sourceTree = "<group>";
-		};
 		499C64A926ECA01300E68B47 /* Adds */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,7 +198,6 @@
 		49C24B462622D81800009EAC /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				49715FFD2770DE1700960D48 /* Registration */,
 				AA60128F26E9FA330032705F /* CreateEventViewController */,
 				49CD5F5226D9850800372220 /* PopupView */,
 				49D9FF0625AE5C4B00C35BB9 /* Authorization */,
@@ -250,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				49D9FF0825AE5CE100C35BB9 /* AuthViewController.swift */,
+				49A028B1276E5130006B2BEE /* RegisterViewController.swift */,
 				4987295227665E5800050C65 /* User.swift */,
 				4987295027665D3C00050C65 /* AuthService.swift */,
 				49A028B3276E6EB3006B2BEE /* RandomNumber.swift */,
@@ -573,7 +562,6 @@
 				4987295B27667B6C00050C65 /* CredentialValidationServiceImpl.swift in Sources */,
 				D9C6283E1FE63A5600D50657 /* EventPreviewView.swift in Sources */,
 				49650F3026DC077300BD0113 /* MarekerModel.swift in Sources */,
-				49715FFF2770DE6800960D48 /* RegisterView.swift in Sources */,
 				49650F3426DC08C200BD0113 /* MarkerService.swift in Sources */,
 				49EA6BD025B0A62A00E2E9AA /* UserModel.swift in Sources */,
 				49A028B6276E6EF2006B2BEE /* RundomNumberService.swift in Sources */,
