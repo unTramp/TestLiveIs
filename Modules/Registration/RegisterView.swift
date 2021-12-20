@@ -11,7 +11,7 @@ import UIKit
 
 class RegisterView: View {
     
-    private lazy var signInLabel :  UILabel = {
+    private lazy var signUpLabel :  UILabel = {
         let v = UILabel()
         v.textColor = .black
         v.text = "Sign Up"

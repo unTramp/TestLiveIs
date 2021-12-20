@@ -70,7 +70,7 @@ class AuthViewModel {
         }
     }
     
-    func didTapRegistrationButton() {
+    func didTapCreateAccountButton() {
         self.delegate?.moveTo(.showRegister)
         
 //        if let login = self.login, let password = self.password {

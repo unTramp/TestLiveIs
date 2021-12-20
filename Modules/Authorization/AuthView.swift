@@ -68,7 +68,7 @@ class AuthView: View {
         self.didTapAuthButtonHandler?()
     }
     
-    lazy var registrationButton: UIButton = {
+    lazy var createAccountButton: UIButton = {
         let v = UIButton()
         v.backgroundColor = .clear
         v.layer.cornerRadius = 30
@@ -79,10 +79,10 @@ class AuthView: View {
         return v
     }()
     
-    private var didTapRegisterButtonHandler: (() -> Void)?
+    private var didTapCreateAccountButtonHandler: (() -> Void)?
     
     @objc private func registrationButtonTapped() {
-        self.didTapRegisterButtonHandler?()
+        self.didTapCreateAccountButtonHandler?()
     }
     
     private lazy var continueWithLabel :  UILabel = {
@@ -164,10 +164,10 @@ class AuthView: View {
         return v
     }()
     
-    convenience init(didTapAuthButtonHandler: @escaping (() -> Void), didTapRegisterButtonHandler: @escaping (() -> Void)) {
+    convenience init(didTapAuthButtonHandler: @escaping (() -> Void), didTapCreateAccountButtonHandler: @escaping (() -> Void)) {
         self.init()
         self.didTapAuthButtonHandler = didTapAuthButtonHandler
-        self.didTapRegisterButtonHandler = didTapRegisterButtonHandler
+        self.didTapCreateAccountButtonHandler = didTapCreateAccountButtonHandler
     }
     
     override func setupViews() {
@@ -175,7 +175,7 @@ class AuthView: View {
         self.addSubview(self.bgImageView)
         self.addSubview(self.loginTextField)
         self.addSubview(self.passwordTextField)
-        self.addSubview(self.registrationButton)
+        self.addSubview(self.createAccountButton)
         self.addSubview(self.authorizationButton)
         self.addSubview(self.activityIndicator)
         self.addSubview(self.continueWithLabel)
@@ -257,7 +257,7 @@ class AuthView: View {
     }
     
     private func registrationButtonConstraints() {
-        self.registrationButton.snp.makeConstraints { make in
+        self.createAccountButton.snp.makeConstraints { make in
             make.bottom.equalToSuperview().inset(40)
             make.width.equalTo(120)
             make.height.equalTo(40)

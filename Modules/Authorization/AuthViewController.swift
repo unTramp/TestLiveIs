@@ -77,10 +77,10 @@ class AuthViewController: UIViewController, UITextFieldDelegate, AuthViewModelDe
             
             guard let strongSelf = self else { return }
             strongSelf.viewModel?.didTapAuthButton()
-        }, didTapRegisterButtonHandler: { [weak self] in
+        }, didTapCreateAccountButtonHandler: { [weak self] in
             
             guard let strongSelf = self else { return }
-            strongSelf.viewModel?.didTapRegistrationButton()
+            strongSelf.viewModel?.didTapCreateAccountButton()
         })
         
         view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
