@@ -58,9 +58,15 @@ class AuthView: View {
         v.layer.cornerRadius = 8
         v.titleLabel?.font =  UIFont(name: "Rubik-Medium", size: 14)
         v.setTitle("Sign in", for: .normal)
-        //v.addTarget(self, action: #selector(authorizationButtonTapped), for: .touchUpInside)
+        v.addTarget(self, action: #selector(authorizationButtonTapped), for: .touchUpInside)
         return v
     }()
+    
+    private var didTapAuthButtonHandler: (() -> Void)?
+    
+    @objc private func authorizationButtonTapped() {
+        self.didTapAuthButtonHandler?()
+    }
     
     lazy var registrationButton: UIButton = {
         let v = UIButton()
@@ -69,9 +75,15 @@ class AuthView: View {
         v.titleLabel?.font = UIFont(name:"Rubik-Light", size: 17.0)
         v.setTitleColor(UIColor.white, for: .normal)
         v.setTitle("Registration", for: .normal)
-        //v.addTarget(self, action: #selector(registrationButtonTapped), for: .touchUpInside)
+        v.addTarget(self, action: #selector(registrationButtonTapped), for: .touchUpInside)
         return v
     }()
+    
+    private var didTapRegisterButtonHandler: (() -> Void)?
+    
+    @objc private func registrationButtonTapped() {
+        self.didTapRegisterButtonHandler?()
+    }
     
     private lazy var continueWithLabel :  UILabel = {
         let v = UILabel()
@@ -151,6 +163,12 @@ class AuthView: View {
         
         return v
     }()
+    
+    convenience init(didTapAuthButtonHandler: @escaping (() -> Void), didTapRegisterButtonHandler: @escaping (() -> Void)) {
+        self.init()
+        self.didTapAuthButtonHandler = didTapAuthButtonHandler
+        self.didTapRegisterButtonHandler = didTapRegisterButtonHandler
+    }
     
     override func setupViews() {
         self.addSubview(self.signInLabel)

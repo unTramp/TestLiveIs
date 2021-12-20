@@ -15,10 +15,16 @@ enum AuthState {
     case error
 }
 
+enum AuthViewModelRoute {
+    case close
+    case showRegister
+}
+
 protocol AuthViewModelDelegate: AnyObject {
     
     func didUpdateState()
     func didShowAlert(title: String, message: String)
+    func moveTo(_ route: AuthViewModelRoute)
     
 }
 
@@ -36,6 +42,7 @@ class AuthViewModel {
     private weak var delegate: AuthViewModelDelegate?
     
     private(set) var login: String? = "A@gmail.com"
+    private(set) var password: String? = "Qwerty"
     
     init(delegate: AuthViewModelDelegate, authService: AuthService, credentialValidationService: CredentialValidationService) {
         self.delegate = delegate
@@ -46,29 +53,38 @@ class AuthViewModel {
     func didTapAuthButton() {
         print("authButtonTapped")
         
-        if let login = self.login {
+        if let login = self.login, let password = self.password {
             
             self.state = .loading
             
-            let password = "Qwerty"
-
             self.authService.signIn(login: login, password: password) { [weak self] user, hasError in
                 guard let strongSelf = self else { return }
-                if let user = user {
-                    print("popViewController")
+                if user != nil {
                     strongSelf.state = .ready
+                    strongSelf.delegate?.moveTo(.close)
                 } else {
-                    print("show alert")
                     strongSelf.state = .error
-                    strongSelf.delegate?.didShowAlert(title: "Error", message: "Please try again later.")
+                    strongSelf.delegate?.didShowAlert(title: "Error", message: hasError.debugDescription)
                 }
             }
         }
     }
     
     func didTapRegistrationButton() {
-        self.delegate?.didShowAlert(title: "Error", message: "Not available in your country")
+        if let login = self.login, let password = self.password {
+            self.authService.signUp(login: login, password: password) { [weak self] user, hasError in
+                guard let strongSelf = self else { return }
+                if user != nil {
+                    strongSelf.state = .ready
+                    strongSelf.delegate?.moveTo(.showRegister)
+                } else {
+                    strongSelf.state = .error
+                    strongSelf.delegate?.didShowAlert(title: "Error", message: hasError.debugDescription)
+                }
+            }
+        }
     }
+    
     
     func didUpdateLogin(_ login: String) -> Bool {
         print(login)
@@ -80,6 +96,14 @@ class AuthViewModel {
         }
         
         return isValid
+    }
+    
+    func didUpdatePassword(_ password: String) -> Bool {
+        print(password)
+        
+        self.password = password
+        
+        return true
     }
     
 }
