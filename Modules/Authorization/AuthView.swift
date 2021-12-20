@@ -55,7 +55,7 @@ class AuthView: View {
     lazy var authorizationButton: UIButton = {
         let v = UIButton()
         v.backgroundColor = .customBlue
-        v.layer.cornerRadius = 8
+        v.layer.cornerRadius = 24
         v.titleLabel?.font =  UIFont(name: "Rubik-Medium", size: 14)
         v.setTitle("Sign in", for: .normal)
         v.addTarget(self, action: #selector(authorizationButtonTapped), for: .touchUpInside)
