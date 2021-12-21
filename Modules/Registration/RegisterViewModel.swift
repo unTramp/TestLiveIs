@@ -48,10 +48,12 @@ class RegisterViewModel {
     }
     
     func didTapSignUpButton() {
+        self.state = .loading
+        
         self.delegate?.moveTo(.showRoot)
     }
     
-    func didTapLoginButton() {
+    func didTapAlreadyHaveAccountButton() {
         self.delegate?.moveTo(.close)
     }
     
