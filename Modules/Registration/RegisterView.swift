@@ -11,7 +11,12 @@ import UIKit
 
 class RegisterView: View {
     
-    private lazy var signUpLabel :  UILabel = {
+    private lazy var authOptionsView: AuthOptionsView = {
+        let v = AuthOptionsView(with: "or sign up with")
+        return v
+    }()
+    
+    private lazy var signUpLabel:  UILabel = {
         let v = UILabel()
         v.textColor = .black
         v.text = "Sign Up"
@@ -19,12 +24,29 @@ class RegisterView: View {
         return v
     }()
     
-    private lazy var followUpEmailLabel :  UILabel = {
+    private lazy var leftBottomLineUserButton: UIView = {
+        let v = UIView()
+        v.backgroundColor = .customBlue
+        return v
+    }()
+    
+    private lazy var signUpInfoSymbol: UIButton = {
+        let v = UIButton(type: .infoDark)
+        v.isUserInteractionEnabled = false
+        return v
+    }()
+    
+    private lazy var comnfirmMessageContainerView: UIView = {
+        let v = UIView()
+        v.backgroundColor = UIColor.systemGray6
+        return v
+    }()
+    
+    private lazy var followUpLabel:  UILabel = {
         let v = UILabel()
         v.textColor = .customBlue
         v.text = "We will send a follow-up email to confirm if you are an artist."
         v.font = UIFont(name:"Rubik", size: 14.0)
-        v.backgroundColor = UIColor.systemGray6
         v.lineBreakMode = .byWordWrapping
         v.numberOfLines = 0
         return v
@@ -74,136 +96,103 @@ class RegisterView: View {
         return v
     }()
     
-    lazy var registrationButton: UIButton = {
-        let v = UIButton()
-        v.backgroundColor = .customBlue
-        v.layer.cornerRadius = 24
-        v.titleLabel?.font =  UIFont(name: "Rubik-Medium", size: 14)
-        v.setTitle("Sign Up", for: .normal)
-        v.addTarget(self, action: #selector(registrationButtonTapped), for: .touchUpInside)
+    lazy var signUpButton: UIButton = {
+        let v = ButtonFactory.signUpButton
+        v.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
         return v
     }()
     
-    var didTapRegisterButtonHandler: (() -> Void)?
+    var didTapSignUpButtonHandler: (() -> Void)?
     
-    @objc private func registrationButtonTapped() {
-        self.didTapRegisterButtonHandler?()
+    @objc private func signUpButtonTapped() {
+        self.didChangeConfirmMessageViewVisible()
+        //self.didTapSignUpButtonHandler?()
     }
     
-    private lazy var signUpWithLabel :  UILabel = {
-        let v = UILabel()
-        v.translatesAutoresizingMaskIntoConstraints = false
-        v.textColor = .customLightGray
-        v.text = "or sign up with"
-        v.textAlignment = .center
-        v.font = UIFont(name:"Rubik-Regular", size: 12.0)
+    lazy var alreadyHaveAccountButton: UIButton = {
+        let v = UIButton()
+        v.clipsToBounds = true
+        v.setTitle("Already have an account, login here", for: .normal)
+        v.titleLabel?.font = UIFont(name:"Rubik-Regular", size: 14.00)
+        v.setTitleColor(.customBlue, for: .normal)
+        v.setTitleColor(.lightGray, for: .highlighted)
+        v.addTarget(self, action: #selector(alreadyHaveAccountButtonTapped), for: .touchUpInside)
         return v
     }()
     
-    private lazy var leftLineSignUpWith: UIView = {
-        let v = UIView()
-        v.backgroundColor = .customWhite
+    var didAlreadyHaveAccountButtonHandler: (() -> Void)?
+    
+    @objc private func alreadyHaveAccountButtonTapped() {
+        self.didAlreadyHaveAccountButtonHandler?()
+    }
+    
+    lazy var activityIndicator: UIActivityIndicatorView = {
+        let v = UIActivityIndicatorView ()
+        
         return v
     }()
     
-    private lazy var rightLineSignUpWith: UIView = {
-        let v = UIView()
-        v.backgroundColor = .customWhite
-        return v
-    }()
+    private func didChangeConfirmMessageViewVisible() {
+        let result = self.comnfirmMessageContainerView.isHidden
+        self.comnfirmMessageContainerView.isHidden.toggle()
+        self.confirmMessageContainerRemakeConstraints(!result)
+    }
     
-    private lazy var signWithGoogleLogoView: UIView = {
-        let v = UIView()
-        v.layer.cornerRadius = 8
-        v.layer.borderColor = UIColor.customWhite.cgColor
-        v.layer.borderWidth = 1
-        return v
-    }()
+    private func confirmMessageContainerRemakeConstraints(_ doRemake: Bool) {
+        if doRemake {
+            self.comnfirmMessageContainerView.snp.remakeConstraints { make in
+                make.height.equalTo(0)
+                make.leading.equalToSuperview()
+                make.trailing.equalToSuperview()
+                make.top.equalTo(self.signUpLabel.snp.bottom)
+            }
+        } else {
+            self.comnfirmMessageContainerView.snp.remakeConstraints { make in
+                make.height.equalTo(64)
+                make.top.equalTo(self.leftBottomLineUserButton.snp.bottom)
+                make.leading.equalToSuperview()
+                make.trailing.equalToSuperview()
+            }
+        }
+    }
     
-    private lazy var signWithAppleLogoView: UIView = {
-        let v = UIView()
-        v.layer.cornerRadius = 8
-        v.layer.borderColor = UIColor.customWhite.cgColor
-        v.layer.borderWidth = 1
-        return v
-    }()
-    
-    private lazy var signWithFacebookLogoView: UIView = {
-        let v = UIView()
-        v.layer.cornerRadius = 8
-        v.layer.borderColor = UIColor.customWhite.cgColor
-        v.layer.borderWidth = 1
-        return v
-    }()
-    
-    private lazy var google_logo:  UIImageView = {
-        let v = UIImageView()
-        v.image = UIImage(named: "google_logo")
-        return v
-    }()
-    
-    private lazy var apple_logo:  UIImageView = {
-        let v = UIImageView()
-        v.image = UIImage(named: "apple_logo")
-        return v
-    }()
-    
-    private lazy var facebook_logo:  UIImageView = {
-        let v = UIImageView()
-        v.image = UIImage(named: "facebook_logo")
-        return v
-    }()
-    
-    private lazy var alreadyHaveAccountLabel :  UILabel = {
-        let v = UILabel()
-        v.textColor = .customBlue
-        v.text = "Already have an account, login here"
-        v.font = UIFont(name:"Rubik-Regular", size: 14.00)
-        v.textAlignment = .center
-        return v
-    }()
     
     override func setupViews() {
         self.addSubview(self.signUpLabel)
-        self.addSubview(self.followUpEmailLabel)
+        self.addSubview(self.leftBottomLineUserButton)
+        self.addSubview(self.comnfirmMessageContainerView)
+        self.comnfirmMessageContainerView.addSubview(self.followUpLabel)
+        self.comnfirmMessageContainerView.addSubview(self.signUpInfoSymbol)
         self.addSubview(self.userNameTextField)
         self.addSubview(self.emailTextField)
         self.addSubview(self.passwordTextField)
         self.addSubview(self.confirmPasswordTextField)
-        self.addSubview(self.registrationButton)
-        self.addSubview(self.signUpWithLabel)
-        self.addSubview(self.leftLineSignUpWith)
-        self.addSubview(self.rightLineSignUpWith)
-        self.addSubview(self.signWithGoogleLogoView)
-        self.addSubview(self.signWithAppleLogoView)
-        self.addSubview(self.signWithFacebookLogoView)
-        self.signWithGoogleLogoView.addSubview(self.google_logo)
-        self.signWithAppleLogoView.addSubview(self.apple_logo)
-        self.signWithFacebookLogoView.addSubview(self.facebook_logo)
-        self.addSubview(self.alreadyHaveAccountLabel)
+        self.addSubview(self.signUpButton)
+        self.addSubview(self.activityIndicator)
+        self.addSubview(self.authOptionsView)
+        self.addSubview(self.alreadyHaveAccountButton)
     }
     
     override func setupConstraints() {
-        self.signInLabelConstraints()
+        self.authOptionsViewConstraints()
+        self.signUpLabelConstraints()
+        self.leftBottomLineUserButtonConstraints()
         self.followUpEmailLabelConstraints()
+        self.comnfirmMessageContainerViewConstraints()
+        self.signUpInfoSymbolConstraints()
         self.userNameTextFieldConstraints()
         self.emailTextFieldConstraints()
         self.passwordTextFieldConstraints()
         self.confirmPasswordTextFieldConstraints()
-        self.registrationButtonConstraints()
-        self.signUpWithLabelConstraints()
-        self.leftLineSignUpWithConstraints()
-        self.rightLineSignUpWithConstraints()
-        self.signWithGoogleLogoViewConstraints()
-        self.signWithAppleLogoViewConstraints()
-        self.signWithFacebookLogoViewConstraints()
-        self.google_logoConstraints()
-        self.apple_logoConstraints()
-        self.facebook_logoConstraints()
-        self.dontHaveAccountLabelConstraints()
+        self.signUpButtonConstraints()
+        self.activityIndicator.snp.makeConstraints { make in
+            make.center.equalTo(self.signUpButton)
+        }
+
+        self.alreadyHaveAccountButtonConstraints()
     }
     
-    private func signInLabelConstraints() {
+    private func signUpLabelConstraints() {
         self.signUpLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(78)
             make.leading.equalToSuperview().inset(32)
@@ -212,18 +201,45 @@ class RegisterView: View {
         }
     }
     
+    private func leftBottomLineUserButtonConstraints() {
+        self.leftBottomLineUserButton.snp.makeConstraints { make in
+            make.height.equalTo(2)
+            make.leading.equalToSuperview()
+            make.width.equalToSuperview().dividedBy(2)
+            make.top.equalTo(self.signUpLabel.snp.bottom)
+        }
+    }
+    
+    private func comnfirmMessageContainerViewConstraints() {
+        self.comnfirmMessageContainerView.snp.makeConstraints { make in
+            make.height.equalTo(64)
+            make.top.equalTo(self.leftBottomLineUserButton.snp.bottom)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+        }
+    }
+    
     private func followUpEmailLabelConstraints() {
-        self.followUpEmailLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(self.userNameTextField.snp.top).offset(-32)
-            make.leading.equalToSuperview().inset(32)
-            make.height.equalTo(52)
-            make.trailing.equalToSuperview().inset(32)
+        self.followUpLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(comnfirmMessageContainerView)
+            make.leading.equalTo(self.signUpInfoSymbol.snp.trailing).offset(8)
+            make.height.equalTo(self.comnfirmMessageContainerView)
+            make.trailing.equalTo(self.userNameTextField)
+        }
+    }
+    
+    private func signUpInfoSymbolConstraints() {
+        self.signUpInfoSymbol.snp.makeConstraints { make in
+            make.leading.equalTo(self.userNameTextField.snp.leading)
+            make.bottom.equalTo(self.followUpLabel.snp.centerY)
+            make.width.equalTo(16)
+            make.height.equalTo(16)
         }
     }
     
     private func userNameTextFieldConstraints() {
         self.userNameTextField.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(250)
+            make.top.equalTo(self.comnfirmMessageContainerView.snp.bottom).offset(32)
             make.leading.equalToSuperview().inset(32)
             make.height.equalTo(48)
             make.trailing.equalToSuperview().inset(32)
@@ -257,8 +273,8 @@ class RegisterView: View {
         }
     }
     
-    private func registrationButtonConstraints() {
-        self.registrationButton.snp.makeConstraints { make in
+    private func signUpButtonConstraints() {
+        self.signUpButton.snp.makeConstraints { make in
             make.top.equalTo(self.confirmPasswordTextField.snp.bottom).offset(32)
             make.leading.equalToSuperview().inset(32)
             make.height.equalTo(48)
@@ -266,90 +282,21 @@ class RegisterView: View {
         }
     }
     
-    private func signUpWithLabelConstraints() {
-        self.signUpWithLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(self.signWithGoogleLogoView.snp.top).offset(-24)
-            make.height.equalTo(12)
-            make.width.equalTo(130)
-        }
-    }
-    
-    private func leftLineSignUpWithConstraints() {
-        self.leftLineSignUpWith.snp.makeConstraints { make in
-            make.height.equalTo(1)
-            make.leading.equalToSuperview().inset(34)
-            make.trailing.equalTo(self.signUpWithLabel.snp.leading)
-            make.centerY.equalTo(self.signUpWithLabel.snp.centerY)
-        }
-    }
-    
-    private func rightLineSignUpWithConstraints() {
-        self.rightLineSignUpWith.snp.makeConstraints { make in
-            make.height.equalTo(1)
-            make.trailing.equalToSuperview().inset(34)
-            make.leading.equalTo(self.signUpWithLabel.snp.trailing)
-            make.centerY.equalTo(self.signUpWithLabel.snp.centerY)
-        }
-    }
-    
-    private func signWithGoogleLogoViewConstraints() {
-        self.signWithGoogleLogoView.snp.makeConstraints { make in
-            make.bottom.equalTo(self.alreadyHaveAccountLabel.snp.top).offset(-32)
-            make.leading.equalToSuperview().inset(32)
-            make.height.equalTo(48)
-            make.width.equalTo(96)
-        }
-    }
-    
-    private func signWithAppleLogoViewConstraints() {
-        self.signWithAppleLogoView.snp.makeConstraints { make in
-            make.bottom.equalTo(self.alreadyHaveAccountLabel.snp.top).offset(-32)
-            make.centerX.equalToSuperview()
-            make.height.equalTo(48)
-            make.width.equalTo(96)
-        }
-    }
-    
-    private func signWithFacebookLogoViewConstraints() {
-        self.signWithFacebookLogoView.snp.makeConstraints { make in
-            make.bottom.equalTo(self.alreadyHaveAccountLabel.snp.top).offset(-32)
-            make.trailing.equalToSuperview().inset(32)
-            make.height.equalTo(48)
-            make.width.equalTo(96)
-        }
-    }
-    
-    private func google_logoConstraints() {
-        self.google_logo.snp.makeConstraints { make in
-            make.width.equalTo(20)
-            make.height.equalTo(20)
-            make.center.equalToSuperview()
-        }
-    }
-    
-    private func apple_logoConstraints() {
-        self.apple_logo.snp.makeConstraints { make in
-            make.width.equalTo(20)
-            make.height.equalTo(20)
-            make.center.equalToSuperview()
-        }
-    }
-    
-    private func facebook_logoConstraints() {
-        self.facebook_logo.snp.makeConstraints { make in
-            make.width.equalTo(20)
-            make.height.equalTo(20)
-            make.center.equalToSuperview()
-        }
-    }
-    
-    private func dontHaveAccountLabelConstraints() {
-        self.alreadyHaveAccountLabel.snp.makeConstraints { make in
-            make.height.equalTo(17)
+    private func authOptionsViewConstraints() {
+        self.authOptionsView.snp.makeConstraints { make in
+            make.height.equalTo(108)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
-            make.bottom.equalToSuperview().inset(42)
+            make.bottom.equalTo(self.alreadyHaveAccountButton.snp.top).offset(-32)
+        }
+    }
+    
+    private func alreadyHaveAccountButtonConstraints() {
+        self.alreadyHaveAccountButton.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().inset(40)
+            make.trailing.equalToSuperview()
+            make.height.equalTo(17)
+            make.leading.equalToSuperview()
         }
     }
 }
