@@ -197,15 +197,12 @@ class CreateEventViewController: UIViewController, MTSlideToOpenDelegate {
     
     func mtSlideToOpenDelegateDidFinish(_ sender: MTSlideToOpenView) {
         sender.resetStateWithAnimation(true)
-        let successViewController = SuccessConfirmationViewController()
+        let vc = ViewControllerService.shared.getViwController(.success) as! SuccessConfirmationViewController
         
-        successViewController.setCloseButtonTappedCompletionHandler {
-            successViewController.dismiss(animated: true) {
-                self.navigationController?.popToRootViewController(animated: true)
-            }
+        vc.setCloseButtonTappedCompletionHandler {
+            self.navigationController?.popToRootViewController(animated: true)
         }
-        
-        self.present(successViewController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     override func viewDidLoad() {
