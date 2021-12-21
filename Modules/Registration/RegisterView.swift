@@ -24,7 +24,17 @@ class RegisterView: View {
         return v
     }()
     
-    private lazy var leftBottomLineUserButton: UIView = {
+    
+    
+    private lazy var userArtistContainerView: UIView = {
+        let v = UIView()
+        v.backgroundColor = UIColor.systemGreen.withAlphaComponent(0.7)
+        return v
+    }()
+    
+    
+    
+    private lazy var userArtistBottomLineButton: UIView = {
         let v = UIView()
         v.backgroundColor = .customBlue
         return v
@@ -144,12 +154,12 @@ class RegisterView: View {
                 make.height.equalTo(0)
                 make.leading.equalToSuperview()
                 make.trailing.equalToSuperview()
-                make.top.equalTo(self.signUpLabel.snp.bottom)
+                make.top.equalTo(self.userArtistBottomLineButton.snp.bottom)
             }
         } else {
             self.comnfirmMessageContainerView.snp.remakeConstraints { make in
                 make.height.equalTo(64)
-                make.top.equalTo(self.leftBottomLineUserButton.snp.bottom)
+                make.top.equalTo(self.userArtistBottomLineButton.snp.bottom)
                 make.leading.equalToSuperview()
                 make.trailing.equalToSuperview()
             }
@@ -159,7 +169,8 @@ class RegisterView: View {
     
     override func setupViews() {
         self.addSubview(self.signUpLabel)
-        self.addSubview(self.leftBottomLineUserButton)
+        self.addSubview(self.userArtistContainerView)
+        self.addSubview(self.userArtistBottomLineButton)
         self.addSubview(self.comnfirmMessageContainerView)
         self.comnfirmMessageContainerView.addSubview(self.followUpLabel)
         self.comnfirmMessageContainerView.addSubview(self.signUpInfoSymbol)
@@ -176,7 +187,8 @@ class RegisterView: View {
     override func setupConstraints() {
         self.authOptionsViewConstraints()
         self.signUpLabelConstraints()
-        self.leftBottomLineUserButtonConstraints()
+        self.userArtistContainerViewConstraints()
+        self.userArtistBottomLineButtonConstraints()
         self.followUpEmailLabelConstraints()
         self.comnfirmMessageContainerViewConstraints()
         self.signUpInfoSymbolConstraints()
@@ -201,19 +213,28 @@ class RegisterView: View {
         }
     }
     
-    private func leftBottomLineUserButtonConstraints() {
-        self.leftBottomLineUserButton.snp.makeConstraints { make in
+    private func userArtistContainerViewConstraints() {
+        self.userArtistContainerView.snp.makeConstraints { make in
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.height.equalTo(48)
+            make.top.equalTo(self.signUpLabel.snp.bottom).offset(12)
+        }
+    }
+    
+    private func userArtistBottomLineButtonConstraints() {
+        self.userArtistBottomLineButton.snp.makeConstraints { make in
             make.height.equalTo(2)
             make.leading.equalToSuperview()
             make.width.equalToSuperview().dividedBy(2)
-            make.top.equalTo(self.signUpLabel.snp.bottom)
+            make.top.equalTo(self.userArtistContainerView.snp.bottom)
         }
     }
     
     private func comnfirmMessageContainerViewConstraints() {
         self.comnfirmMessageContainerView.snp.makeConstraints { make in
             make.height.equalTo(64)
-            make.top.equalTo(self.leftBottomLineUserButton.snp.bottom)
+            make.top.equalTo(self.userArtistBottomLineButton.snp.bottom)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
         }

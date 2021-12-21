@@ -211,6 +211,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, GMSMapView
     }
     
     @objc func favoriteButtonTap() {
+        
     }
     
     @objc func joinArtistButtonTap() {
