@@ -13,6 +13,7 @@
 		4905BB5526ECD007008617E5 /* CalendarDateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905BB5126ECD007008617E5 /* CalendarDateCollectionViewCell.swift */; };
 		4905BB5926ECD013008617E5 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905BB5626ECD013008617E5 /* Day.swift */; };
 		4905BB5A26ECD013008617E5 /* MonthMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905BB5726ECD013008617E5 /* MonthMetadata.swift */; };
+		491ED7AE27723C2900F3C309 /* AuthOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491ED7AD27723C2900F3C309 /* AuthOptionsView.swift */; };
 		494545CD26D6C43B0049CC82 /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 494545C926D6C43B0049CC82 /* Rubik-Medium.ttf */; };
 		494545CE26D6C43B0049CC82 /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 494545CA26D6C43B0049CC82 /* Rubik-Bold.ttf */; };
 		494545CF26D6C43B0049CC82 /* Rubik-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 494545CB26D6C43B0049CC82 /* Rubik-Light.ttf */; };
@@ -68,6 +69,7 @@
 		4905BB5126ECD007008617E5 /* CalendarDateCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDateCollectionViewCell.swift; sourceTree = "<group>"; };
 		4905BB5626ECD013008617E5 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		4905BB5726ECD013008617E5 /* MonthMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthMetadata.swift; sourceTree = "<group>"; };
+		491ED7AD27723C2900F3C309 /* AuthOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthOptionsView.swift; sourceTree = "<group>"; };
 		494545C926D6C43B0049CC82 /* Rubik-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Medium.ttf"; sourceTree = "<group>"; };
 		494545CA26D6C43B0049CC82 /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
 		494545CB26D6C43B0049CC82 /* Rubik-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Light.ttf"; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				49A028AD2767AA1E006B2BEE /* View.swift */,
 				D9C6283B1FE639AC00D50657 /* CustomMarkerView.swift */,
 				D9C6283D1FE63A5600D50657 /* EventPreviewView.swift */,
+				491ED7AD27723C2900F3C309 /* AuthOptionsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -556,6 +559,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49800580249A65DC00CD8000 /* MainViewModel.swift in Sources */,
+				491ED7AE27723C2900F3C309 /* AuthOptionsView.swift in Sources */,
 				AAAFBFD526E895BD00AB4534 /* ViewControllerService.swift in Sources */,
 				4905BB5926ECD013008617E5 /* Day.swift in Sources */,
 				49619E0525F2E31A0044EBF1 /* PopUpView.swift in Sources */,

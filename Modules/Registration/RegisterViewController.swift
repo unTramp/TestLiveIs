@@ -62,7 +62,7 @@ class RegisterViewController: UIViewController, RegisterViewModelDelegate {
             guard let strongSelf = self else { return }
             strongSelf.viewModel?.didTapSignUpButton()
         }
-        
+            
     }
     
     override func loadView() {
