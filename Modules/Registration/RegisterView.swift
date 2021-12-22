@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import MaterialComponents.MaterialTabs_TabBarView
 
 class RegisterView: View {
     
@@ -19,14 +20,31 @@ class RegisterView: View {
         return v
     }()
     
-    private lazy var userArtistContainerView: UserArtistButtonGroupView = {
-        let v = UserArtistButtonGroupView({
-            self.hideConfirmArtistMessage(true)
-        }, {
-            self.hideConfirmArtistMessage(false)
-        })
+//    private lazy var userArtistContainerView: UserArtistButtonGroupView = {
+//        let v = UserArtistButtonGroupView({
+//            self.hideConfirmArtistMessage(true)
+//        }, {
+//            self.hideConfirmArtistMessage(false)
+//        })
+//        return v
+//    }()
+    
+    let userArtistContainerView: MDCTabBarView = {
+        let v = MDCTabBarView()
+        v.items = [
+          UITabBarItem(title: "User", image: nil, tag: 0),
+          UITabBarItem(title: "Artist", image: nil, tag: 1),
+        ]
+        v.selectionIndicatorStrokeColor = .customBlue
+        v.preferredLayoutStyle = .fixed
+
         return v
     }()
+    
+    func tabBarView(_ tabBarView: MDCTabBarView, didSelect item: UITabBarItem) {
+        print(item.tag)
+    }
+
     
     private lazy var signUpInfoSymbol: UIButton = {
         let v = UIButton(type: .infoDark)

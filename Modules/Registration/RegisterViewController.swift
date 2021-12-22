@@ -9,7 +9,7 @@
 import UIKit
 
 class RegisterViewController: UIViewController, RegisterViewModelDelegate {
-    
+
     private var authService: AuthService = FirebaseAuthService()
     private var viewModel: RegisterViewModel?
     
@@ -70,7 +70,6 @@ class RegisterViewController: UIViewController, RegisterViewModelDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        
         self.viewModel = RegisterViewModel(delegate: self, authService: FirebaseAuthService(), credentialValidationService: OnlyLowercaseCredentialValidationService())
         
         if let viewModel = self.viewModel {
