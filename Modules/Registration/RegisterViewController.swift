@@ -60,6 +60,11 @@ class RegisterViewController: UIViewController, RegisterViewModelDelegate {
             
             break;
         }
+        
+        if viewModel.state != .loading {
+            self.contentView.signUpButton.isHidden = false
+            self.contentView.activityIndicator.stopAnimating()
+        }
     }
 
     override func viewDidLoad() {
@@ -72,19 +77,17 @@ class RegisterViewController: UIViewController, RegisterViewModelDelegate {
             self.updateState(viewModel)
         }
         
-        self.contentView.didTapSignUpButtonHandler = { [weak self] in
-            guard let strongSelf = self else { return }
-            strongSelf.viewModel?.didTapSignUpButton()
-        }
-        
-        self.contentView.didAlreadyHaveAccountButtonHandler = { [weak self] in
-            guard let strongSelf = self else { return }
-            strongSelf.navigationController?.popViewController(animated: true)
-        }
     }
     
     override func loadView() {
-        let view = RegisterView()
+        let view = RegisterView { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.viewModel?.didTapSignUpButton()
+        } didAlreadyHaveAccountButtonHandler: { [weak self] in
+            guard let strongSelf = self else { return }
+            strongSelf.navigationController?.popViewController(animated: true)
+        }
+
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.view = view
     }

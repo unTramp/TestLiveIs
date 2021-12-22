@@ -37,7 +37,7 @@ class UserArtistButtonGroupView: View {
         return v
     }()
     
-    var didTapUserButtonHandler: (() -> Void)?
+    private var didTapUserButtonHandler: (() -> Void)?
     
     @objc private func userButtonTap() {
         self.userButtonTapped()
@@ -63,7 +63,7 @@ class UserArtistButtonGroupView: View {
         return v
     }()
     
-    var didTapArtistButtonHandler: (() -> Void)?
+    private var didTapArtistButtonHandler: (() -> Void)?
     
     @objc private func artistButtonTap() {
         self.artistButtonTapped()

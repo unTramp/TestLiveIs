@@ -11,11 +11,6 @@ import UIKit
 
 class RegisterView: View {
     
-    private lazy var authOptionsView: AuthOptionsView = {
-        let v = AuthOptionsView(with: "or sign up with")
-        return v
-    }()
-    
     private lazy var signUpLabel:  UILabel = {
         let v = UILabel()
         v.textColor = .black
@@ -30,7 +25,6 @@ class RegisterView: View {
         }, {
             self.hideConfirmArtistMessage(false)
         })
-        
         return v
     }()
     
@@ -56,7 +50,7 @@ class RegisterView: View {
         return v
     }()
     
-    lazy var userNameTextField: TextFieldWithPadding = {
+    private lazy var userNameTextField: TextFieldWithPadding = {
         let v = TextFieldWithPadding()
         v.attributedPlaceholder = NSAttributedString(string: "Username",
                                                      attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
@@ -67,7 +61,7 @@ class RegisterView: View {
         return v
     }()
     
-    lazy var emailTextField: TextFieldWithPadding = {
+    private lazy var emailTextField: TextFieldWithPadding = {
         let v = TextFieldWithPadding()
         v.attributedPlaceholder = NSAttributedString(string: "Email",
                                                      attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
@@ -78,7 +72,7 @@ class RegisterView: View {
         return v
     }()
     
-    lazy var passwordTextField: TextFieldWithPadding = {
+    private lazy var passwordTextField: TextFieldWithPadding = {
         let v = TextFieldWithPadding()
         v.attributedPlaceholder = NSAttributedString(string: "Password",
                                                      attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
@@ -89,7 +83,7 @@ class RegisterView: View {
         return v
     }()
     
-    lazy var confirmPasswordTextField: TextFieldWithPadding = {
+    private lazy var confirmPasswordTextField: TextFieldWithPadding = {
         let v = TextFieldWithPadding()
         v.attributedPlaceholder = NSAttributedString(string: "Confirm Password",
                                                      attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
@@ -100,19 +94,24 @@ class RegisterView: View {
         return v
     }()
     
+    private lazy var authOptionsView: AuthOptionsView = {
+        let v = AuthOptionsView(with: "or sign up with")
+        return v
+    }()
+    
     lazy var signUpButton: UIButton = {
         let v = ButtonFactory.signUpButton
         v.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
         return v
     }()
     
-    var didTapSignUpButtonHandler: (() -> Void)?
+    private var didTapSignUpButtonHandler: (() -> Void)?
     
     @objc private func signUpButtonTapped() {
         self.didTapSignUpButtonHandler?()
     }
     
-    lazy var alreadyHaveAccountButton: UIButton = {
+    private lazy var alreadyHaveAccountButton: UIButton = {
         let v = UIButton()
         v.clipsToBounds = true
         v.setTitle("Already have an account, login here", for: .normal)
@@ -123,7 +122,7 @@ class RegisterView: View {
         return v
     }()
     
-    var didAlreadyHaveAccountButtonHandler: (() -> Void)?
+    private var didAlreadyHaveAccountButtonHandler: (() -> Void)?
     
     @objc private func alreadyHaveAccountButtonTapped() {
         self.didAlreadyHaveAccountButtonHandler?()
@@ -153,6 +152,12 @@ class RegisterView: View {
                 make.trailing.equalToSuperview()
             }
         }
+    }
+    
+    convenience init(didTapSignUpButtonHandler: @escaping (() -> Void), didAlreadyHaveAccountButtonHandler: @escaping (() -> Void)) {
+        self.init()
+        self.didTapSignUpButtonHandler = didTapSignUpButtonHandler
+        self.didAlreadyHaveAccountButtonHandler = didAlreadyHaveAccountButtonHandler
     }
     
     override func setupViews() {
@@ -186,7 +191,6 @@ class RegisterView: View {
         self.activityIndicator.snp.makeConstraints { make in
             make.center.equalTo(self.signUpButton)
         }
-
         self.alreadyHaveAccountButtonConstraints()
     }
     
