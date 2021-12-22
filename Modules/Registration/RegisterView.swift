@@ -24,62 +24,13 @@ class RegisterView: View {
         return v
     }()
     
-    private lazy var userArtistContainerView: UIView = {
-        let v = UIView()
-        return v
-    }()
-    
-    private lazy var userButton: UIButton = {
-        let v = UIButton()
-        v.clipsToBounds = true
-        v.setTitle("User", for: .normal)
-        v.setTitleColor(.customBlue, for: .normal)
-        v.setTitleColor(.systemGray, for: .highlighted)
-        v.titleLabel?.font = .fontRubikSize(17)
-        v.addTarget(self, action: #selector(userButtonTapped), for: .touchUpInside)
-        return v
-    }()
-    
-    @objc func userButtonTapped() {
-        self.artistButton.isUserInteractionEnabled = true
-        self.userButton.isUserInteractionEnabled = false
-        self.artistButton.isHighlighted = true
-        self.confirmMessageContainerRemakeConstraints(true)
-        self.comnfirmMessageContainerView.isHidden = true
-        self.artistBottomLineView.isHidden = true
-        self.userBottomLineView.isHidden = false
-    }
-    
-    private lazy var artistButton: UIButton = {
-        let v = UIButton()
-        v.clipsToBounds = true
-        v.setTitle("Artist", for: .normal)
-        v.setTitleColor(.customBlue, for: .normal)
-        v.setTitleColor(.systemGray, for: .highlighted)
-        v.titleLabel?.font = .fontRubikSize(17)
-        v.addTarget(self, action: #selector(artistButtonTapped), for: .touchUpInside)
-        return v
-    }()
-    
-    @objc func artistButtonTapped() {
-        self.userButton.isUserInteractionEnabled = true
-        self.artistButton.isUserInteractionEnabled = false
-        self.userButton.isHighlighted = true
-        self.confirmMessageContainerRemakeConstraints(false)
-        self.comnfirmMessageContainerView.isHidden = false
-        self.artistBottomLineView.isHidden = false
-        self.userBottomLineView.isHidden = true
-    }
-    
-    private lazy var userBottomLineView: UIView = {
-        let v = UIView()
-        v.backgroundColor = .customBlue
-        return v
-    }()
-    
-    private lazy var artistBottomLineView: UIView = {
-        let v = UIView()
-        v.backgroundColor = .customBlue
+    private lazy var userArtistContainerView: UserArtistButtonGroupView = {
+        let v = UserArtistButtonGroupView({
+            self.hideConfirmArtistMessage(true)
+        }, {
+            self.hideConfirmArtistMessage(false)
+        })
+        
         return v
     }()
     
@@ -184,18 +135,20 @@ class RegisterView: View {
         return v
     }()
     
-    private func confirmMessageContainerRemakeConstraints(_ doRemake: Bool) {
-        if doRemake {
+    private func hideConfirmArtistMessage(_ hide: Bool) {
+        if hide {
+            self.comnfirmMessageContainerView.isHidden = true
             self.comnfirmMessageContainerView.snp.remakeConstraints { make in
                 make.height.equalTo(0)
                 make.leading.equalToSuperview()
                 make.trailing.equalToSuperview()
-                make.top.equalTo(self.userBottomLineView.snp.bottom)
+                make.top.equalTo(self.userArtistContainerView.snp.bottom)
             }
         } else {
+            self.comnfirmMessageContainerView.isHidden = false
             self.comnfirmMessageContainerView.snp.remakeConstraints { make in
                 make.height.equalTo(64)
-                make.top.equalTo(self.userBottomLineView.snp.bottom)
+                make.top.equalTo(self.userArtistContainerView.snp.bottom)
                 make.leading.equalToSuperview()
                 make.trailing.equalToSuperview()
             }
@@ -205,10 +158,6 @@ class RegisterView: View {
     override func setupViews() {
         self.addSubview(self.signUpLabel)
         self.addSubview(self.userArtistContainerView)
-        self.userArtistContainerView.addSubview(self.userButton)
-        self.userArtistContainerView.addSubview(self.artistButton)
-        self.addSubview(self.userBottomLineView)
-        self.addSubview(self.artistBottomLineView)
         self.addSubview(self.comnfirmMessageContainerView)
         self.comnfirmMessageContainerView.addSubview(self.followUpLabel)
         self.comnfirmMessageContainerView.addSubview(self.signUpInfoSymbol)
@@ -226,10 +175,6 @@ class RegisterView: View {
         self.authOptionsViewConstraints()
         self.signUpLabelConstraints()
         self.userArtistContainerViewConstraints()
-        self.userButtonConstraints()
-        self.artistButtonConstraints()
-        self.userBottomLineViewConstraints()
-        self.artistBottomLineViewConstraints()
         self.followUpEmailLabelConstraints()
         self.comnfirmMessageContainerViewConstraints()
         self.signUpInfoSymbolConstraints()
@@ -243,12 +188,6 @@ class RegisterView: View {
         }
 
         self.alreadyHaveAccountButtonConstraints()
-        
-        preload()
-    }
-    
-    private func preload() {
-        self.artistButtonTapped()
     }
     
     private func signUpLabelConstraints() {
@@ -269,47 +208,10 @@ class RegisterView: View {
         }
     }
     
-    private func userButtonConstraints() {
-        self.userButton.snp.makeConstraints { make in
-            make.centerX.equalToSuperview().dividedBy(2)
-            make.centerY.equalToSuperview()
-            make.height.equalToSuperview()
-            make.width.equalTo(self.userArtistContainerView.snp.width).dividedBy(2)
-        }
-    }
-    
-    private func artistButtonConstraints() {
-        self.artistButton.snp.makeConstraints { make in
-            make.centerX.equalToSuperview().multipliedBy(1.5)
-            make.centerY.equalToSuperview()
-            make.height.equalToSuperview()
-            make.width.equalTo(self.userArtistContainerView.snp.width).dividedBy(2)
-        }
-    }
-    
-    private func userBottomLineViewConstraints() {
-        self.userBottomLineView.snp.makeConstraints { make in
-            make.height.equalTo(2)
-            make.leading.equalToSuperview()
-            make.width.equalToSuperview().dividedBy(2)
-            make.top.equalTo(self.userArtistContainerView.snp.bottom)
-        }
-    }
-    
-    private func artistBottomLineViewConstraints() {
-        self.artistBottomLineView.snp.makeConstraints { make in
-            make.height.equalTo(2)
-            make.trailing.equalToSuperview()
-            make.width.equalToSuperview().dividedBy(2)
-            make.top.equalTo(self.userArtistContainerView.snp.bottom)
-        }
-    }
-    
-    
     private func comnfirmMessageContainerViewConstraints() {
         self.comnfirmMessageContainerView.snp.makeConstraints { make in
             make.height.equalTo(64)
-            make.top.equalTo(self.userBottomLineView.snp.bottom)
+            make.top.equalTo(self.userArtistContainerView.snp.bottom)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
         }
