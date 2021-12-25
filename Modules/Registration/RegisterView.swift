@@ -10,7 +10,16 @@ import Foundation
 import UIKit
 import MaterialComponents.MaterialTabs_TabBarView
 
-class RegisterView: View {
+class RegisterView: View, MDCTabBarViewDelegate {
+    
+    func tabBarView(_ tabBarView: MDCTabBarView, didSelect item: UITabBarItem) {
+        switch item.title {
+        case "User":
+            self.hideConfirmArtistMessage(true)
+        default:
+            self.hideConfirmArtistMessage(false)
+        }
+    }
     
     private lazy var signUpLabel:  UILabel = {
         let v = UILabel()
@@ -20,55 +29,27 @@ class RegisterView: View {
         return v
     }()
     
-//    private lazy var userArtistContainerView: UserArtistButtonGroupView = {
-//        let v = UserArtistButtonGroupView({
-//            self.hideConfirmArtistMessage(true)
-//        }, {
-//            self.hideConfirmArtistMessage(false)
-//        })
-//        return v
-//    }()
-    
-    let userArtistContainerView: MDCTabBarView = {
+    let userArtistTabBarView: MDCTabBarView = {
         let v = MDCTabBarView()
+        let userArtistTabBarUserItem = UITabBarItem(title: "User", image: nil, tag: 0)
+        let userArtistTabBarArtistItem = UITabBarItem(title: "Artist", image: nil, tag: 0)
         v.items = [
-          UITabBarItem(title: "User", image: nil, tag: 0),
-          UITabBarItem(title: "Artist", image: nil, tag: 1),
+            userArtistTabBarUserItem,
+            userArtistTabBarArtistItem
         ]
         v.selectionIndicatorStrokeColor = .customBlue
         v.preferredLayoutStyle = .fixed
-
+        v.setTitleColor(.lightGray, for: .normal)
+        v.setTitleColor(.customBlue, for: .selected)
         return v
     }()
     
-    func tabBarView(_ tabBarView: MDCTabBarView, didSelect item: UITabBarItem) {
-        print(item.tag)
-    }
-
-    
-    private lazy var signUpInfoSymbol: UIButton = {
-        let v = UIButton(type: .infoDark)
-        v.isUserInteractionEnabled = false
+    private lazy var confirmMessageView: InfoMessageView = {
+        let v = InfoMessageView(with: "We will send a follow-up email to confirm if you are an artist.")
         return v
     }()
     
-    private lazy var comnfirmMessageContainerView: UIView = {
-        let v = UIView()
-        v.backgroundColor = UIColor.systemGray6
-        return v
-    }()
-    
-    private lazy var followUpLabel:  UILabel = {
-        let v = UILabel()
-        v.textColor = .customBlue
-        v.text = "We will send a follow-up email to confirm if you are an artist."
-        v.font = UIFont(name:"Rubik", size: 14.0)
-        v.lineBreakMode = .byWordWrapping
-        v.numberOfLines = 0
-        return v
-    }()
-    
-    private lazy var userNameTextField: TextFieldWithPadding = {
+    lazy var userNameTextField: TextFieldWithPadding = {
         let v = TextFieldWithPadding()
         v.attributedPlaceholder = NSAttributedString(string: "Username",
                                                      attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
@@ -79,7 +60,7 @@ class RegisterView: View {
         return v
     }()
     
-    private lazy var emailTextField: TextFieldWithPadding = {
+    lazy var emailTextField: TextFieldWithPadding = {
         let v = TextFieldWithPadding()
         v.attributedPlaceholder = NSAttributedString(string: "Email",
                                                      attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
@@ -90,7 +71,7 @@ class RegisterView: View {
         return v
     }()
     
-    private lazy var passwordTextField: TextFieldWithPadding = {
+    lazy var passwordTextField: TextFieldWithPadding = {
         let v = TextFieldWithPadding()
         v.attributedPlaceholder = NSAttributedString(string: "Password",
                                                      attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
@@ -101,7 +82,7 @@ class RegisterView: View {
         return v
     }()
     
-    private lazy var confirmPasswordTextField: TextFieldWithPadding = {
+    lazy var confirmPasswordTextField: TextFieldWithPadding = {
         let v = TextFieldWithPadding()
         v.attributedPlaceholder = NSAttributedString(string: "Confirm Password",
                                                      attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
@@ -130,12 +111,8 @@ class RegisterView: View {
     }
     
     private lazy var alreadyHaveAccountButton: UIButton = {
-        let v = UIButton()
-        v.clipsToBounds = true
+        let v = ButtonFactory.secondaryButton
         v.setTitle("Already have an account, login here", for: .normal)
-        v.titleLabel?.font = UIFont(name:"Rubik-Regular", size: 14.00)
-        v.setTitleColor(.customBlue, for: .normal)
-        v.setTitleColor(.lightGray, for: .highlighted)
         v.addTarget(self, action: #selector(alreadyHaveAccountButtonTapped), for: .touchUpInside)
         return v
     }()
@@ -148,24 +125,23 @@ class RegisterView: View {
     
     lazy var activityIndicator: UIActivityIndicatorView = {
         let v = UIActivityIndicatorView ()
-        
         return v
     }()
     
     private func hideConfirmArtistMessage(_ hide: Bool) {
         if hide {
-            self.comnfirmMessageContainerView.isHidden = true
-            self.comnfirmMessageContainerView.snp.remakeConstraints { make in
+            self.confirmMessageView.isHidden = true
+            self.confirmMessageView.snp.remakeConstraints { make in
                 make.height.equalTo(0)
                 make.leading.equalToSuperview()
                 make.trailing.equalToSuperview()
-                make.top.equalTo(self.userArtistContainerView.snp.bottom)
+                make.top.equalTo(self.userArtistTabBarView.snp.bottom)
             }
         } else {
-            self.comnfirmMessageContainerView.isHidden = false
-            self.comnfirmMessageContainerView.snp.remakeConstraints { make in
+            self.confirmMessageView.isHidden = false
+            self.confirmMessageView.snp.remakeConstraints { make in
                 make.height.equalTo(64)
-                make.top.equalTo(self.userArtistContainerView.snp.bottom)
+                make.top.equalTo(self.userArtistTabBarView.snp.bottom)
                 make.leading.equalToSuperview()
                 make.trailing.equalToSuperview()
             }
@@ -180,10 +156,8 @@ class RegisterView: View {
     
     override func setupViews() {
         self.addSubview(self.signUpLabel)
-        self.addSubview(self.userArtistContainerView)
-        self.addSubview(self.comnfirmMessageContainerView)
-        self.comnfirmMessageContainerView.addSubview(self.followUpLabel)
-        self.comnfirmMessageContainerView.addSubview(self.signUpInfoSymbol)
+        self.addSubview(self.userArtistTabBarView)
+        self.addSubview(self.confirmMessageView)
         self.addSubview(self.userNameTextField)
         self.addSubview(self.emailTextField)
         self.addSubview(self.passwordTextField)
@@ -198,9 +172,7 @@ class RegisterView: View {
         self.authOptionsViewConstraints()
         self.signUpLabelConstraints()
         self.userArtistContainerViewConstraints()
-        self.followUpEmailLabelConstraints()
-        self.comnfirmMessageContainerViewConstraints()
-        self.signUpInfoSymbolConstraints()
+        self.confirmMessageViewConstraints()
         self.userNameTextFieldConstraints()
         self.emailTextFieldConstraints()
         self.passwordTextFieldConstraints()
@@ -210,6 +182,9 @@ class RegisterView: View {
             make.center.equalTo(self.signUpButton)
         }
         self.alreadyHaveAccountButtonConstraints()
+        
+        self.userArtistTabBarView.tabBarDelegate = self
+        self.userArtistTabBarView.selectedItem = userArtistTabBarView.items[1]
     }
     
     private func signUpLabelConstraints() {
@@ -222,7 +197,7 @@ class RegisterView: View {
     }
     
     private func userArtistContainerViewConstraints() {
-        self.userArtistContainerView.snp.makeConstraints { make in
+        self.userArtistTabBarView.snp.makeConstraints { make in
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
             make.height.equalTo(48)
@@ -230,36 +205,18 @@ class RegisterView: View {
         }
     }
     
-    private func comnfirmMessageContainerViewConstraints() {
-        self.comnfirmMessageContainerView.snp.makeConstraints { make in
+    private func confirmMessageViewConstraints() {
+        self.confirmMessageView.snp.makeConstraints { make in
             make.height.equalTo(64)
-            make.top.equalTo(self.userArtistContainerView.snp.bottom)
+            make.top.equalTo(self.userArtistTabBarView.snp.bottom)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
         }
     }
     
-    private func followUpEmailLabelConstraints() {
-        self.followUpLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(comnfirmMessageContainerView)
-            make.leading.equalTo(self.signUpInfoSymbol.snp.trailing).offset(8)
-            make.height.equalTo(self.comnfirmMessageContainerView)
-            make.trailing.equalTo(self.userNameTextField)
-        }
-    }
-    
-    private func signUpInfoSymbolConstraints() {
-        self.signUpInfoSymbol.snp.makeConstraints { make in
-            make.leading.equalTo(self.userNameTextField.snp.leading)
-            make.bottom.equalTo(self.followUpLabel.snp.centerY)
-            make.width.equalTo(16)
-            make.height.equalTo(16)
-        }
-    }
-    
     private func userNameTextFieldConstraints() {
         self.userNameTextField.snp.makeConstraints { make in
-            make.top.equalTo(self.comnfirmMessageContainerView.snp.bottom).offset(32)
+            make.top.equalTo(self.confirmMessageView.snp.bottom).offset(32)
             make.leading.equalToSuperview().inset(32)
             make.height.equalTo(48)
             make.trailing.equalToSuperview().inset(32)
@@ -320,3 +277,4 @@ class RegisterView: View {
         }
     }
 }
+

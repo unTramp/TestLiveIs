@@ -31,7 +31,7 @@ protocol RegisterViewModelDelegate: AnyObject {
 class RegisterViewModel {
     
     private var authService: AuthService
-    private let credentialValidationService: CredentialValidationService
+    private let passwordConfirmationService: PasswordConfirmationService
     
     var state: RegisterState = .idle {
         didSet {
@@ -42,12 +42,13 @@ class RegisterViewModel {
     private weak var delegate: RegisterViewModelDelegate?
     
     private(set) var login: String? = ""
-    private(set) var password: String? = ""
+    var password: String? = ""
+    private(set) var confirmedPassowrd: String? = ""
     
-    init(delegate: RegisterViewModelDelegate, authService: AuthService, credentialValidationService: CredentialValidationService) {
+    init(delegate: RegisterViewModelDelegate, authService: AuthService, passwordConfirmationService: PasswordConfirmationService) {
         self.delegate = delegate
         self.authService = authService
-        self.credentialValidationService = credentialValidationService // для пароля нужен другой?
+        self.passwordConfirmationService = passwordConfirmationService
     }
     
     func didTapSignUpButton() {
@@ -71,4 +72,17 @@ class RegisterViewModel {
         self.delegate?.moveTo(.close)
     }
     
+    func didUpdateLogin(_ confirmedPassword: String) -> Bool {
+        var isValid = false
+        
+        if let pwd = self.password {
+            isValid = self.passwordConfirmationService.isConfirm(password: pwd, confirmedPassword: confirmedPassword)
+        }
+        
+        if isValid {
+            self.confirmedPassowrd = confirmedPassword
+        }
+        
+        return isValid
+    }
 }

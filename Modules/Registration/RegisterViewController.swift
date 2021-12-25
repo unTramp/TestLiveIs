@@ -8,10 +8,29 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController, RegisterViewModelDelegate {
-
+class RegisterViewController: UIViewController, UITextFieldDelegate, RegisterViewModelDelegate {
+    
+    
+    
     private var authService: AuthService = FirebaseAuthService()
     private var viewModel: RegisterViewModel?
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        
+        if textField == self.contentView.confirmPasswordTextField {
+            if let confirmedPassword = textField.text {
+                if self.viewModel?.didUpdateLogin(confirmedPassword)  == true {
+                    self.contentView.confirmPasswordTextField.layer.borderColor = UIColor.systemGreen.cgColor
+                } else {
+                    self.contentView.confirmPasswordTextField.layer.borderColor = UIColor.systemRed.cgColor
+                }
+            }
+        } else if textField == self.contentView.passwordTextField {
+            if let password = textField.text {
+                self.viewModel?.password = password
+            }
+        }
+    }
     
     func didUpdateState() {
         if let viewModel = self.viewModel {
@@ -70,11 +89,14 @@ class RegisterViewController: UIViewController, RegisterViewModelDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        self.viewModel = RegisterViewModel(delegate: self, authService: FirebaseAuthService(), credentialValidationService: OnlyLowercaseCredentialValidationService())
+        self.viewModel = RegisterViewModel(delegate: self, authService: FirebaseAuthService(), passwordConfirmationService: PasswordConfirmationServiceImpl())
         
         if let viewModel = self.viewModel {
             self.updateState(viewModel)
         }
+        
+        self.contentView.passwordTextField.delegate = self
+        self.contentView.confirmPasswordTextField.delegate = self
         
     }
     

@@ -26,6 +26,9 @@
 		49650F3426DC08C200BD0113 /* MarkerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49650F3326DC08C200BD0113 /* MarkerService.swift */; };
 		497160022770EA7700960D48 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497160012770EA7700960D48 /* RegisterView.swift */; };
 		497160042770F0A700960D48 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497160032770F0A700960D48 /* RegisterViewModel.swift */; };
+		4978B32B27774E4800CD2114 /* PasswordConfirmationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4978B32A27774E4800CD2114 /* PasswordConfirmationService.swift */; };
+		4978B32D27774ECE00CD2114 /* PasswordConfirmationServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4978B32C27774ECE00CD2114 /* PasswordConfirmationServiceImpl.swift */; };
+		4978B32F27774FFD00CD2114 /* InfoMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4978B32E27774FFD00CD2114 /* InfoMessageView.swift */; };
 		497C2FF226E3EBA3006B9EC8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 497C2FF126E3EBA3006B9EC8 /* GoogleService-Info.plist */; };
 		49800580249A65DC00CD8000 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4980057F249A65DC00CD8000 /* MainViewModel.swift */; };
 		4987295127665D3C00050C65 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987295027665D3C00050C65 /* AuthService.swift */; };
@@ -83,6 +86,9 @@
 		49650F3326DC08C200BD0113 /* MarkerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerService.swift; sourceTree = "<group>"; };
 		497160012770EA7700960D48 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		497160032770F0A700960D48 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		4978B32A27774E4800CD2114 /* PasswordConfirmationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordConfirmationService.swift; sourceTree = "<group>"; };
+		4978B32C27774ECE00CD2114 /* PasswordConfirmationServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordConfirmationServiceImpl.swift; sourceTree = "<group>"; };
+		4978B32E27774FFD00CD2114 /* InfoMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoMessageView.swift; sourceTree = "<group>"; };
 		497C2FF126E3EBA3006B9EC8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4980057F249A65DC00CD8000 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		4987295027665D3C00050C65 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -189,6 +195,8 @@
 			isa = PBXGroup;
 			children = (
 				491ED7AF2773415800F3C309 /* UserArtistButtonsGroupView.swift */,
+				4978B32A27774E4800CD2114 /* PasswordConfirmationService.swift */,
+				4978B32C27774ECE00CD2114 /* PasswordConfirmationServiceImpl.swift */,
 				49A028B1276E5130006B2BEE /* RegisterViewController.swift */,
 				497160032770F0A700960D48 /* RegisterViewModel.swift */,
 				497160012770EA7700960D48 /* RegisterView.swift */,
@@ -243,6 +251,7 @@
 				D9C6283B1FE639AC00D50657 /* CustomMarkerView.swift */,
 				D9C6283D1FE63A5600D50657 /* EventPreviewView.swift */,
 				491ED7AD27723C2900F3C309 /* AuthOptionsView.swift */,
+				4978B32E27774FFD00CD2114 /* InfoMessageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -577,6 +586,7 @@
 				4987295327665E5800050C65 /* User.swift in Sources */,
 				49C1519826E28EE10056CB12 /* ButtonFactory.swift in Sources */,
 				49872955276661AD00050C65 /* FirebaseAuthService.swift in Sources */,
+				4978B32F27774FFD00CD2114 /* InfoMessageView.swift in Sources */,
 				4987295D27667C5900050C65 /* OnlyLowercaseCredentialValidationService.swift in Sources */,
 				49A028AE2767AA1E006B2BEE /* View.swift in Sources */,
 				49650F3226DC081E00BD0113 /* IMarkerService.swift in Sources */,
@@ -588,7 +598,9 @@
 				4905BB5526ECD007008617E5 /* CalendarDateCollectionViewCell.swift in Sources */,
 				4987295B27667B6C00050C65 /* CredentialValidationServiceImpl.swift in Sources */,
 				D9C6283E1FE63A5600D50657 /* EventPreviewView.swift in Sources */,
+				4978B32B27774E4800CD2114 /* PasswordConfirmationService.swift in Sources */,
 				49650F3026DC077300BD0113 /* MarekerModel.swift in Sources */,
+				4978B32D27774ECE00CD2114 /* PasswordConfirmationServiceImpl.swift in Sources */,
 				497160022770EA7700960D48 /* RegisterView.swift in Sources */,
 				49650F3426DC08C200BD0113 /* MarkerService.swift in Sources */,
 				49EA6BD025B0A62A00E2E9AA /* UserModel.swift in Sources */,

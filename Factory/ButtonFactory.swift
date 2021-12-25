@@ -120,4 +120,11 @@ class ButtonFactory: UIButton {
         v.setTitle("Sign Up", for: .normal)
         return v
     }
+    open class var secondaryButton: UIButton {
+        let v = UIButton()
+        v.titleLabel?.font = UIFont(name:"Rubik-Regular", size: 14.00)
+        v.setTitleColor(.customBlue, for: .normal)
+        v.setTitleColor(.lightGray, for: .highlighted)
+        return v
+    }
 }
