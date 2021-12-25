@@ -13,6 +13,8 @@
 		4905BB5526ECD007008617E5 /* CalendarDateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905BB5126ECD007008617E5 /* CalendarDateCollectionViewCell.swift */; };
 		4905BB5926ECD013008617E5 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905BB5626ECD013008617E5 /* Day.swift */; };
 		4905BB5A26ECD013008617E5 /* MonthMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4905BB5726ECD013008617E5 /* MonthMetadata.swift */; };
+		491ED7AE27723C2900F3C309 /* AuthOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491ED7AD27723C2900F3C309 /* AuthOptionsView.swift */; };
+		491ED7B02773415800F3C309 /* UserArtistButtonsGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491ED7AF2773415800F3C309 /* UserArtistButtonsGroupView.swift */; };
 		494545CD26D6C43B0049CC82 /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 494545C926D6C43B0049CC82 /* Rubik-Medium.ttf */; };
 		494545CE26D6C43B0049CC82 /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 494545CA26D6C43B0049CC82 /* Rubik-Bold.ttf */; };
 		494545CF26D6C43B0049CC82 /* Rubik-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 494545CB26D6C43B0049CC82 /* Rubik-Light.ttf */; };
@@ -22,6 +24,11 @@
 		49650F3026DC077300BD0113 /* MarekerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49650F2F26DC077300BD0113 /* MarekerModel.swift */; };
 		49650F3226DC081E00BD0113 /* IMarkerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49650F3126DC081E00BD0113 /* IMarkerService.swift */; };
 		49650F3426DC08C200BD0113 /* MarkerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49650F3326DC08C200BD0113 /* MarkerService.swift */; };
+		497160022770EA7700960D48 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497160012770EA7700960D48 /* RegisterView.swift */; };
+		497160042770F0A700960D48 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497160032770F0A700960D48 /* RegisterViewModel.swift */; };
+		4978B32B27774E4800CD2114 /* PasswordConfirmationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4978B32A27774E4800CD2114 /* PasswordConfirmationService.swift */; };
+		4978B32D27774ECE00CD2114 /* PasswordConfirmationServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4978B32C27774ECE00CD2114 /* PasswordConfirmationServiceImpl.swift */; };
+		4978B32F27774FFD00CD2114 /* InfoMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4978B32E27774FFD00CD2114 /* InfoMessageView.swift */; };
 		497C2FF226E3EBA3006B9EC8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 497C2FF126E3EBA3006B9EC8 /* GoogleService-Info.plist */; };
 		49800580249A65DC00CD8000 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4980057F249A65DC00CD8000 /* MainViewModel.swift */; };
 		4987295127665D3C00050C65 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4987295027665D3C00050C65 /* AuthService.swift */; };
@@ -66,6 +73,8 @@
 		4905BB5126ECD007008617E5 /* CalendarDateCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarDateCollectionViewCell.swift; sourceTree = "<group>"; };
 		4905BB5626ECD013008617E5 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		4905BB5726ECD013008617E5 /* MonthMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthMetadata.swift; sourceTree = "<group>"; };
+		491ED7AD27723C2900F3C309 /* AuthOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthOptionsView.swift; sourceTree = "<group>"; };
+		491ED7AF2773415800F3C309 /* UserArtistButtonsGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserArtistButtonsGroupView.swift; sourceTree = "<group>"; };
 		494545C926D6C43B0049CC82 /* Rubik-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Medium.ttf"; sourceTree = "<group>"; };
 		494545CA26D6C43B0049CC82 /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Bold.ttf"; sourceTree = "<group>"; };
 		494545CB26D6C43B0049CC82 /* Rubik-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rubik-Light.ttf"; sourceTree = "<group>"; };
@@ -75,6 +84,11 @@
 		49650F2F26DC077300BD0113 /* MarekerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarekerModel.swift; sourceTree = "<group>"; };
 		49650F3126DC081E00BD0113 /* IMarkerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IMarkerService.swift; sourceTree = "<group>"; };
 		49650F3326DC08C200BD0113 /* MarkerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkerService.swift; sourceTree = "<group>"; };
+		497160012770EA7700960D48 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		497160032770F0A700960D48 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		4978B32A27774E4800CD2114 /* PasswordConfirmationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordConfirmationService.swift; sourceTree = "<group>"; };
+		4978B32C27774ECE00CD2114 /* PasswordConfirmationServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordConfirmationServiceImpl.swift; sourceTree = "<group>"; };
+		4978B32E27774FFD00CD2114 /* InfoMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoMessageView.swift; sourceTree = "<group>"; };
 		497C2FF126E3EBA3006B9EC8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4980057F249A65DC00CD8000 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		4987295027665D3C00050C65 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -177,6 +191,19 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		497160002770EA6A00960D48 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				491ED7AF2773415800F3C309 /* UserArtistButtonsGroupView.swift */,
+				4978B32A27774E4800CD2114 /* PasswordConfirmationService.swift */,
+				4978B32C27774ECE00CD2114 /* PasswordConfirmationServiceImpl.swift */,
+				49A028B1276E5130006B2BEE /* RegisterViewController.swift */,
+				497160032770F0A700960D48 /* RegisterViewModel.swift */,
+				497160012770EA7700960D48 /* RegisterView.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
 		499C64A926ECA01300E68B47 /* Adds */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,9 +225,10 @@
 		49C24B462622D81800009EAC /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				49D9FF0625AE5C4B00C35BB9 /* Authorization */,
+				497160002770EA6A00960D48 /* Registration */,
 				AA60128F26E9FA330032705F /* CreateEventViewController */,
 				49CD5F5226D9850800372220 /* PopupView */,
-				49D9FF0625AE5C4B00C35BB9 /* Authorization */,
 				49C24B482622D82A00009EAC /* MainViewController */,
 			);
 			path = Modules;
@@ -222,6 +250,8 @@
 				49A028AD2767AA1E006B2BEE /* View.swift */,
 				D9C6283B1FE639AC00D50657 /* CustomMarkerView.swift */,
 				D9C6283D1FE63A5600D50657 /* EventPreviewView.swift */,
+				491ED7AD27723C2900F3C309 /* AuthOptionsView.swift */,
+				4978B32E27774FFD00CD2114 /* InfoMessageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -238,7 +268,6 @@
 			isa = PBXGroup;
 			children = (
 				49D9FF0825AE5CE100C35BB9 /* AuthViewController.swift */,
-				49A028B1276E5130006B2BEE /* RegisterViewController.swift */,
 				4987295227665E5800050C65 /* User.swift */,
 				4987295027665D3C00050C65 /* AuthService.swift */,
 				49A028B3276E6EB3006B2BEE /* RandomNumber.swift */,
@@ -477,7 +506,9 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework",
 				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/abseil/absl.framework",
@@ -498,7 +529,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleDataTransport.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MDFInternationalization.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/absl.framework",
@@ -542,6 +575,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49800580249A65DC00CD8000 /* MainViewModel.swift in Sources */,
+				491ED7AE27723C2900F3C309 /* AuthOptionsView.swift in Sources */,
 				AAAFBFD526E895BD00AB4534 /* ViewControllerService.swift in Sources */,
 				4905BB5926ECD013008617E5 /* Day.swift in Sources */,
 				49619E0525F2E31A0044EBF1 /* PopUpView.swift in Sources */,
@@ -552,16 +586,22 @@
 				4987295327665E5800050C65 /* User.swift in Sources */,
 				49C1519826E28EE10056CB12 /* ButtonFactory.swift in Sources */,
 				49872955276661AD00050C65 /* FirebaseAuthService.swift in Sources */,
+				4978B32F27774FFD00CD2114 /* InfoMessageView.swift in Sources */,
 				4987295D27667C5900050C65 /* OnlyLowercaseCredentialValidationService.swift in Sources */,
 				49A028AE2767AA1E006B2BEE /* View.swift in Sources */,
 				49650F3226DC081E00BD0113 /* IMarkerService.swift in Sources */,
 				AA5B960D25920D67005965E1 /* IUserService.swift in Sources */,
 				4905BB5A26ECD013008617E5 /* MonthMetadata.swift in Sources */,
+				491ED7B02773415800F3C309 /* UserArtistButtonsGroupView.swift in Sources */,
+				497160042770F0A700960D48 /* RegisterViewModel.swift in Sources */,
 				49A028B2276E5130006B2BEE /* RegisterViewController.swift in Sources */,
 				4905BB5526ECD007008617E5 /* CalendarDateCollectionViewCell.swift in Sources */,
 				4987295B27667B6C00050C65 /* CredentialValidationServiceImpl.swift in Sources */,
 				D9C6283E1FE63A5600D50657 /* EventPreviewView.swift in Sources */,
+				4978B32B27774E4800CD2114 /* PasswordConfirmationService.swift in Sources */,
 				49650F3026DC077300BD0113 /* MarekerModel.swift in Sources */,
+				4978B32D27774ECE00CD2114 /* PasswordConfirmationServiceImpl.swift in Sources */,
+				497160022770EA7700960D48 /* RegisterView.swift in Sources */,
 				49650F3426DC08C200BD0113 /* MarkerService.swift in Sources */,
 				49EA6BD025B0A62A00E2E9AA /* UserModel.swift in Sources */,
 				49A028B6276E6EF2006B2BEE /* RundomNumberService.swift in Sources */,

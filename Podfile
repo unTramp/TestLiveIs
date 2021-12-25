@@ -18,4 +18,5 @@ target 'LiveIs' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
   pod 'MarqueeLabel'
+  pod 'MaterialComponents/Tabs+TabBarView'
 end

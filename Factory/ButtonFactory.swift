@@ -102,4 +102,29 @@ class ButtonFactory: UIButton {
         v.tintColor = .purple
         return v
     }
+    
+    open class var signInButton: UIButton {
+        let v = UIButton()
+        v.backgroundColor = .customBlue
+        v.layer.cornerRadius = 24
+        v.titleLabel?.font =  UIFont(name: "Rubik-Medium", size: 14)
+        v.setTitle("Sign In", for: .normal)
+        return v
+    }
+    
+    open class var signUpButton: UIButton {
+        let v = UIButton()
+        v.backgroundColor = .customBlue
+        v.layer.cornerRadius = 24
+        v.titleLabel?.font =  UIFont(name: "Rubik-Medium", size: 14)
+        v.setTitle("Sign Up", for: .normal)
+        return v
+    }
+    open class var secondaryButton: UIButton {
+        let v = UIButton()
+        v.titleLabel?.font = UIFont(name:"Rubik-Regular", size: 14.00)
+        v.setTitleColor(.customBlue, for: .normal)
+        v.setTitleColor(.lightGray, for: .highlighted)
+        return v
+    }
 }

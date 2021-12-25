@@ -54,8 +54,9 @@ class AuthViewController: UIViewController, UITextFieldDelegate, AuthViewModelDe
     }
     
     private func showRegisterViewController() {
-        let vc = RegisterViewController()
-        self.navigationController?.present(vc, animated: true, completion: nil)
+        let vc = ViewControllerService.shared.getViwController(.register)
+        vc.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     override func viewDidLoad() {
@@ -76,10 +77,10 @@ class AuthViewController: UIViewController, UITextFieldDelegate, AuthViewModelDe
             
             guard let strongSelf = self else { return }
             strongSelf.viewModel?.didTapAuthButton()
-        }, didTapRegisterButtonHandler: { [weak self] in
+        }, didTapCreateAccountButtonHandler: { [weak self] in
             
             guard let strongSelf = self else { return }
-            strongSelf.viewModel?.didTapRegistrationButton()
+            strongSelf.viewModel?.didTapCreateAccountButton()
         })
         
         view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
@@ -116,18 +117,23 @@ class AuthViewController: UIViewController, UITextFieldDelegate, AuthViewModelDe
         case .ready:
             
             break;
+            
         case .error:
-
+            
             break;
             
-        default:
+        case .loading:
+            
+            self.contentView.authorizationButton.isHidden = true
+            self.contentView.activityIndicator.startAnimating()
+            break;
+            
+        case .idle:
+            
             break;
         }
         
-        if viewModel.state == .loading {
-            self.contentView.authorizationButton.isHidden = true
-            self.contentView.activityIndicator.startAnimating()
-        } else {
+        if viewModel.state != .loading {
             self.contentView.authorizationButton.isHidden = false
             self.contentView.activityIndicator.stopAnimating()
         }

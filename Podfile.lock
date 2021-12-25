@@ -318,6 +318,22 @@ PODS:
   - GTMSessionFetcher/Core (1.5.0)
   - leveldb-library (1.22)
   - MarqueeLabel (4.3.0)
+  - MaterialComponents/AnimationTiming (124.2.0)
+  - MaterialComponents/Availability (124.2.0)
+  - MaterialComponents/private/Color (124.2.0):
+    - MaterialComponents/Availability
+  - MaterialComponents/private/Math (124.2.0)
+  - MaterialComponents/Ripple (124.2.0):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/Availability
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - "MaterialComponents/Tabs+TabBarView (124.2.0)":
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/private/Math
+    - MaterialComponents/Ripple
+    - MDFInternationalization
+  - MDFInternationalization (3.0.0)
   - nanopb (2.30907.0):
     - nanopb/decode (= 2.30907.0)
     - nanopb/encode (= 2.30907.0)
@@ -335,6 +351,7 @@ DEPENDENCIES:
   - GooglePlacePicker
   - GooglePlaces
   - MarqueeLabel
+  - "MaterialComponents/Tabs+TabBarView"
   - SnapKit (~> 5.0.0)
 
 SPEC REPOS:
@@ -358,6 +375,8 @@ SPEC REPOS:
     - GTMSessionFetcher
     - leveldb-library
     - MarqueeLabel
+    - MaterialComponents
+    - MDFInternationalization
     - nanopb
     - PromisesObjC
     - SnapKit
@@ -382,10 +401,12 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   MarqueeLabel: 02f5ac8fd6877c94564556cb93fa86c70c08baeb
+  MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
+  MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 0d50ef5d0dd2702f93fd9a10f3765e12575ea178
+PODFILE CHECKSUM: 07154b6163e619c12e995ba2a3c76ed3ab3ea37f
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.2
